@@ -1,0 +1,26 @@
+.grid--margin {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  padding: 0 15px;
+}
+.receipt_container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  width: 763px;
+}
+
+.order-summary .title > div {
+  margin-top: 5px;
+}
+.horizontal-divider {
+  display: block;
+  height: 1px;
+  background-color: #ccc;
+  margin-top: 57px;
+}
+.text--clr-primary {
+  color: #235fa9;
+}

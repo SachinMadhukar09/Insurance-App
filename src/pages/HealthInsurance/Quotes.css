@@ -1,0 +1,79 @@
+.quotes_page_container {
+  width: 1170px;
+  margin: auto;
+}
+.insuranceProvider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 1px #bbbbbb;
+  padding: 16px;
+  background: white;
+}
+
+.grid_cell {
+  width: 108px;
+  font-size: 18px;
+  color: #0d276e;
+}
+
+.buy_btn {
+  font-size: 13px;
+  outline: none;
+  width: 142px;
+  /* height: 68px; */
+  background: linear-gradient(180deg, #f64b4b 0%, #ff704c 100%);
+  box-shadow: 0 10px 28px -10px #ed5b4b;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 9px 9px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  border: 1px solid rgb(239, 84, 67);
+  margin: auto;
+}
+.buy_btn:hover {
+  background: linear-gradient(90deg, #f64b4b 0%, #ff704c 100%);
+  box-shadow: 0 10px 60px -10px #ed5b4b;
+}
+.table_header {
+  display: flex;
+  justify-content: space-around;
+  background-color: #f3f3f3;
+  border-bottom: solid 1px #bbbbbb;
+  border-top: solid 1px #bbbbbb;
+  font-size: 13px;
+  font-weight: 500;
+  height: 57px;
+  text-transform: uppercase;
+}
+.table_cell {
+  color: black;
+  padding-top: 14px;
+}
+
+.formHeader {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 40px;
+}
+.vatMessage-exclusive {
+  font-size: 1.1rem;
+}
+
+.vatMessage-exclusive {
+  margin: 2rem auto 0;
+  font-weight: bold;
+  text-align: center;
+}
+.member_title {
+  font-weight: 300;
+  text-align: center;
+  font-size: 30px;
+  padding: 25px;
+}

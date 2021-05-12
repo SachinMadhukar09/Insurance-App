@@ -1,0 +1,54 @@
+.registration-input {
+  width: 535px;
+  margin: 0px;
+}
+
+.label {
+  top: 8px;
+  left: 20px;
+  right: 0;
+  color: #616161 !important;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  font-size: 1rem;
+  cursor: text;
+  transition: 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+.car_input {
+  border-radius: 4px 0px 0px 4px;
+  height: 67px;
+  font-size: 16px !important;
+  background-image: none;
+  padding-left: 25px;
+  /* box-shadow: 0 2px 22px 0 rgb(70 90 207 / 16%); */
+  border: none;
+  border-right: none;
+  width: 100%;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.car_input,
+.label {
+  width: 100%;
+  height: 3rem;
+  font-size: 14px;
+}
+
+/* Interation */
+.car_input:valid,
+.car_input:focus {
+  /* border-bottom: 2px solid #26a69a; */
+}
+
+.car_input:valid+.label,
+.car_input:focus+.label {
+  color: #26a69a;
+  font-size: 12px;
+  top: -15px;
+  left: 25px;
+  pointer-events: none;
+}
