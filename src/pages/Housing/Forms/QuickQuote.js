@@ -1,59 +1,52 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const QuickDetails = () => {
+const QuickQuote = () => {
   return (
     <div>
-      {/* <div className="term_details_form"> */}
-      {/* <h2 style={{ textAlign: "center" }} class="css-r1stu2">
-          Term Insurance
-        </h2>
-        <p style={{ textAlign: "center" }}>
-          Financial Protection for Your family
-        </p> */}
+      {" "}
       <form className="term_form" action="">
         {/* <h1>Material Design Input with pure CSS</h1> */}
         <div class="input-container">
           <input id="name" className="input" type="text" required />
           <label className="label" for="name">
-            First Name
+            Property Name
           </label>
         </div>
         <div className="input-container">
           <input id="lastname" className="input" type="text" required />
           <label className="label" for="lastname">
-            Last Name
+            Pincode where society is located
           </label>
         </div>
         <div className="input-container">
           <input id="passport" className="input" type="text" required />
           <label className="label" for="passport">
-            Date of Birth
+            Name of Proposer
           </label>
         </div>
         <div className="input-container">
           <input id="nationality" className="input" type="text" required />
           <label className="label" for="nationality">
-            Nationality
+            Mobile Number
           </label>
         </div>
         <div className="input-container">
           <input id="email" className="input" type="text" required />
           <label className="label" for="email">
-            Email
+            Email ID
           </label>
         </div>
-        <div className="input-container">
-          <input id="mobile" className="input" type="number" required />
-          <label className="label" for="mobile">
-            Mobile
-          </label>
-        </div>
-        <div className="input-container">
-          <input id="status" className="input" type="text" required />
-          <label className="label" for="status">
-            Marital Status
-          </label>
+        <br />
+        <div style={{ display: "flex", width: "643px" }}>
+          <input type="checkbox" />
+
+          <p>
+            {" "}
+            By submitting my details, I override myNDNC. I further consent to
+            share my information on confidential bassis with third parties for
+            evaluating and processing this proposal
+          </p>
         </div>
         <div style={{ marginTop: "82px" }}>
           <Link to="/termPlans">
@@ -62,8 +55,7 @@ const QuickDetails = () => {
         </div>
       </form>
     </div>
-    // </div>
   );
 };
 
-export default QuickDetails;
+export default QuickQuote;

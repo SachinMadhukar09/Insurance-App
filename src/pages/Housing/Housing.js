@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import StepForm from "../Investment/MultiStepForm";
+import StepForm from "../Housing/MultiStepForm";
 
-const TermInsuranceDetails = () => {
+const HousingInsuranceDetails = () => {
   return (
     <div className="termDetails">
       <div class="css-2o2fd1-Col">
@@ -46,15 +46,13 @@ const TermInsuranceDetails = () => {
       </div>
       <div className="term_details_form">
         <h2 style={{ textAlign: "center" }} class="css-r1stu2">
-          Term Insurance
+          Standard Fire Insurance for Housing Complex
         </h2>
-        <p style={{ textAlign: "center" }}>
-          Financial Protection for Your family
-        </p>
+        <p style={{ textAlign: "center" }}>Bharat Griha Raksha Policy</p>
         <StepForm />
       </div>
     </div>
   );
 };
 
-export default TermInsuranceDetails;
+export default HousingInsuranceDetails;

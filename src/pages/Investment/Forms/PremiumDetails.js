@@ -1,34 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const QuickDetails = () => {
+const PremiumDetails = () => {
   return (
     <div>
-      {/* <div className="term_details_form"> */}
-      {/* <h2 style={{ textAlign: "center" }} class="css-r1stu2">
-          Term Insurance
-        </h2>
-        <p style={{ textAlign: "center" }}>
-          Financial Protection for Your family
-        </p> */}
       <form className="term_form" action="">
-        {/* <h1>Material Design Input with pure CSS</h1> */}
         <div class="input-container">
-          <input id="name" className="input" type="text" required />
+          <input id="name" className="input" type="number" required />
           <label className="label" for="name">
-            First Name
+            Coverage Amount
           </label>
         </div>
         <div className="input-container">
-          <input id="lastname" className="input" type="text" required />
+          <input id="lastname" className="input" type="Number" required />
           <label className="label" for="lastname">
-            Last Name
+            Duration
           </label>
         </div>
         <div className="input-container">
-          <input id="passport" className="input" type="text" required />
+          <input id="passport" className="input" type="number" required />
           <label className="label" for="passport">
-            Date of Birth
+            Premium Payment Term
           </label>
         </div>
         <div className="input-container">
@@ -62,8 +54,7 @@ const QuickDetails = () => {
         </div>
       </form>
     </div>
-    // </div>
   );
 };
 
-export default QuickDetails;
+export default PremiumDetails;

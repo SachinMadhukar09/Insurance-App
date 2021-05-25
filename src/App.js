@@ -22,12 +22,15 @@ import QuoteModels from "./pages/QuoteModels";
 import Plans from "./pages/TermInsurance/Plans";
 import TwoWheelerPlans from "./pages/TwoWheelerInsurance/TwoWheelerInsurance";
 import StepForm from "./pages/Investment/MultiStepForm";
+import HousingInsuranceDetails from "./pages/Housing/Housing";
+import PolicyBazar from "./PolicyBazar";
 function App() {
   return (
     <div className="App">
       <Router>
         <Header />
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/new" component={PolicyBazar} />
         <Route exact path="/payment" component={Payment} />
         <Route exact path="/vehicle-details" component={VehicleDetails} />
         <Route exact path="/driver-details" component={DriverDetails} />
@@ -52,6 +55,11 @@ function App() {
         <Route exact path="/stepForm" component={StepForm} />
 
         <Route exact path="/two-wheeler-plans" component={TwoWheelerPlans} />
+        <Route
+          exact
+          path="/housing-society"
+          component={HousingInsuranceDetails}
+        />
 
         {/* <Footer /> */}
       </Router>

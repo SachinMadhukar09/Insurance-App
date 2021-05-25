@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import StepForm from "../Investment/MultiStepForm";
 
+
 const TermInsuranceDetails = () => {
   return (
     <div className="termDetails">
@@ -52,6 +53,7 @@ const TermInsuranceDetails = () => {
           Financial Protection for Your family
         </p>
         <StepForm />
+     
       </div>
     </div>
   );
