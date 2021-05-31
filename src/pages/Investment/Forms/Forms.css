@@ -44,7 +44,7 @@ form select {
     font-weight: 400;
     height: 40px;
     margin: 0;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     width: 240px;
     vertical-align: middle;
 }
@@ -114,6 +114,7 @@ form input.submit:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 18px;
 }
 
 .radio_flex {

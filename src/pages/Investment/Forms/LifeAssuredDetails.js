@@ -6,13 +6,15 @@ const LifeAssuredDetails = () => {
     <div>
       <form action="#" method="post">
         <div className="inputBox">
-          <label for="name" class="mid">
+          <p className="health_question" for="name">
             Full Name of Policyholder
-          </label>
+          </p>
           <input type="text" name="name" id="name" tabindex="1" />
         </div>
-        {/* <label for="password" class="mid"> */}
-        Marital Status:
+        {/* <label for="password"> */}
+        <p className="health_question" for="name">
+          Marital Status
+        </p>
         <div className="inputBox">
           <label for="radio-choice-1">Married</label>
           <input
@@ -36,9 +38,9 @@ const LifeAssuredDetails = () => {
           />
         </div>
         <div className="inputBox">
-          <label for="select-choice-2" class="mid">
+          <p className="health_question" for="select-choice-2">
             Highest Education
-          </label>
+          </p>
           <select name="extraoptions" id="select-choice-2">
             <optgroup label="1">
               <option value="Choice 1">Post Graduate</option>
@@ -52,7 +54,10 @@ const LifeAssuredDetails = () => {
             </optgroup>
           </select>
         </div>
-        Are you Polictically Exposed Person
+        <p className="health_question" for="name">
+          Are you Polictically Exposed Person{" "}
+        </p>
+
         <div className="inputBox">
           <label for="radio-choice-1">Yes</label>
           <input
@@ -85,9 +90,7 @@ const LifeAssuredDetails = () => {
           State/Goverment, senior Executives of State owned corporations, etc.
         </p>
         <div>
-          <label for="select-choice-2" class="mid">
-            Select the eIA
-          </label>
+          <label for="select-choice-2">Select the eIA</label>
           <select name="extraoptions" id="select-choice-2" value="Choice 1">
             <optgroup label="1">
               <option value="Choice 1">Official eIa Providers</option>

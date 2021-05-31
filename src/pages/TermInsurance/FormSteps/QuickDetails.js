@@ -43,30 +43,29 @@ const QuickDetails = () => {
             </div>
           </div>
         </div>
-        <div class="input-container">
-          <input id="name" className="input" type="date" required />
-          <label className="label" for="name">
-            Date of Birth
-          </label>
+        <div className="inputBox">
+          <p className="health_question" for="name">
+            Date Of Birth
+          </p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
-        <div className="input-container">
-          <input id="lastname" className="input" type="text" required />
-          <label className="label" for="lastname">
+        <div className="inputBox">
+          <p className="health_question" for="name">
             Annual Income
-          </label>
+          </p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
-        <div className="input-container">
-          <input id="passport" className="input" type="text" required />
-          <label className="label" for="passport">
+        <div className="inputBox">
+          <p className="health_question" for="name">
             Mobile Number
-          </label>
+          </p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
-
-        <div className="input-container">
-          <input id="email" className="input" type="email" required />
-          <label className="label" for="email">
-            Email id
-          </label>
+        <div className="inputBox">
+          <p className="health_question" for="name">
+            Email ID
+          </p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
         {/* <div className="input-container">
           <input id="mobile" className="input" type="number" required />
@@ -80,11 +79,21 @@ const QuickDetails = () => {
             Marital Status
           </label>
         </div> */}
-        <div style={{ marginTop: "82px" }}>
+        <div style={{ display: "flex", width: "643px", alignItems: "center" }}>
+          <input type="checkbox" />
+
+          <p style={{ fontSize: "14px" }}>
+            {" "}
+            By submitting my details, I override myNDNC. I further consent to
+            share my information on confidential bassis with third parties for
+            evaluating and processing this proposal
+          </p>
+        </div>
+        {/* <div style={{ marginTop: "82px" }}>
           <Link to="/termPlans">
             <div className="continue_btn view_quotes__btn">Submit</div>
           </Link>
-        </div>
+        </div> */}
       </form>
     </div>
     // </div>

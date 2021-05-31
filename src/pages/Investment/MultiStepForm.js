@@ -1,11 +1,12 @@
 import React from "react";
 import StepZilla from "react-stepzilla";
+import PremiumDetails from "../Housing/Forms/PremiumDetails";
 import TermInsuranceDetails from "../TermInsurance/Details";
 import QuickDetails from "../TermInsurance/FormSteps/QuickDetails";
 import Documents from "./Forms/Documents";
 import HealthDetails from "./Forms/HealthDetails";
 import LifeAssuredDetails from "./Forms/LifeAssuredDetails";
-import PremiumDetails from "./Forms/PremiumDetails";
+// import PremiumDetails from "./Forms/PremiumDetails";
 
 const StepForm = () => {
   const steps = [

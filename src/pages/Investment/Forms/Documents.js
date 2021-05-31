@@ -4,42 +4,40 @@ const Documents = () => {
   return (
     <div>
       <form action="#" method="post">
-        <fieldset>
-          <div className="inputBox">
-            <label for="name" class="mid">
-              Passport Size Photo
-            </label>
-            <input type="file" name="name" id="name" tabindex="1" />
-          </div>
-          {/* <label for="password" class="mid"> */}
-          <div className="inputBox">
-            <label for="name" class="mid">
-              Pan Card Image
-            </label>
-            <input type="file" name="name" id="name" tabindex="1" />
-          </div>
-          <div className="inputBox">
-            <label for="name" class="mid">
-              Address Proof
-            </label>
-            <input type="file" name="name" id="name" tabindex="1" />
-          </div>
-          <div className="inputBox">
-            <label for="name" class="mid">
-              Income Proof
-            </label>
-            <input type="file" name="name" id="name" tabindex="1" />
-          </div>
-          <div className="inputBox">
-            <label for="name" class="mid">
-              Income Source
-            </label>
-            <input type="file" name="name" id="name" tabindex="1" />
-          </div>
-          <div>
-            <input type="submit" value="Submit" class="submit" />
-          </div>
-        </fieldset>
+        <div className="inputBox">
+          <p for="name" className="health_question">
+            Passport Size Photo
+          </p>
+          <input type="file" name="name" id="name" tabindex="1" />
+        </div>
+        {/* <p for="password"className="health_question"> */}
+        <div className="inputBox">
+          <p for="name" className="health_question">
+            Pan Card Image
+          </p>
+          <input type="file" name="name" id="name" tabindex="1" />
+        </div>
+        <div className="inputBox">
+          <p for="name" className="health_question">
+            Address Proof
+          </p>
+          <input type="file" name="name" id="name" tabindex="1" />
+        </div>
+        <div className="inputBox">
+          <p for="name" className="health_question">
+            Income Proof
+          </p>
+          <input type="file" name="name" id="name" tabindex="1" />
+        </div>
+        <div className="inputBox">
+          <p for="name" className="health_question">
+            Income Source
+          </p>
+          <input type="file" name="name" id="name" tabindex="1" />
+        </div>
+        <div>
+          <div className="continue_btn view_quotes__btn">Submit</div>
+        </div>
       </form>
     </div>
   );
