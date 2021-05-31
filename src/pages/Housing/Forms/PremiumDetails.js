@@ -15,7 +15,7 @@ const PremiumDetails = () => {
       </form>
       <br />
       <h3 style={{ textAlign: "center" }}>Premium Options</h3>
-      <details class="collapse" open>
+      <details class="collapse" close>
         <summary class="title">
           <div>
             <div

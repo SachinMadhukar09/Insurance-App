@@ -1,3 +1,10 @@
+:root {
+    --color-blue: #e07a72;
+    /* 7,5:1 AAA */
+    --color-bluehover: #d1a6a2;
+    /* 11,2:1 AAA */
+}
+
 form {
     width: 552px;
     margin: 75px auto;
@@ -119,4 +126,60 @@ form input.submit:hover {
     font-size: 15px;
     font-weight: 600;
     max-width: 64%;
+}
+
+input[type="file"] {
+    font-size: 12px;
+}
+
+/* End demo */
+
+/* Focus */
+input[type="file"] {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+}
+
+input[type="file"]:focus {
+    outline-color: currentColor;
+}
+
+/* Input File button */
+::-webkit-file-upload-button {
+    /* Safari + Chrome + Opera + Edge */
+    -webkit-appearance: button;
+    /* iOS Safari */
+    font-size: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-blue);
+    padding: .7em .9em;
+    cursor: pointer;
+    border: 0;
+    border-radius: 0;
+    /* iOS Safari */
+}
+
+::-webkit-file-upload-button:hover {
+    background: var(--color-bluehover);
+}
+
+::-webkit-file-upload-button:focus {
+    /* Edge + Chrome + Opera */
+    outline: 0;
+}
+
+::file-selector-button {
+    /* Firefox */
+    font-size: inherit;
+    font-weight: 600;
+    color: #fff;
+    background: var(--color-blue);
+    padding: .7em .9em;
+    cursor: pointer;
+    border: 0;
+}
+
+::file-selector-button:hover {
+    background: var(--color-bluehover);
 }

@@ -12,13 +12,13 @@ const AdditonalDetails = (props) => {
             <p className="health_question">Property Type</p>
 
             <div className="radio_flex">
-              <div className="inputBox">
+              <div className="inputBox" style={{ marginRight: "24px" }}>
                 <label className="housing_radio">
                   <input type="radio" name="radio" checked />
                   <span>Multi Story</span>
                 </label>
               </div>
-              <div className="inputBox">
+              <div className="inputBox" style={{ marginRight: "24px" }}>
                 <label className="housing_radio">
                   <input type="radio" name="radio" checked />
                   <span>Single Property</span>
