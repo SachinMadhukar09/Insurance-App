@@ -1,9 +1,9 @@
 import React from "react";
 import StepZilla from "react-stepzilla";
-import PremiumDetails from "../Investment/Forms/PremiumDetails";
 import AdditonalDetails from "./Forms/AdditonalDetails";
 import Documents from "./Forms/Documents";
 import OtherDetails from "./Forms/OtherDetails";
+import PremiumDetails from "./Forms/PremiumDetails";
 import QuickQuote from "./Forms/QuickQuote";
 
 const MultiStepForm = () => {

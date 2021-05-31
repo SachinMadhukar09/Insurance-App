@@ -13,37 +13,62 @@ const QuickDetails = () => {
         </p> */}
       <form className="term_form" action="">
         {/* <h1>Material Design Input with pure CSS</h1> */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "baseline",
+            justifyContent: "space-between",
+            height: "80px",
+          }}
+        >
+          <p className="health_question">Gender? </p>
+          <div className="radio_flex">
+            <div className="inputBox">
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Male</span>
+              </label>
+            </div>
+            <div className="inputBox">
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Female</span>
+              </label>
+            </div>
+            <div className="inputBox">
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Transgender</span>
+              </label>
+            </div>
+          </div>
+        </div>
         <div class="input-container">
-          <input id="name" className="input" type="text" required />
+          <input id="name" className="input" type="date" required />
           <label className="label" for="name">
-            First Name
+            Date of Birth
           </label>
         </div>
         <div className="input-container">
           <input id="lastname" className="input" type="text" required />
           <label className="label" for="lastname">
-            Last Name
+            Annual Income
           </label>
         </div>
         <div className="input-container">
           <input id="passport" className="input" type="text" required />
           <label className="label" for="passport">
-            Date of Birth
+            Mobile Number
           </label>
         </div>
+
         <div className="input-container">
-          <input id="nationality" className="input" type="text" required />
-          <label className="label" for="nationality">
-            Nationality
-          </label>
-        </div>
-        <div className="input-container">
-          <input id="email" className="input" type="text" required />
+          <input id="email" className="input" type="email" required />
           <label className="label" for="email">
-            Email
+            Email id
           </label>
         </div>
-        <div className="input-container">
+        {/* <div className="input-container">
           <input id="mobile" className="input" type="number" required />
           <label className="label" for="mobile">
             Mobile
@@ -54,7 +79,7 @@ const QuickDetails = () => {
           <label className="label" for="status">
             Marital Status
           </label>
-        </div>
+        </div> */}
         <div style={{ marginTop: "82px" }}>
           <Link to="/termPlans">
             <div className="continue_btn view_quotes__btn">Submit</div>

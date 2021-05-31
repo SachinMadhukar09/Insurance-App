@@ -22,7 +22,7 @@ ol.progtrckr li {
   text-align: center;
   line-height: 4.5rem;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 15px;
 
 }
 
@@ -61,7 +61,11 @@ ol.progtrckr li.progtrckr-doing {
 ol.progtrckr li.progtrckr-done {
   color: black;
   border-bottom: 4px solid #5cb85c;
+  transition: border-bottom 1s linear;
+  /* animation: slide-in-left 1s ease-out both; */
+
 }
+
 
 ol.progtrckr li:after {
   content: "\00a0\00a0";
@@ -110,4 +114,30 @@ ol.progtrckr li.progtrckr-done:before {
 
 ol.progtrckr li.progtrckr-done:hover:before {
   color: #333;
+}
+
+#next-button {
+  font-size: 16px;
+  outline: none;
+  width: 254px;
+  /* height: 68px; */
+  background: linear-gradient(180deg, #f64b4b 0%, #ff704c 100%);
+  box-shadow: 0 10px 28px -10px #ed5b4b;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 20px 15px;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  border: 1px solid rgb(239, 84, 67);
+  margin: auto;
+  margin-top: 40px;
+}
+
+#prev-button {
+  display: none;
 }

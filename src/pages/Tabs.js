@@ -31,8 +31,12 @@ var tabs = [
     text: <TwoWheeler />,
   },
   {
-    title: "Travel",
-    text: <TravelInsurance />,
+    title: "More Products",
+    text: (
+      <div>
+        <h1 style={{ textAlign: "center" }}> View All Of Our Products </h1>
+      </div>
+    ),
   },
 ];
 

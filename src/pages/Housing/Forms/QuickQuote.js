@@ -7,52 +7,42 @@ const QuickQuote = () => {
       {" "}
       <form className="term_form" action="">
         {/* <h1>Material Design Input with pure CSS</h1> */}
-        <div class="input-container">
-          <input id="name" className="input" type="text" required />
-          <label className="label" for="name">
-            Property Name
-          </label>
+        <div className="inputBox">
+          <p className="health_question">Property Name</p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
-        <div className="input-container">
-          <input id="lastname" className="input" type="text" required />
-          <label className="label" for="lastname">
-            Pincode where society is located
-          </label>
+        <div className="inputBox">
+          <p className="health_question">Pincode where society is located</p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
-        <div className="input-container">
-          <input id="passport" className="input" type="text" required />
-          <label className="label" for="passport">
-            Name of Proposer
-          </label>
+        <div className="inputBox">
+          <p className="health_question">Names of Proposer</p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
-        <div className="input-container">
-          <input id="nationality" className="input" type="text" required />
-          <label className="label" for="nationality">
-            Mobile Number
-          </label>
+        <div className="inputBox">
+          <p className="health_question">Mobile Number</p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
-        <div className="input-container">
-          <input id="email" className="input" type="text" required />
-          <label className="label" for="email">
-            Email ID
-          </label>
+        <div className="inputBox">
+          <p className="health_question">Email</p>
+          <input type="text" name="name" id="name" tabindex="1" />
         </div>
         <br />
-        <div style={{ display: "flex", width: "643px" }}>
+        <div style={{ display: "flex", width: "643px", alignItems: "center" }}>
           <input type="checkbox" />
 
-          <p>
+          <p style={{ fontSize: "14px" }}>
             {" "}
             By submitting my details, I override myNDNC. I further consent to
             share my information on confidential bassis with third parties for
             evaluating and processing this proposal
           </p>
         </div>
-        <div style={{ marginTop: "82px" }}>
+        {/* <div style={{ marginTop: "82px" }}>
           <Link to="/termPlans">
             <div className="continue_btn view_quotes__btn">Submit</div>
           </Link>
-        </div>
+        </div> */}
       </form>
     </div>
   );

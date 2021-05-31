@@ -29,8 +29,8 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/new" component={PolicyBazar} />
+        <Route exact path="/" component={PolicyBazar} />
+        <Route exact path="/another" component={HomePage} />
         <Route exact path="/payment" component={Payment} />
         <Route exact path="/vehicle-details" component={VehicleDetails} />
         <Route exact path="/driver-details" component={DriverDetails} />

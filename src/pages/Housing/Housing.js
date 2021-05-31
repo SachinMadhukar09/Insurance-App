@@ -5,7 +5,7 @@ import StepForm from "../Housing/MultiStepForm";
 const HousingInsuranceDetails = () => {
   return (
     <div className="termDetails">
-      <div class="css-2o2fd1-Col">
+      {/* <div class="css-2o2fd1-Col">
         <div class="css-1g2bbnf">
           <div class="css-pzytfr">
             <h1 style={{ textAlign: "center" }} class="css-cmva83">
@@ -43,7 +43,7 @@ const HousingInsuranceDetails = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="term_details_form">
         <h2 style={{ textAlign: "center" }} class="css-r1stu2">
           Standard Fire Insurance for Housing Complex

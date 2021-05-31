@@ -1,130 +1,102 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const AdditonalDetails = () => {
+import "./HousingInputs.css";
+
+const AdditonalDetails = (props) => {
   return (
     <div>
       <div>
         <form action="#" method="post">
-          <fieldset>
-            <div>
-              Marital Status:
+          <div className="radiobox">
+            <p className="health_question">Property Type</p>
+
+            <div className="radio_flex">
               <div className="inputBox">
-                <label for="radio-choice-1">Multi Story</label>
-                <input
-                  type="radio"
-                  name="radio-choice"
-                  id="radio-choice-1"
-                  class="radio"
-                  tabindex="5"
-                  value="choice-1"
-                />
+                <label className="housing_radio">
+                  <input type="radio" name="radio" checked />
+                  <span>Multi Story</span>
+                </label>
               </div>
               <div className="inputBox">
-                <label for="radio-choice-2">Single Property</label>
-                <input
-                  type="radio"
-                  name="radio-choice"
-                  id="radio-choice-2"
-                  class="radio"
-                  tabindex="6"
-                  value="choice-2"
-                />
+                <label className="housing_radio">
+                  <input type="radio" name="radio" checked />
+                  <span>Single Property</span>
+                </label>
               </div>
             </div>
-            <div className="inputBox">
-              <label for="name" class="mid">
-                Floor Number
-              </label>
-              <input type="text" name="name" id="name" tabindex="1" />
-            </div>
-            <div className="inputBox">
-              <label for="name" class="mid">
-                Number of Flats
-              </label>
-              <input type="text" name="name" id="name" tabindex="1" />
-            </div>
-            <div className="inputBox">
-              <label for="name" class="mid">
-                Carpet Area
-              </label>
-              <input type="text" name="name" id="name" tabindex="1" />
-            </div>
-            <div className="inputBox">
-              <label for="name" class="mid">
-                Rate of Cost of Construction 2
-              </label>
-              <input type="text" name="name" id="name" tabindex="1" />
-            </div>
-            <div>
-              Are there any shops?
+          </div>
+          <div className="inputBox">
+            <p className="health_question">Floor Number</p>
+            <input type="text" name="name" id="name" tabindex="1" />
+          </div>
+          <div className="inputBox">
+            <p className="health_question">Number of Flats</p>
+            <input type="text" name="name" id="name" tabindex="1" />
+          </div>
+          <div className="inputBox">
+            <p className="health_question">Carpet Area</p>
+            <input type="text" name="name" id="name" tabindex="1" />
+          </div>
+          <div className="inputBox">
+            <p className="health_question">Rate of Cost of Construction 2</p>
+            <input type="text" name="name" id="name" tabindex="1" />
+          </div>
+          <div className="radiobox">
+            <p className="health_question"> Are there any shops?</p>
+
+            <div className="radio_flex">
               <div className="inputBox">
-                <label for="radio-choice-1">Yes</label>
-                <input
-                  type="radio"
-                  name="radio-choice"
-                  id="radio-choice-1"
-                  class="radio"
-                  tabindex="5"
-                  value="choice-1"
-                />
+                <label className="housing_radio">
+                  <input type="radio" name="radio" checked />
+                  <span>Yes</span>
+                </label>
               </div>
-              <div>
-                <label for="radio-choice-2">No</label>
-                <input
-                  type="radio"
-                  name="radio-choice"
-                  id="radio-choice-2"
-                  class="radio"
-                  tabindex="6"
-                  value="choice-2"
-                />
-              </div>
-            </div>
-            <div className="inputBox">
-              <label for="name" class="mid">
-                How many shops are there?
-              </label>
-              <input type="text" name="name" id="name" tabindex="1" />
-            </div>
-            <div>
-              Are there basements?
               <div className="inputBox">
-                <label for="radio-choice-1">Yes</label>
-                <input
-                  type="radio"
-                  name="radio-choice"
-                  id="radio-choice-1"
-                  class="radio"
-                  tabindex="5"
-                  value="choice-1"
-                />
-              </div>
-              <div>
-                <label for="radio-choice-2">No</label>
-                <input
-                  type="radio"
-                  name="radio-choice"
-                  id="radio-choice-2"
-                  class="radio"
-                  tabindex="6"
-                  value="choice-2"
-                />
+                <label className="housing_radio">
+                  <input type="radio" name="radio" checked />
+                  <span>No</span>
+                </label>
               </div>
             </div>
-            <div className="inputBox">
-              <label for="name" class="mid">
-                Policy to be issued in the name of?
-              </label>
-              <input type="text" name="name" id="name" tabindex="1" />
+          </div>
+          <div className="inputBox">
+            <p className="health_question">How many shops are there?</p>
+            <input type="text" name="name" id="name" tabindex="1" />
+          </div>
+          <div className="radiobox">
+            <p className="health_question">Are there basements?</p>
+
+            <div className="radio_flex">
+              <div className="inputBox">
+                <label className="housing_radio">
+                  <input type="radio" name="radio" checked />
+                  <span>Yes</span>
+                </label>
+              </div>
+              <div className="inputBox">
+                <label className="housing_radio">
+                  <input type="radio" name="radio" checked />
+                  <span>No</span>
+                </label>
+              </div>
             </div>
-          </fieldset>
+          </div>
+          <div className="inputBox">
+            <p className="health_question">
+              Policy to be issued in the name of?
+            </p>
+            <input type="text" name="name" id="name" tabindex="1" />
+          </div>
         </form>
       </div>
       <div style={{ marginTop: "82px" }}>
-        <Link to="/termPlans">
-          <div className="continue_btn view_quotes__btn">Calculate Premium</div>
-        </Link>
+        <div
+          onClick={() => props.jumpToStep(2)}
+          className="continue_btn view_quotes__btn"
+        >
+          Calculate Premium
+        </div>
       </div>
     </div>
   );
