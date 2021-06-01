@@ -22,13 +22,56 @@ import QuoteModels from "./pages/QuoteModels";
 import Plans from "./pages/TermInsurance/Plans";
 import TwoWheelerPlans from "./pages/TwoWheelerInsurance/TwoWheelerInsurance";
 import StepForm from "./pages/Investment/MultiStepForm";
+import Login from "./Login";
+import Dashbaord from "./Dashboard";
+import Policies from "./Policies";
+import Userquotes from "./Quotes";
+import MyClaims from "./Claims";
+import Myproposals from "./Proposals";
+import Profile from "./pages/Profie/Profile";
+import React, { Component, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "./logic/actions/actions";
+import Configs from "./configs/config";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+
+const url = Configs.endpoint;
+
 function App() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    const checkToken = async () => {
+      const authToken = localStorage.getItem("token");
+      console.log('authtoken---', authToken)
+      const response = await axios.get(`${url}/customer/refresh`, {
+        headers: {
+          Authorization: "Bearer " + authToken,
+        },
+      });
+      if (response) {
+        localStorage.setItem("token", response.data.token);
+        dispatch(login({ username: null }));
+      }
+    };
+    checkToken();
+  }, []);
+
   return (
     <div className="App">
       <Router>
         <Header />
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/payment" component={Payment} />
+        <Route exact path="/user-login" component={Login} />
+        <Route exact path="/dashboard" component={Dashbaord} />
+        <Route exact path="/policies" component={Policies} />
+        <Route exact path="/quotes" component={Userquotes} />
+        <Route exact path="/claims" component={MyClaims} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/proposals" component={Myproposals} />
+        <Route exact path="/payment" component={Payment} /> 
         <Route exact path="/vehicle-details" component={VehicleDetails} />
         <Route exact path="/driver-details" component={DriverDetails} />
         <Route exact path="/car-quotes" component={CarInsurance} />
