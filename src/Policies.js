@@ -11,6 +11,7 @@ function Policies() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const [authToken] =  localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
@@ -45,7 +46,7 @@ function Policies() {
   React.useEffect(() => {
     console.log("logIn---", loggedIn);
     /* check token and refresh user after login */
-    if (!loggedIn) {
+    if (!authToken) {
       history.push("/user-login/");
     }
   }, []);

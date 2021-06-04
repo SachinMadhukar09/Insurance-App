@@ -1,21 +1,26 @@
-// import React from "react";
-// import StepZilla from "react-stepzilla";
+import React from "react";
+import StepZilla from "react-stepzilla";
+import PremiumDetails from "../Housing/Forms/PremiumDetails";
+import TermInsuranceDetails from "../TermInsurance/Details";
+import QuickDetails from "../TermInsurance/FormSteps/QuickDetails";
+import Documents from "./Forms/Documents";
+import HealthDetails from "./Forms/HealthDetails";
+import LifeAssuredDetails from "./Forms/LifeAssuredDetails";
+// import PremiumDetails from "./Forms/PremiumDetails";
 
-// const StepForm = () => {
+const StepForm = () => {
+  const steps = [
+    { name: "Quick Details", component: <QuickDetails /> },
+    { name: "Premium Details", component: <PremiumDetails /> },
+    { name: "Life Assured Details", component: <LifeAssuredDetails /> },
+    { name: "Health Details", component: <HealthDetails /> },
+    { name: "Documents", component: <Documents /> },
+  ];
+  return (
+    <div className="step-progress">
+      <StepZilla showSteps={true} showNavigation={true} steps={steps} />
+    </div>
+  );
+};
 
-//   const steps =
-//     [
-//       {name: 'Step 1', component: <Step1 />},
-//       {name: 'Step 2', component: <Step2 />},
-//       {name: 'Step 3', component: <Step3 />},
-//       {name: 'Step 4', component: <Step4 />},
-//       {name: 'Step 5', component: <Step5 />}
-//     ]
-//   return (
-//     <div className='step-progress'>
-//         <StepZilla steps={steps}/>
-//     </div>
-//   );
-// };
-
-// export default StepForm;
+export default StepForm;

@@ -89,18 +89,18 @@ const Login = () => {
       try {
         console.log('response---', JSON.stringify({ phone: phone, countryCode: countryCode, companyName: companyName }))
         await getGeoInfo();
-        const response = await axios.post(
-          `${url}/customer/login`,
-          { phone: phone, countryCode: countryCode, companyName: companyName }
-        )
-        let time = moment().format("YYYY-MM-DDTHH:mm:00.000") + 'z';
-        console.log("response---", response, time, response.data.expireAt)
-        if (response) {
+        // const response = await axios.post(
+        //   `${url}/customer/login`,
+        //   { phone: phone, countryCode: countryCode, companyName: companyName }
+        // )
+        // let time = moment().format("YYYY-MM-DDTHH:mm:00.000") + 'z';
+        // console.log("response---", response, time, response.data.expireAt)
+        // if (response) {
           // setOtpTime(130)
           setloading(false)
           setReqotp(true)
           // setSuccessMsg(response.data.message);
-        }
+      //   }
       } catch (err) {
         setloading(false);
         console.log('errrprr--', err.response.data.error)
@@ -140,16 +140,17 @@ const Login = () => {
       setloading(false);
     } else {
       try {
-        const response = await axios.post(
-          `${url}/customer/otp/verify`,
-          { phone: phone, verificationCode: otp }
-        )
-        if (response) {
-          localStorage.setItem("token", response.data.token)
+        // const response = await axios.post(
+        //   `${url}/customer/otp/verify`,
+        //   { phone: phone, verificationCode: otp }
+        // )
+        // if (response) {
+          let token = true //response.data.token
+          localStorage.setItem("token", true)
           dispatch(login({ username: name }));
           history.push("/dashboard", { username: name });
           setloading(false);
-        }
+        // }
       } catch (error) {
         seterrormsg("Please enter valid OTP");
         setloading(false)

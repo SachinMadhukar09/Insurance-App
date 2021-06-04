@@ -5,6 +5,8 @@ import Tabs from "./pages/Tabs";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 import "./Animations.css";
+
+
 export default function Home() {
   return (
     <div className="container-fluid">
@@ -43,6 +45,7 @@ export default function Home() {
         </div>
         <hr></hr>
       </div>
+      
       <section className="cf-section cf-section--15 mt-100">
         <div className="container">
           <h3 className="text-center cf-section__heading cf-section__heading--lg text-center">

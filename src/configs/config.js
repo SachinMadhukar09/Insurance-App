@@ -1,5 +1,5 @@
 const Configs = {
-    endpoint: "http://localhost:5000"
+    endpoint: "https://backend.1protekt.com"
 }
 
 export default Configs;

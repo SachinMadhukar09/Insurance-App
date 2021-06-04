@@ -184,7 +184,7 @@ const SideBar = () => {
         </div>
       </div>
 
-      <div
+      {/* <div
         className="link-container"
         onClick={() => goTo("/settings")}
         active={pathname === "/settings"}
@@ -206,7 +206,7 @@ const SideBar = () => {
         >
           Settings
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

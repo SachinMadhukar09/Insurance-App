@@ -18,6 +18,11 @@
   padding: 20px;
 }
 
+.personal-container form {
+  width: 100%;
+  margin: 0;
+}
+
 .personal-container p {
   font-size: 18px;
   font-weight: 700;
@@ -25,7 +30,6 @@
 
 .form-container {
   display: flex;
-
   justify-content: space-between;
 }
 
@@ -40,6 +44,7 @@
   /* font-weight: 500; */
   color: #878787;
   font-weight: 600;
+  width: 100%;
 }
 
 .field input {
@@ -47,6 +52,9 @@
   border-radius: 5px;
   border: 1px solid #ea8283;
   margin: 10px 0px 10px 0px;
+  width: 100%;
+  background: white;
+  height: 55px;
 }
 
 .form-data {
@@ -86,18 +94,18 @@
 }
 
 .save-btn {
-  height: 50px;
   padding: 7px;
-  width: 250px;
+  width: 300px;
   text-align: center;
-  margin: 58px 0px 0px 15px;
+  margin: 56px 0px 10px 15px;
   border-radius: 6px;
   color: #f7f7f7;
   text-transform: uppercase;
   font-weight: bold;
   background-color: #f37273;
+
 }
 
-.newcar-form label{
-  color:black;
+.newcar-form label {
+  color: black;
 }

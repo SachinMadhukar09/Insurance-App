@@ -35,43 +35,53 @@ import { login } from "./logic/actions/actions";
 import Configs from "./configs/config";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import HousingInsuranceDetails from "./pages/Housing/Housing";
+import PolicyBazar from "./PolicyBazar";
+import Helps from "./Help";
 
 const url = Configs.endpoint;
 
 function App() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const loggedIn = useSelector((state) => state.user.loggedIn);
 
   useEffect(() => {
     const checkToken = async () => {
       const authToken = localStorage.getItem("token");
-      console.log('authtoken---', authToken)
-      const response = await axios.get(`${url}/customer/refresh`, {
-        headers: {
-          Authorization: "Bearer " + authToken,
-        },
-      });
-      if (response) {
-        localStorage.setItem("token", response.data.token);
-        dispatch(login({ username: null }));
-      }
+      //     console.log('authtoken---', authToken)
+      //     const response = await axios.get(`${url}/customer/refresh`, {
+      //       headers: {
+      //         Authorization: "Bearer " + authToken,
+      //       },
+      //     });
+          if (authToken) {
+      let token = true//response.data.token;
+      localStorage.setItem("token", token);
+      dispatch(login({ username: "" }));
+          }
     };
     checkToken();
-  }, []);
+  }, [loggedIn]);
 
   return (
     <div className="App">
       <Router>
         <Header />
-        <Route exact path="/" component={HomePage} />
+        {/* <Route exact path="/" component={HomePage} /> */}
+        <Route exact path="/" component={PolicyBazar} />
+        <Route exact path="/another" component={HomePage} />
+        <Route exact path="/payment" component={Payment} />
         <Route exact path="/user-login" component={Login} />
         <Route exact path="/dashboard" component={Dashbaord} />
         <Route exact path="/policies" component={Policies} />
         <Route exact path="/quotes" component={Userquotes} />
         <Route exact path="/claims" component={MyClaims} />
+        <Route exact path="/help" component={Helps} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/proposals" component={Myproposals} />
-        <Route exact path="/payment" component={Payment} /> 
+        <Route exact path="/payment" component={Payment} />
+
         <Route exact path="/vehicle-details" component={VehicleDetails} />
         <Route exact path="/driver-details" component={DriverDetails} />
         <Route exact path="/car-quotes" component={CarInsurance} />
@@ -95,6 +105,11 @@ function App() {
         <Route exact path="/stepForm" component={StepForm} />
 
         <Route exact path="/two-wheeler-plans" component={TwoWheelerPlans} />
+        <Route
+          exact
+          path="/housing-society"
+          component={HousingInsuranceDetails}
+        />
 
         {/* <Footer /> */}
       </Router>

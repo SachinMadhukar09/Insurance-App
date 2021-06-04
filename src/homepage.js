@@ -24,7 +24,7 @@ function HomePage() {
   return (
     <div className="App">
       {/* <Header /> */}
-      <NewHomePage />
+      {/* <NewHomePage props={props} /> */}
       <Home />
       <Footer />
     </div>

@@ -1781,6 +1781,7 @@ ul.sub-nav-list > li > a {
   font-size: 14px;
   height: 40px;
   font-weight: bold;
+  width: 100%;
 }
 
 .mobile-input {
@@ -1790,6 +1791,7 @@ ul.sub-nav-list > li > a {
   padding: 15px;
   color: #484848;
   font-weight: 600 !important;
+  width: 100%;
 }
 
 .login-submit {

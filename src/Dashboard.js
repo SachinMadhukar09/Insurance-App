@@ -7,52 +7,58 @@ import SideBar from "./pages/Dashboard/Sidebar";
 import { login } from "./logic/actions/actions";
 import searchIcon from "./Assets/svg/policy-active.svg";
 import downloadIcon from "./Assets/svg/download.png";
+import axios from "axios";
+import Configs from "./configs/config";
+
+const url = Configs.endpoint;
 
 function Dashboard() {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  const authToken = localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
+  const [products, setProducts] = React.useState([]);
+  // const [company, setCompanyName]
 
-  const products = [
-    {
-      productName: "ins product name",
-      productLogo: "",
-      IceName: "Ice Name",
-      cover: "₹ 1,00,000",
-      premium: "₹ 1000y(yearly)",
-      status: "Active",
-    },
-    {
-      productName: "ins product name",
-      productLogo: "",
-      IceName: "Ice Name",
-      cover: "₹ 1,00,000",
-      premium: "₹ 1000y(yearly)",
-      status: "Active",
-    },
-    {
-      productName: "ins product name",
-      productLogo: "",
-      IceName: "Ice Name",
-      cover: "₹ 1,00,000",
-      premium: "₹ 1000y(yearly)",
-      status: "Active",
-    },
-  ];
+  const getProducts = async (token) => {
+    try {
+      console.log("token here", token);
+      // const response = await axios.get(`${url}/customer/products`, {
+      //   headers: {
+      //     Authorization: "Bearer " + token,
+      //   },
+      // });
+      // if (response) {
+      //   setProducts(response.data);
+      // }
+      setProducts([
+        {
+          status: false,
+          product_name: "Health Insurance",
+          insurance_type_id: "2",
+          insurance_category_id: "1",
+          product_icon:
+            "https://product-icon.s3.amazonaws.com/product_name/1622112148058_Health%20Insurance.svg",
+          xpc_insurance_product_id: "aSTo4HgwE",
+          createdate:
+            "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
+          updatedate:
+            "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
+        },
+      ]);
+    } catch (error) {
+      console.log("something went wrong:", error.response.data);
+    }
+  };
 
   React.useEffect(() => {
-    const authToken = localStorage.getItem("token");
-    if(authToken){
-      dispatch(login({ username: null }));
-    }
-    console.log("logIn---", loggedIn);
-    /* check token and refresh user after login */
-    if (!loggedIn) {
+    if (!authToken) {
       history.push("/user-login/");
     }
+    getProducts(authToken);
   }, []);
 
   const handleBuyPolicies = () => {
@@ -72,13 +78,15 @@ function Dashboard() {
               <div className="listing-container">
                 {products.map((product) => (
                   <div className="product-container">
-                    <div className="product-heading">{product.productName}</div>
+                    <div className="product-heading">
+                      {product.product_name}
+                    </div>
                     <div className="product-detail">
                       <div className="product-logo">
                         <div className="logo-container">
-                          {product.productLogo ? (
+                          {product.product_icon ? (
                             <img
-                              src={product.productLogo}
+                              src={product.product_icon}
                               alt="Logo"
                               className="logo-img"
                             />
@@ -104,7 +112,9 @@ function Dashboard() {
 
                       <div className="product-table">
                         <div className="tab-head">Status</div>
-                        <div className="tab-value">{product.status}</div>
+                        <div className="tab-value">
+                          {product.status ? "Active" : "Not Active"}
+                        </div>
                       </div>
                       {/* </div> */}
                       <div className="product-icon">

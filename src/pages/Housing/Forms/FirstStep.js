@@ -2,11 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import StepForm from "../Investment/MultiStepForm";
 
+
 const TermInsuranceDetails = () => {
   return (
     <div className="termDetails">
-      <div className="term_details_form">
-        {/* <div class="css-1g2bbnf">
+      <div class="css-2o2fd1-Col">
+        <div class="css-1g2bbnf">
           <div class="css-pzytfr">
             <h1 style={{ textAlign: "center" }} class="css-cmva83">
               Simple Life
@@ -50,8 +51,9 @@ const TermInsuranceDetails = () => {
         </h2>
         <p style={{ textAlign: "center" }}>
           Financial Protection for Your family
-        </p> */}
+        </p>
         <StepForm />
+     
       </div>
     </div>
   );

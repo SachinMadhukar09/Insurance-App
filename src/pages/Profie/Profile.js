@@ -16,7 +16,9 @@ function Profile() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const userName = useSelector((state) => state.user.username);
+
+  const [authToken] =  localStorage.getItem("token");
+    const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [personal, setPersonal] = React.useState(false);
   const [vehicle, setVehicle] = React.useState(false);
@@ -25,7 +27,7 @@ function Profile() {
   React.useEffect(() => {
     console.log("logIn---", loggedIn);
     /* check token and refresh user after login */
-    if (!loggedIn) {
+    if (!authToken) {
       history.push("/user-login/");
     }
     if (pathname == "/profile") {
