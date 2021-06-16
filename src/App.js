@@ -38,6 +38,12 @@ import axios from "axios";
 import HousingInsuranceDetails from "./pages/Housing/Housing";
 import PolicyBazar from "./PolicyBazar";
 import Helps from "./Help";
+import Products from "./pages/AllProducts/products";
+import Microproduct from "./pages/Allmicroproducts/MicroProduct";
+import Microproduct2 from "./pages/Allmicroproducts/Microproduct2";
+import Microproduct3 from "./pages/Allmicroproducts/Microproduct3";
+import Microproduct4 from "./pages/Allmicroproducts/MicroProduct4";
+import Microproduct5 from "./pages/Allmicroproducts/MicroProduct5";
 
 const url = Configs.endpoint;
 
@@ -55,11 +61,11 @@ function App() {
       //         Authorization: "Bearer " + authToken,
       //       },
       //     });
-          if (authToken) {
-      let token = true//response.data.token;
-      localStorage.setItem("token", token);
-      dispatch(login({ username: "" }));
-          }
+      if (authToken) {
+        let token = true; //response.data.token;
+        localStorage.setItem("token", token);
+        dispatch(login({ username: "" }));
+      }
     };
     checkToken();
   }, [loggedIn]);
@@ -81,6 +87,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/proposals" component={Myproposals} />
         <Route exact path="/payment" component={Payment} />
+        <Route exact path="/products" component={Products} />
 
         <Route exact path="/vehicle-details" component={VehicleDetails} />
         <Route exact path="/driver-details" component={DriverDetails} />
@@ -89,6 +96,7 @@ function App() {
         <Route exact path="/health-quotes" component={Quotes} />
         <Route exact path="/declaration" component={Declaration} />
         <Route exact path="/travelInsurance" component={TravelInsurance} />
+
         <Switch>
           <Route exact path="/traveller-details" component={TravellerDetails} />
         </Switch>
@@ -99,6 +107,13 @@ function App() {
             path="/termInsurance-details"
             component={TermInsuranceDetails}
           />
+        </Switch>
+        <Switch>
+          <Route exact path="/micro-products" component={Microproduct} />
+          <Route exact path="/micro-page2" component={Microproduct2} />
+          <Route exact path="/micro-page3" component={Microproduct3} />
+          <Route exact path="/micro-page4" component={Microproduct4} />
+          <Route exact path="/micro-page5" component={Microproduct5} />
         </Switch>
         <Route exact path="/quoteDetails" component={QuoteModels} />
         <Route exact path="/termPlans" component={Plans} />

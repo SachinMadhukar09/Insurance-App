@@ -11,6 +11,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 import "./Animations.css";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import Configs from "./configs/config";
 
 const url = Configs.endpoint;
@@ -18,7 +19,7 @@ const url = Configs.endpoint;
 const NewHomePage = (props) => {
   console.log(props);
   const [products, setProducts] = React.useState([]);
-
+  const history = useHistory();
   const getProducts = async () => {
     try {
       const response = await axios.get(`${url}/insurance/getInsuranceProduct`);
@@ -27,7 +28,7 @@ const NewHomePage = (props) => {
         setProducts(response.data.products);
       }
     } catch (error) {
-      console.log("something went wrong:", error.response.data);
+      console.log("something went wrong:", error.response);
     }
   };
 
@@ -37,22 +38,21 @@ const NewHomePage = (props) => {
 
   const renderComponent = (product) => {
     let path;
-    console.log("path------>". path)
     switch (product) {
       case "Car Insurance":
         path = "/vehicle-details";
         break;
 
       case "Health Insurance":
-        path = "/vehicle-details";
+        path = "/health-details";
         break;
 
       case "2 Wheeler Insurance":
-        path = "/vehicle-details";
+        path = "/2wheeler-details";
         break;
 
       case "Child Savings Plan":
-        path = "/vehicle-details";
+        path = "/child-savings";
         break;
 
       case "Family Health Insurance":
@@ -60,22 +60,22 @@ const NewHomePage = (props) => {
         break;
 
       case "Investment Plans":
-        path = "/vehicle-details";
+        path = "/investment-plans";
         break;
 
       case "Heart Insurance":
-        path = "/vehicle-details";
+        path = "/heart-insurance";
         break;
 
       case "Group Protection":
-        path = "/vehicle-details";
+        path = "/group-protection";
         break;
 
       default:
         path = "/";
         break;
     }
-    
+
     props.props.history.push(path);
   };
 
@@ -137,17 +137,56 @@ const NewHomePage = (props) => {
             </div>
             <div className="product_title">Term Life Insurance</div>
           </div>  */}
-          {products.map((product) => (
-            <div onClick={renderComponent} className="product_card">
-              <img
-                src={product.product_icon}
-                alt=""
-                style={{ width: "34px" }}
-              />
-              
-              <div className="product_title">{product.product_name}</div>
+          {products.length ? (
+            products.map((product, index) =>
+              product.active ? (
+                index <= 10 ? (
+                  <div
+                    onClick={() => {
+                      renderComponent(product.product_name);
+                    }}
+                    className="product_card"
+                  >
+                    <img
+                      src={product.product_icon}
+                      alt=""
+                      style={{ width: "34px" }}
+                    />
+
+                    <div className="product_title">{product.product_name}</div>
+                  </div>
+                ) : index == 11 ? (
+                  <div
+                    onClick={() => {
+                      history.push("/products");
+                    }}
+                    className="product_card"
+                  >
+                    <div
+                      className="product_title"
+                      style={{
+                        color: "#1185e0",
+                        fontSize: "15px",
+                        "&:hover": {
+                          TextDecoder: "underline",
+                        },
+                      }}
+                    >
+                      {"View More Products"}
+                    </div>
+                  </div>
+                ) : null
+              ) : (
+                <div style={{display:"flex", alignItems:"center"}}>
+                  <h1 style={{fontSize:"25px"}}>No Active Products Found</h1>
+                </div>
+              )
+            )
+          ) : (
+            <div style={{display:"flex", alignItems:"center"}}>
+              <h1 style={{fontSize:"25px"}}>No Product Found</h1>
             </div>
-          ))}
+          )}
 
           {/* <div className="product_card">
             <img src={HealthIcon} alt="" style={{ width: "34px" }} />
