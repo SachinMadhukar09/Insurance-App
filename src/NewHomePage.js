@@ -23,12 +23,11 @@ const NewHomePage = (props) => {
   const getProducts = async () => {
     try {
       const response = await axios.get(`${url}/insurance/getInsuranceProduct`);
-      console.log("response--", response, response.data.products);
       if (response) {
         setProducts(response.data.products);
       }
     } catch (error) {
-      console.log("something went wrong:", error.response);
+      setProducts([]);
     }
   };
 
@@ -127,16 +126,6 @@ const NewHomePage = (props) => {
         }}
       >
         <div className="product-section">
-          {/* <div className="product_card">
-            <div className="card_icon">
-              <img
-                src="https://www.flaticon.com/svg/vstatic/svg/3026/3026399.svg?token=exp=1620474619~hmac=22dda1a9d795cea383008b53a3b2a653"
-                alt=""
-                style={{ width: "34px" }}
-              />
-            </div>
-            <div className="product_title">Term Life Insurance</div>
-          </div>  */}
           {products.length ? (
             products.map((product, index) =>
               product.active ? (
@@ -187,82 +176,7 @@ const NewHomePage = (props) => {
               <h1 style={{fontSize:"25px"}}>No Product Found</h1>
             </div>
           )}
-
-          {/* <div className="product_card">
-            <img src={HealthIcon} alt="" style={{ width: "34px" }} />
-            <div className="product_title">Investment Plans</div>
-          </div>
-          <div
-            onClick={() => props.props.history.push("/vehicle-details")}
-            className="product_card"
-          >
-            <img src={CarIcon} alt="" style={{ width: "34px" }} />
-            <div className="product_title">Car Insurance</div>
-          </div>
-          <div className="product_card">
-            <img src={TwoWheelerIcon} alt="" style={{ width: "34px" }} />
-            <div className="product_title">2 Wheeler Insurance</div>
-          </div> */}
-          {/* <div className="product_card">
-            <div className="card_icon">
-              <img src={ChildInvestIcon} alt="" style={{ width: "34px" }} />
-            </div>
-            <div className="product_title">Child Savings Plan</div>
-          </div> */}
-          {/* <div className="product_card">
-            <img src={FamilyIcon} alt="" style={{ width: "34px" }} />
-            <div className="product_title">Family Health Insurance</div>
-          </div> */}
-          {/* <div className="product_card">
-            <img src={InvestmentIcon} alt="" style={{ width: "34px" }} />
-            <div className="product_title">Investment Plans</div>
-          </div> */}
-          {/* <div
-            onClick={() => props.props.history.push("/housing-society")}
-            className="product_card"
-          >
-            <img
-              src="https://www.flaticon.com/svg/vstatic/svg/602/602226.svg?token=exp=1620992219~hmac=6ed953d7a7397f9484f11b078b6e336e"
-              alt=""
-              style={{ width: "34px" }}
-            />
-            <div className="product_title">Housing Society Insurance</div>
-          </div> */}
-          {/* <div className="product_card">
-            <img
-              src="https://www.flaticon.com/premium-icon/icons/svg/1768/1768201.svg"
-              alt=""
-              style={{ width: "34px" }}
-            />
-            <div className="product_title">2 Wheeler Insurance</div>
-          </div> */}
-          {/* <div
-            className="product_card"
-            onClick={() => props.props.history.push("/vehicle-details")}
-          >
-            <img
-              src="https://www.flaticon.com/svg/vstatic/svg/3089/3089803.svg?token=exp=1620474738~hmac=c767972e5e1ba96e5054d723343b913a"
-              alt=""
-              style={{ width: "34px" }}
-            />
-            <div className="product_title">Car Insurance</div>
-          </div> */}
-          {/* <div className="product_card">
-            <img
-              src="https://www.flaticon.com/svg/vstatic/svg/3089/3089803.svg?token=exp=1620474738~hmac=c767972e5e1ba96e5054d723343b913a"
-              alt=""
-              style={{ width: "34px" }}
-            />
-            <div className="product_title">Car Insurance</div>
-          </div> */}
-          {/* <div className="product_card">
-          <div className="card_icon">icon</div>
-          <div className="product_title">Car Insurance</div>
-        </div>
-        <div className="product_card">
-          <div className="card_icon">icon</div>
-          <div className="product_title">2 Wheeler Insurance</div>
-        </div> */}
+      
         </div>
       </section>
 
