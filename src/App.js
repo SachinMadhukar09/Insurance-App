@@ -55,14 +55,8 @@ function App() {
   useEffect(() => {
     const checkToken = async () => {
       const authToken = localStorage.getItem("token");
-      //     console.log('authtoken---', authToken)
-      //     const response = await axios.get(`${url}/customer/refresh`, {
-      //       headers: {
-      //         Authorization: "Bearer " + authToken,
-      //       },
-      //     });
       if (authToken) {
-        let token = true; //response.data.token;
+        let token = true; 
         localStorage.setItem("token", token);
         dispatch(login({ username: "" }));
       }
