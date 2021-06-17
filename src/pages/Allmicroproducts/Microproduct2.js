@@ -85,14 +85,6 @@ const Microproduct2 = () => {
 
         <p>valid for 1 month</p>
 
-        {/* <button
-          type="submit"
-          className="login-submit"
-          // onClick={}
-          style={{ width: 150, marginRight: 20 }}
-        >
-          {"Buy Now"}
-        </button> */}
       </div>
       </div>
     </div>
