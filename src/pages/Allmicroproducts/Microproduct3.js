@@ -76,7 +76,7 @@ const Microproduct3 = () => {
 
         <p>valid for 1 month</p>
 
-       
+       </div>
       </div>
     </div>
   );
