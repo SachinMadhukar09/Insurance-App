@@ -15,7 +15,6 @@ const Microproduct4 = () => {
     <div><MicroHeader/>
     <div className="page-container">
       <div className="content-part">
-        {/* <div className="section2"> */}
         <div className="form-body">
           <div className="form-left">
             <label className="content-label">Full Name</label>
@@ -28,18 +27,6 @@ const Microproduct4 = () => {
             <input type="text" />
             <label className="content-label">City</label>
             <input type="text" />
-            {/* <label className="content-label">Verify OTP</label> */}
-
-            {/* <input type="text"/> */}
-
-            {/* <button
-                type="submit"
-                className="login-submit"
-                // onClick={}
-                style={{ width: "100%", marginRight: 20 }}
-              >
-                {"Next"}
-              </button> */}
           </div>
           <div className="form-right">
             <label className="content-label">Full Name</label>
@@ -52,9 +39,7 @@ const Microproduct4 = () => {
             <input type="text" />
             <label className="content-label">State</label>
             <input type="text" />
-            {/* <label className="content-label">Verify OTP</label> */}
-
-            {/* <input type="text"/> */}
+         
           </div>
         </div>
         <div className="nomine">
