@@ -67,39 +67,7 @@ const Microproduct1 = () => {
           {"Buy Now"}
         </button>
       </div>
-      {/* <div className="header-top">
-        <div className="logo-img">
-           <img src={""} />
-        </div>
-        <div>
-            <h1>Product Name</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        </div>
-      </div>
-      <div className="options">
-          {/* <ul>
-              <li><button>Option1</button></li>
-              <li><button>Option2</button></li>
-              <li><button>Option3</button></li>
-              <li><button>Option4</button></li>
-              <li><button>Option5</button></li>
-          </ul> 
-      </div>
-      <div>
-          <div className="content-body">
-              <form>
-                  <label></label>
-                  <input type="text"></input>
-                  <label></label>
-                  <input type="text"></input>
-                  <label></label>
-                  <input type="text"></input>
-                  <label></label>
-                  <input type="text"></input>
-              </form>
-          </div>
-          <div className="price-box"><div className="price"></div></div>
-      </div> */}
+     
     </div>
   );
 };
