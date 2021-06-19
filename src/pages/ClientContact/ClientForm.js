@@ -39,12 +39,14 @@ const ClientForm = () => {
               HOW CAN WE WORK TOGETHER
             </label>
             <textarea id="project-idea" rows="4"></textarea>
-            <button type="button">SUBMIT</button>
+            <button className="continue_btn view_quotes__btn" type="button">
+              SUBMIT
+            </button>
           </form>
         </div>
         <div class="illustration">
           <img
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/38816/flame-education-1.png"
+            src="https://xpcover.com/assets/images/undraw-business-deal-cpi9.svg"
             alt="img"
           />
           <div class="link-rollup">

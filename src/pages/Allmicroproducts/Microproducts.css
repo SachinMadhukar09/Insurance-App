@@ -1,0 +1,279 @@
+.head {
+  display: flex;
+  width: 100%;
+  height: auto;
+  background-color: #c4c4c4;
+  padding: 30px 30px 30px 50px;
+  font-size: 17px;
+  margin-top: 20px;
+}
+.logo2 {
+  padding: 40px 20px 20px 30px;
+}
+.paragarph {
+  /* width: 35%;
+  margin-bottom: 35px; */
+}
+
+.section1 {
+  width: 100%;
+  padding: 30px 30px 0px 50px;
+}
+.button1 {
+  padding: 15px;
+  width: 200px;
+  margin: 20px 40px 20px 30px;
+  border-radius: 10px;
+  background-color: #c4c4c4;
+  border: 1px solid #c4c4c4;
+}
+
+.button1:hover {
+  border: 1px solid #62a5f3;
+  box-shadow: 0px 0px 2px 3px #c4c4c6;
+}
+
+.button1:active {
+  background: "#62a5f3";
+  color: "#ffffff";
+}
+
+.section2 {
+  width: 80%;
+  padding: 30px 30px 30px 50px;
+}
+.small {
+  width: 90px;
+  height: 90px;
+  text-align: center;
+  background-color: #df6262;
+}
+.header-top2 {
+  background-color: silver;
+  width: auto;
+  height: 100px;
+  padding-top: 2%;
+  margin-bottom: 6%;
+}
+
+.grids {
+  display: flex;
+  width: 90%;
+  height: 140px;
+  background-color: silver;
+  margin-left: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-top: -2%;
+}
+.imgg1 {
+  width: 90px;
+  height: 90px;
+  background-color: whitesmoke;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.sumry {
+  width: 70%;
+  height: 60%;
+  margin-left: 2%;
+  margin-top: 1%;
+
+  font-size: 12px;
+}
+.btn-group .button2 {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-top: 40%;
+  padding-right: 35px;
+  margin-left: 40%;
+}
+
+.btn-group .button2:hover {
+  background-color: grey;
+}
+
+.header-top3 {
+  background-color: silver;
+  width: auto;
+  height: 100px;
+  padding-top: 2%;
+  margin-bottom: 8%;
+}
+
+.gridss {
+  display: flex;
+  width: 90%;
+  height: 160px;
+  background-color: silver;
+  margin-left: 3%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  padding-top: -2%;
+}
+.imgg11 {
+  width: 90px;
+  height: 90px;
+  background-color: whitesmoke;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.sumryy {
+  width: 70%;
+  height: 60%;
+  margin-left: 2%;
+  margin-top: 1%;
+
+  font-size: 12px;
+}
+.btn-group .button22 {
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 7px;
+  margin-top: 40%;
+  padding-right: 35px;
+  margin-left: 40%;
+}
+
+.btn-group .button22:hover {
+  background-color: grey;
+}
+
+.logoImg {
+  width: 170px;
+  height: 170px;
+  background-color: #df6262;
+  float: right;
+}
+
+.product-name {
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+.head-container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.page-container {
+  display: flex;
+  padding: 15px 30px 30px 30px;
+}
+
+.content-part {
+  width: 80%;
+}
+.buy-part {
+  width: 20%;
+  margin: 30px;
+}
+
+.section2 p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.section2 h3 {
+  font-weight: bold;
+}
+
+.content-body form {
+  width: 50%;
+  margin: 0px;
+}
+
+.content-label {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.content-input {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #c4c4c4;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.content-body span {
+  margin: auto;
+  width: 45%;
+  padding-top: 10%;
+}
+
+.content-body span p {
+  margin: 0px;
+}
+
+.content-body {
+  display: flex;
+  flex-direction: inherit;
+}
+
+.form-body {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.form-body label {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.form-body input {
+  width: 100%;
+  padding: 20px;
+  background-color: #c4c4c4;
+  border-radius: 10px;
+  border: none;
+}
+
+.form-left {
+  width: 45%;
+  padding: 20px 20px 20px 50px;
+}
+
+.form-right {
+  width: 45%;
+  padding: 20px 20px 20px 50px;
+}
+.nomine {
+  font-size: 27px;
+  padding: 30px 30px 30px 50px;
+}
+
+.checkboxes {
+  /* width: 43%; */
+  display: inline-grid;
+  padding: 20px 20px 20px 50px;
+}
+
+.checkboxes input {
+  padding: 20px;
+  margin-top:20px;
+  background-color: #c4c4c4;
+  border-radius: 10px;
+  border: none;
+}

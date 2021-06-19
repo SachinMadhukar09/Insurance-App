@@ -1,20 +1,54 @@
 import React, { Component, useState } from "react";
 import "./main.css";
 import loginIcon from "./Assets/svg/mbri-login.svg";
-export class Header extends Component {
-  state = {
-    className: false,
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "./logic/actions/actions";
+import bellIcon from "./Assets/svg/bell.png";
+import { useLocation } from "react-router-dom";
+
+// let loggedIn = false;
+const Header = () => {
+  const { pathname } = useLocation();
+
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  const [className, setclassName] = React.useState(false);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const Logoutuser = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("login");
+    dispatch(logout());
+    history.push("/");
   };
-  render() {
+
+  console.log("location--", window.location.pathname);
+  if (pathname === "/user-login/") {
+    return (
+      <div className="header-wrapper">
+        <div className="main-header">
+          <div className="logo">
+            <a href="/">
+              <img
+                alt="XPcover.com"
+                data-cms-attr="src:logo_src"
+                src="https://xpcover.com/assets/images/logo1.png"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
     return (
       <div className="header-wrapper header-wrapper--transparent navbar">
         <div className="main-header">
           <div
-            onClick={() => this.setState({ className: !this.state.className })}
+            onClick={() => setclassName(!className)}
             class="menu-toggle"
-            className={
-              this.state.className ? "menu-toggle is-active" : "menu-toggle"
-            }
+            className={className ? "menu-toggle is-active" : "menu-toggle"}
             id="mobile-menu"
           >
             <span class="bar"></span>
@@ -34,7 +68,7 @@ export class Header extends Component {
           <ul
             // className="nav-items-left hidden-xs header-ver2"
             className={
-              this.state.className
+              className
                 ? "nav-items-left hidden-xs header-ver2 mobile-nav"
                 : "nav-items-left hidden-xs header-ver2"
             }
@@ -317,28 +351,48 @@ export class Header extends Component {
           </ul>
           <ul className="nav-items-right">
             <li className="hidden-xs">
-              <a className="open-contact-form" href="/contact/">
-                Contact us
-              </a>
+              {loggedIn ?
+                <a className="open-contact-form" href="/notifications/">
+                  {/* for icon of notifications */}
+                  <img src={bellIcon} className="bellicon" />
+                </a> :
+                <a className="open-contact-form" href="/contact/">
+                  Contact us
+                </a>
+              }
             </li>
             <li style={{ display: "flex" }}>
-              <a className="open-login-form" href="/user-login/">
-                <object
-                  type="image/svg+xml"
-                  className="svgicon"
-                  data={loginIcon}
-                >
-                  SVGs aren't supported.
-                </object>
-                {/* <img src={loginIcon} alt="icon" className="a-icon" /> */}
-                Login
-              </a>
+              {loggedIn ? (
+                <button className="open-login-form" onClick={Logoutuser}>
+                  <object
+                    type="image/svg+xml"
+                    className="svgicon"
+                    data={loginIcon}
+                  >
+                    SVGs aren't supported.
+                  </object>
+                  {/* <img src={loginIcon} alt="icon" className="a-icon" /> */}
+                  Logout
+                </button>
+              ) : (
+                <a className="open-login-form" href="/user-login/">
+                  <object
+                    type="image/svg+xml"
+                    className="svgicon"
+                    data={loginIcon}
+                  >
+                    SVGs aren't supported.
+                  </object>
+                  {/* <img src={loginIcon} alt="icon" className="a-icon" /> */}
+                  Login
+                </a>
+              )}
             </li>
           </ul>
         </div>
       </div>
     );
   }
-}
+};
 
 export default Header;
