@@ -24,6 +24,7 @@ import TwoWheelerPlans from "./pages/TwoWheelerInsurance/TwoWheelerInsurance";
 import StepForm from "./pages/Investment/MultiStepForm";
 import HousingInsuranceDetails from "./pages/Housing/Housing";
 import PolicyBazar from "./PolicyBazar";
+import ClientForm from "./pages/ClientContact/ClientForm";
 function App() {
   return (
     <div className="App">
@@ -53,13 +54,13 @@ function App() {
         <Route exact path="/quoteDetails" component={QuoteModels} />
         <Route exact path="/termPlans" component={Plans} />
         <Route exact path="/stepForm" component={StepForm} />
-
         <Route exact path="/two-wheeler-plans" component={TwoWheelerPlans} />
         <Route
           exact
           path="/housing-society"
           component={HousingInsuranceDetails}
         />
+        <Route exact path="/contact-form" component={ClientForm} />
 
         {/* <Footer /> */}
       </Router>
