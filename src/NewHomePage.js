@@ -126,7 +126,7 @@ const NewHomePage = (props) => {
         }}
       >
         <div className="product-section">
-          {products.length ? (
+        {products.length ? (
             products.map((product, index) =>
               product.active ? (
                 index <= 10 ? (
@@ -165,11 +165,7 @@ const NewHomePage = (props) => {
                     </div>
                   </div>
                 ) : null
-              ) : (
-                <div style={{display:"flex", alignItems:"center"}}>
-                  <h1 style={{fontSize:"25px"}}>No Active Products Found</h1>
-                </div>
-              )
+              ) : null
             )
           ) : (
             <div style={{display:"flex", alignItems:"center"}}>
