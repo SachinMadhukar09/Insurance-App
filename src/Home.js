@@ -10,6 +10,15 @@ import "./Animations.css";
 export default function Home() {
   return (
     <div className="container-fluid">
+      <div
+        sx={{
+          width: ["100%", "50%", "25%"],
+          color: "primary",
+          bg: 'lightgray',
+        }}
+      >
+        hello
+      </div>
       <section className="hero-widget">
         <ScrollAnimation animateOnce={true} animateIn="slide-in-left">
           <h1 className="hero-widget__header font-mw stashable">
@@ -45,7 +54,7 @@ export default function Home() {
         </div>
         <hr></hr>
       </div>
-      
+
       <section className="cf-section cf-section--15 mt-100">
         <div className="container">
           <h3 className="text-center cf-section__heading cf-section__heading--lg text-center">

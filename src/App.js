@@ -44,6 +44,9 @@ import Microproduct2 from "./pages/Allmicroproducts/Microproduct2";
 import Microproduct3 from "./pages/Allmicroproducts/Microproduct3";
 import Microproduct4 from "./pages/Allmicroproducts/MicroProduct4";
 import Microproduct5 from "./pages/Allmicroproducts/MicroProduct5";
+import Gmcproducts from "./pages/GMC-products/GmcProducts";
+import qs from 'qs';
+// import Societies from "./pages/Socities/socities";
 
 const url = Configs.endpoint;
 
@@ -52,13 +55,15 @@ function App() {
   const history = useHistory();
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
+  // const apiKey = 'AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
+  // const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
+ 
   useEffect(() => {
     const checkToken = async () => {
       const authToken = localStorage.getItem("token");
+      const user = localStorage.getItem("username");
       if (authToken) {
-        let token = true; 
-        localStorage.setItem("token", token);
-        dispatch(login({ username: "" }));
+          dispatch(login({ username: user }));
       }
     };
     checkToken();
@@ -90,7 +95,6 @@ function App() {
         <Route exact path="/health-quotes" component={Quotes} />
         <Route exact path="/declaration" component={Declaration} />
         <Route exact path="/travelInsurance" component={TravelInsurance} />
-
         <Switch>
           <Route exact path="/traveller-details" component={TravellerDetails} />
         </Switch>
@@ -112,6 +116,10 @@ function App() {
         <Route exact path="/quoteDetails" component={QuoteModels} />
         <Route exact path="/termPlans" component={Plans} />
         <Route exact path="/stepForm" component={StepForm} />
+        <Route exact path="/gmcproducts" component={Gmcproducts} />
+        {/* <Route exact path="/socities" component={Societies} /> */}
+
+        
 
         <Route exact path="/two-wheeler-plans" component={TwoWheelerPlans} />
         <Route

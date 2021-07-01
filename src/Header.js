@@ -18,8 +18,7 @@ const Header = () => {
   const history = useHistory();
 
   const Logoutuser = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("login");
+    localStorage.clear();
     dispatch(logout());
     history.push("/");
   };

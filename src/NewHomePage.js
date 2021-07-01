@@ -67,7 +67,7 @@ const NewHomePage = (props) => {
         break;
 
       case "Group Protection":
-        path = "/group-protection";
+        path = "/gmcproducts";
         break;
 
       default:
@@ -165,11 +165,7 @@ const NewHomePage = (props) => {
                     </div>
                   </div>
                 ) : null
-              ) : (
-                <div style={{display:"flex", alignItems:"center"}}>
-                  <h1 style={{fontSize:"25px"}}>No Active Products Found</h1>
-                </div>
-              )
+              ) : null
             )
           ) : (
             <div style={{display:"flex", alignItems:"center"}}>

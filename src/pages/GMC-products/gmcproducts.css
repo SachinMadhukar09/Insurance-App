@@ -1,0 +1,349 @@
+.basic-details {
+  display: flex;
+}
+.detail-part {
+  width: 40%;
+  display: grid;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+
+.detail-part h3 {
+  font-weight: 600;
+}
+
+.gmcpolicy {
+  border: 2px solid #f7b2b2;
+  margin-top: 30px;
+  padding: 5px 10px 0px 10px;
+}
+.gmcpolicy b {
+  font-family: "Open Sans";
+  font-size: 17px;
+  font-weight: 600;
+  padding-top: 0px 10px 0px 10px;
+  margin-top: 10px;
+}
+.gmcpolicy p {
+  font-size: 15px;
+  padding-top: 0px 10px 0px 10px;
+  margin: 0px;
+}
+
+.employeesNumber {
+  margin-top: 20px;
+  padding: 10px 0px 10px 0px;
+}
+
+.employeesNumber p {
+  font-size: 17px;
+}
+
+.empnumbers {
+  padding: 20px 10px 10px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.empnumbers .plus-btn {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(#a1a1a1, #a1a1a1),
+    linear-gradient(#a1a1a1, #a1a1a1), #d8d8d8;
+  background-position: center;
+  background-size: 50% 4px, 4px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat: no-repeat;
+  border: 2px solid #f7b2b2;
+}
+
+.empnumbers .minus-btn {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(#a1a1a1, #a1a1a1), #d8d8d8;
+  background-position: center; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat: no-repeat;
+  background-size: 70% 4px;
+  border: 2px solid #f7b2b2;
+}
+
+.numberstring {
+  height: 50px;
+  background-color: white;
+  width: 100%;
+  border-top: 2px solid #f7b2b2;
+  border-bottom: 2px solid #f7b2b2;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+  border-left: none;
+  border-right: none;
+}
+
+.selectmsg {
+  color: red;
+  font-size: 14px;
+  line-height: 0;
+}
+
+.empnumbers input::-webkit-outer-spin-button,
+.empnumbers input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.empnumbers input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.container {
+  padding: 10px 0px 10px 30px;
+}
+
+.container h3 {
+  color: black;
+  font-weight: 600;
+  padding: 20px 10px 0px 30px;
+}
+
+.form-list input {
+  width: 100%;
+}
+
+.form-part {
+  width: 55%;
+}
+
+.form-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.agelist {
+  width: 25%;
+}
+
+.sum-insured {
+  width: 25%;
+}
+.members {
+  width: 45%;
+}
+
+.form-list p {
+  color: black;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 5px;
+  font-size: 14px;
+}
+
+.agelist input {
+  border: 2px solid #f7b2b2;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.sum-insured input {
+  border: 2px solid #f7b2b2;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+.form-list .empnumbers {
+  padding: 10px 0px 0px 0px;
+}
+
+.form-list .empnumbers .minus-btn {
+  height: 42px;
+  background: linear-gradient(#ffff, #ffff), #f48686;
+  background-position: center; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat: no-repeat;
+  background-size: 70% 4px;
+  border: none;
+}
+
+.form-list .empnumbers .plus-btn {
+  height: 42px;
+  background: linear-gradient(#ffff, #ffff), linear-gradient(#ffff, #ffff),
+    #f48686;
+  background-position: center;
+  background-size: 50% 4px, 4px 50%; /*thickness = 2px, length = 50% (25px)*/
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.form-list .empnumbers .numberstring {
+  height: 42px;
+}
+
+.form-part h3 {
+  padding: 20px 0px 0px 0px;
+  font-weight: 500;
+  font-size: 17px;
+}
+.btn-container {
+  width: 75%;
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.btn-container button {
+  background: transparent;
+  width: 45%;
+  height: 50px;
+  border: 2px solid #f48686;
+}
+
+.btn-container select {
+  background: transparent;
+  width: 100%;
+  border: 2px solid #f48686;
+  font-size: 14px;
+}
+
+.btn-container .expenses {
+  background: transparent;
+  width: 32%;
+  border: 2px solid #f48686;
+  font-size: 14px;
+}
+
+.btn-container .draftbtn {
+  background-color: #d8d8d8;
+  margin-top: 50px;
+  padding: 15px;
+  height: 60px;
+  width: 50%;
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.page-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.submit-part {
+  width: 40%;
+}
+
+.submit-part h3 {
+  padding: 0px;
+  line-height: 0px;
+}
+.submit-part .desc {
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.progressbar {
+  margin-top: 40px;
+}
+
+.submit-part p {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.submit-part .cover {
+  background: #d8d8d8;
+  padding: 10px;
+  font-weight: 600;
+}
+
+.compdetails {
+  width: 40%;
+  padding: 10px 10px 10px 0px;
+}
+
+.compdetails input {
+  border: 2px solid #f7b2b2;
+  padding: 10px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.compdetails textarea {
+  border: 2px solid #f7b2b2;
+  padding: 10px;
+  min-height: 100px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.compdetails textarea:focus-visible {
+  outline: 1px solid #f7b2b2;
+}
+
+.compdetails textarea:focus {
+  outline: 1px solid #f7b2b2;
+}
+
+.compdetails select {
+  background: transparent;
+  width: 100%;
+  border: 1px solid #f48686;
+  /* font-size: 14px; */
+  color: #878787;
+  margin-top: 20px;
+}
+
+.compdetails p {
+  font-size: 15px;
+  font-weight: 600;
+  /* margin-top: 40px; */
+}
+
+.compdetails h3 {
+  padding: 10px 10px 10px 0px;
+}
+
+.compdetails button {
+  border: 1px solid #f48686;
+  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
+  background: none;
+}
+
+.uploadDoc {
+  height: 60px;
+  border: 1px solid #f48686;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.uploadDoc .uploadIcon {
+  width: 40px;
+  padding: 5px;
+}
+
+.uploadDoc span {
+  font-size: 14px;
+  padding: 15px;
+}
+
+.compdetails .draftbtn {
+  width: 45%;
+  height: 55px;
+}
+
+.compdetails .confirmbtn {
+  margin-top: 50px;
+  width: 45%;
+  height: 55px;
+  background: #f48686;
+  color: white;
+}
+
+.btn-container {
+  width: 100%;
+}
