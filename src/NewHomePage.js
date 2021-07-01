@@ -126,7 +126,7 @@ const NewHomePage = (props) => {
         }}
       >
         <div className="product-section">
-          {products.length ? (
+        {products.length ? (
             products.map((product, index) =>
               product.active ? (
                 index <= 10 ? (

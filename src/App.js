@@ -44,9 +44,11 @@ import Microproduct2 from "./pages/Allmicroproducts/Microproduct2";
 import Microproduct3 from "./pages/Allmicroproducts/Microproduct3";
 import Microproduct4 from "./pages/Allmicroproducts/MicroProduct4";
 import Microproduct5 from "./pages/Allmicroproducts/MicroProduct5";
+
 import Gmcproducts from "./pages/GMC-products/GmcProducts";
 import qs from 'qs';
-// import Societies from "./pages/Socities/socities";
+
+import ClientForm from "./pages/ClientContact/ClientForm";
 
 const url = Configs.endpoint;
 
@@ -63,6 +65,7 @@ function App() {
       const authToken = localStorage.getItem("token");
       const user = localStorage.getItem("username");
       if (authToken) {
+
           dispatch(login({ username: user }));
       }
     };
@@ -116,10 +119,8 @@ function App() {
         <Route exact path="/quoteDetails" component={QuoteModels} />
         <Route exact path="/termPlans" component={Plans} />
         <Route exact path="/stepForm" component={StepForm} />
-        <Route exact path="/gmcproducts" component={Gmcproducts} />
-        {/* <Route exact path="/socities" component={Societies} /> */}
 
-        
+        <Route exact path="/gmcproducts" component={Gmcproducts} />
 
         <Route exact path="/two-wheeler-plans" component={TwoWheelerPlans} />
         <Route
@@ -127,6 +128,7 @@ function App() {
           path="/housing-society"
           component={HousingInsuranceDetails}
         />
+        <Route exact path="/contact-form" component={ClientForm} />
 
         {/* <Footer /> */}
       </Router>

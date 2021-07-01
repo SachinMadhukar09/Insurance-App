@@ -4,7 +4,7 @@ import "./Forms.css";
 const LifeAssuredDetails = () => {
   return (
     <div>
-      <form action="#" method="post">
+      <form action="#" method="post" style={{ width: "1000px" }}>
         <div className="inputBox">
           <p className="health_question" for="name">
             Full Name of Policyholder
@@ -12,38 +12,86 @@ const LifeAssuredDetails = () => {
           <input type="text" name="name" id="name" tabindex="1" />
         </div>
         {/* <label for="password"> */}
-        <p className="health_question" for="name">
-          Marital Status
-        </p>
-        <div className="inputBox">
-          <label for="radio-choice-1">Married</label>
-          <input
-            type="radio"
-            name="radio-choice"
-            id="radio-choice-1"
-            class="radio"
-            tabindex="5"
-            value="choice-1"
-          />
+        <div className="radiobox">
+          <p className="health_question" for="name">
+            Marital Status
+          </p>
+
+          <div className="radio_flex">
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Married</span>
+              </label>
+            </div>
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Single</span>
+              </label>
+            </div>
+          </div>
         </div>
-        <div className="inputBox">
-          <label for="radio-choice-2">Single</label>
-          <input
-            type="radio"
-            name="radio-choice"
-            id="radio-choice-2"
-            class="radio"
-            tabindex="6"
-            value="choice-2"
-          />
-        </div>
-        <div className="inputBox">
-          <p className="health_question" for="select-choice-2">
+
+        <div className="radiobox">
+          <p className="health_question" for="name">
             Highest Education
           </p>
-          <select name="extraoptions" id="select-choice-2">
+
+          <div className="radio_flex">
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Post Graduate</span>
+              </label>
+            </div>
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>12th</span>
+              </label>
+            </div>
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>10th</span>
+              </label>
+            </div>
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Diploma</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="radiobox">
+          <p className="health_question" for="name">
+            Are you Polictically Exposed Person{" "}
+          </p>
+          <div className="radio_flex">
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>Yes</span>
+              </label>
+            </div>
+            <div className="inputBox" style={{ marginRight: "24px" }}>
+              <label className="housing_radio">
+                <input type="radio" name="radio" checked />
+                <span>No</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label className="health_question" for="select-choice-2">
+            Occupation
+          </label>
+          <select name="extraoptions" id="select-choice-2" value="Choice 1">
             <optgroup label="1">
-              <option value="Choice 1">Post Graduate</option>
+              <option value="Choice 1">Work as a</option>
               <option value="Choice 2">Choice 2</option>
               <option value="Choice 3">Choice 3</option>
             </optgroup>
@@ -53,32 +101,6 @@ const LifeAssuredDetails = () => {
               <option value="Choice 3">Choice 3</option>
             </optgroup>
           </select>
-        </div>
-        <p className="health_question" for="name">
-          Are you Polictically Exposed Person{" "}
-        </p>
-
-        <div className="inputBox">
-          <label for="radio-choice-1">Yes</label>
-          <input
-            type="radio"
-            name="radio-choice"
-            id="radio-choice-1"
-            class="radio"
-            tabindex="5"
-            value="choice-1"
-          />
-        </div>
-        <div>
-          <label for="radio-choice-2">No</label>
-          <input
-            type="radio"
-            name="radio-choice"
-            id="radio-choice-2"
-            class="radio"
-            tabindex="6"
-            value="choice-2"
-          />
         </div>
         <p>
           {" "}
