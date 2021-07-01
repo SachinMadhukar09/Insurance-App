@@ -62,13 +62,13 @@ form textarea:focus {
     outline: none;
 }
 
-form select {
+/* form select {
     float: left;
     margin-bottom: 40px;
     appearance: none;
     width: 260px;
     border-radius: 0;
-}
+} */
 
 form input.checkbox,
 form input.radio {
@@ -84,14 +84,7 @@ form input.button {
     border: 0px solid #fff;
 }
 
-form textarea {
-    width: 240px;
-    height: 200px;
-    padding: 10px;
-    background: #01caa7;
-    border: 2px solid #fff;
-    color: #fff;
-}
+
 
 form input.submit {
     float: left;
@@ -131,6 +124,10 @@ form input.submit:hover {
 
 input[type="file"] {
     font-size: 12px;
+}
+
+#cars option {
+    padding: 20px
 }
 
 /* End demo */
