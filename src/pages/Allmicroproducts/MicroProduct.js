@@ -5,10 +5,35 @@ import Microproduct3 from "./Microproduct3";
 import Microproduct4 from "./MicroProduct4";
 import Microproduct5 from "./MicroProduct5";
 import React, { Component, useState, useEffect } from "react";
+import axios from "axios";
 
 // import Microproduct4 from "./Microproduct4";
 
-const Microproduct = () => {
+const Microproduct = (props) => {
+  const [productData, setProductData] = useState();
+
+  useEffect(() => {
+    setProductData({
+      quotationName: "Micro-insurance",
+      quotationAmount: {
+        amountActual: 400,
+        amountFormatted: 400,
+      },
+    });
+    const data = {
+      customerId: props.match.params.id,
+      companyId: "icici2343",
+      type: "quotation",
+      isPaymentCompleted: false,
+      quotationLink: window.location.href,
+      ...productData,
+    };
+    if (props.match.params.id) {
+      axios
+        .post("https://backend.1protekt.com/crm/createQuote", data)
+        .then((res) => console.log(res));
+    }
+  }, []);
   let logoIcon = "";
   const [option, setOption] = React.useState(1);
   // const []
@@ -80,19 +105,17 @@ const Microproduct = () => {
           className="button1"
           onClick={() => setOption(5)}
           style={
-            option == 5 ? { background: "#62a5f3", color: "#ffffff" } : null
+            option === 5 ? { background: "#62a5f3", color: "#ffffff" } : null
           }
         >
           Option5
         </button>
       </div>
-      {option == 1 ? <Microproduct1 /> : null}
+      {option === 1 ? <Microproduct1 /> : null}
       {/* {option == 2 ? <Microproduct2 /> : null}
       {option == 3 ? <Microproduct3 /> : null}
       {option == 4 ? <Microproduct4 /> : null}
       {option == 5 ? <Microproduct5/> : null} */}
-
-     
     </div>
   );
 };

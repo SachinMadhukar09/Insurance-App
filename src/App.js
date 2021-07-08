@@ -104,7 +104,7 @@ function App() {
           />
         </Switch>
         <Switch>
-          <Route exact path="/micro-products" component={Microproduct} />
+          <Route exact path="/micro-products/:id?" component={Microproduct} />
           <Route exact path="/micro-page2" component={Microproduct2} />
           <Route exact path="/micro-page3" component={Microproduct3} />
           <Route exact path="/micro-page4" component={Microproduct4} />
