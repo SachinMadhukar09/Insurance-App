@@ -5,8 +5,34 @@ import Microproduct3 from "./Microproduct3";
 import Microproduct4 from "./Microproduct4";
 import Microproduct5 from "./MicroProduct5";
 import React, { Component, useState, useEffect } from "react";
+import axios from "axios";
 
-const Microproduct = () => {
+const Microproduct = (props) => {
+  const [productData, setProductData] = useState();
+
+  useEffect(() => {
+    setProductData({
+      quotationName: "Micro-insurance",
+      quotationAmount: {
+        amountActual: 400,
+        amountFormatted: 400,
+      },
+    });
+    const data = {
+      customerId: props.match.params.id,
+      companyId: "icici2343",
+      type: "quotation",
+      isPaymentCompleted: false,
+      quotationLink: window.location.href,
+      ...productData,
+    };
+    if (props.match.params.id) {
+      axios
+        .post("https://backend.1protekt.com/crm/createQuote", data)
+        .then((res) => console.log(res));
+    }
+  }, []);
+
   let logoIcon = "";
   const [option, setOption] = React.useState(1);
 
@@ -73,8 +99,10 @@ const Microproduct = () => {
         >
           Option4
         </button>
+
       </div>
       {option == 1 ? <Microproduct1 /> : null} 
+
     </div>
   );
 };
