@@ -68,6 +68,11 @@
   font-weight: 700;
 }
 
+.vehicle_details{
+  max-width: 1180px;
+  margin: auto;
+}
+
 .addcar-container {
   text-align: center;
 }

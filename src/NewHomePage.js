@@ -67,7 +67,7 @@ const NewHomePage = (props) => {
         break;
 
       case "Group Protection":
-        path = "/group-protection";
+        path = "/gmcproducts";
         break;
 
       default:

@@ -4,9 +4,12 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./logic/actions/actions";
 
-import axios from 'axios';
+import axios from "axios";
 import Configs from "./configs/config";
 import moment from "moment";
+// import firebase from "firebase/app";
+import firebase from "./firebase";
+// const fire = require("./firebase");
 
 const url = Configs.endpoint;
 
@@ -23,22 +26,21 @@ const Login = () => {
   const [errormsg, seterrormsg] = React.useState("");
   const [successmsg, setSuccessMsg] = React.useState("");
   const [otp, setOtp] = React.useState("");
-  // const [counter, setOtpTime] = React.useState(0);
+  const [confirmationResult, setConfirmationResult] = React.useState(undefined);
 
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
-  React.useEffect(() => {
-    console.log("logIn---", loggedIn);
-    /* check token and refresh user after login */
+  const checkuser = () => {
     if (loggedIn) {
       history.push("/dashboard", { username: userName });
+    } else {
+      getGeoInfo();
     }
+  };
+  React.useEffect(() => {
+    checkuser();
   }, []);
-
-  // React.useEffect(() => {
-  //   counter > 0 && setTimeout(() => setOtpTime(counter - 1), 1000);
-  // }, [counter]);
 
   const handleChange = (event) => {
     if (event.target.name == "mobile") {
@@ -48,22 +50,25 @@ const Login = () => {
       setOtp(event.target.value);
     }
     seterrormsg("");
-    // setSuccessMsg("");
+    setSuccessMsg("");
   };
 
-
   const getGeoInfo = () => {
-    axios.get('https://ipapi.co/json/').then((response) => {
-      let data = response.data;
-      setCountryCode(data.country_calling_code);
-    }).catch((error) => {
-      seterrormsg(error.message);
-    });
+    axios
+      .get("https://ipapi.co/json/")
+      .then((response) => {
+        let data = response.data;
+        setCountryCode(data.country_calling_code);
+      })
+      .catch((error) => {
+        seterrormsg(error.message);
+      });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setloading(true);
+
     let isValid = true;
     console.log("phone----", phone);
     if (!phone) {
@@ -87,49 +92,69 @@ const Login = () => {
     }
     if (isValid) {
       try {
-        console.log('response---', JSON.stringify({ phone: phone, countryCode: countryCode, companyName: companyName }))
-        await getGeoInfo();
-        // const response = await axios.post(
-        //   `${url}/customer/login`,
-        //   { phone: phone, countryCode: countryCode, companyName: companyName }
-        // )
-        // let time = moment().format("YYYY-MM-DDTHH:mm:00.000") + 'z';
-        // console.log("response---", response, time, response.data.expireAt)
-        // if (response) {
-          // setOtpTime(130)
-          setloading(false)
-          setReqotp(true)
-          // setSuccessMsg(response.data.message);
-      //   }
+        const phoneNumber = countryCode + phone;
+        let appVerifier = new firebase.auth.RecaptchaVerifier(
+          "recaptcha-container",
+          {
+            size: "invisible",
+            callback: (response) => {
+              console.log("captcha resolved----", response);
+            },
+          }
+        );
+        firebase
+          .auth()
+          .signInWithPhoneNumber(phoneNumber, appVerifier)
+          .then(function (confirmationResult) {
+            setReqotp(true);
+            setConfirmationResult(confirmationResult);
+            setloading(false);
+            setPhone("");
+            seterrormsg("");
+            setSuccessMsg("OTP has been sent to your mobile number");
+          })
+          .catch(function (error) {
+            console.log("error---", error);
+            setloading(false);
+            seterrormsg(error.message);
+          });
       } catch (err) {
         setloading(false);
-        console.log('errrprr--', err.response.data.error)
-        seterrormsg(err.response.data.error);
+        console.log("errrprr--", err);
+        seterrormsg(err.message);
       }
     }
   };
 
   const resendOTP = async () => {
     try {
-      console.log('response---', JSON.stringify({ phone: phone, countryCode: countryCode, companyName: companyName }))
+      console.log(
+        "response---",
+        JSON.stringify({
+          phone: phone,
+          countryCode: countryCode,
+          companyName: companyName,
+        })
+      );
       await getGeoInfo();
-      const response = await axios.post(
-        `${url}/customer/login`,
-        { phone: phone, countryCode: countryCode, companyName: companyName }
-      )
-      console.log("response---", response)
+      const response = await axios.post(`${url}/customer/login`, {
+        phone: phone,
+        countryCode: countryCode,
+        companyName: companyName,
+      });
+      console.log("response---", response);
       if (response) {
-        // setOtpTime(50)
-        setloading(false)
-        setReqotp(true)
-        // setSuccessMsg(response.data.message);
+       
+        setloading(false);
+        setReqotp(true);
+        
       }
     } catch (err) {
       setloading(false);
-      console.log('errrprr--', err.response.data.error)
+      console.log("errrprr--", err.response.data.error);
       seterrormsg(err.response.data.error);
     }
-  }
+  };
 
   const handleOtpSub = async (event) => {
     event.preventDefault();
@@ -140,20 +165,26 @@ const Login = () => {
       setloading(false);
     } else {
       try {
-        // const response = await axios.post(
-        //   `${url}/customer/otp/verify`,
-        //   { phone: phone, verificationCode: otp }
-        // )
-        // if (response) {
-          let token = true //response.data.token
-          localStorage.setItem("token", true)
-          dispatch(login({ username: name }));
-          history.push("/dashboard", { username: name });
-          setloading(false);
-        // }
+        let code = otp;
+        confirmationResult
+          .confirm(code)
+          .then((result) => {
+            console.log("result----", result);
+            const user = result.user.displayName;
+            let token = result.user.refreshToken;
+            localStorage.setItem("token", token);
+            localStorage.setItem("username", user);
+            dispatch(login({ username: user }));
+            history.push("/dashboard", { username: user });
+            setloading(false);
+          })
+          .catch((error) => {
+            setloading(false);
+            seterrormsg(error.message);
+          });
       } catch (error) {
         seterrormsg("Please enter valid OTP");
-        setloading(false)
+        setloading(false);
         console.error(error);
       }
     }
@@ -183,25 +214,22 @@ const Login = () => {
                 className="mobile-input"
                 onChange={handleChange}
               />
+             
               {errormsg ? <div className="text-danger">{errormsg}</div> : null}
-              {/* <Link to="/vehicle-details">
-                <div className="login-submit">
-                  {loading ? "Please wait..." : "confirm otp"}
-                </div>
-              </Link> */}
+             
               <button
                 type="submit"
                 className="login-submit"
+                id=""
                 onClick={handleOtpSub}
               >
                 {loading ? "Please wait..." : "Sign in with otp"}
               </button>
             </form>
-            {/* <div>Resend Again - {counter}</div>
-            {
-              (!counter) ? <div onClick={resendOTP}>resend</div> : null
-            } */}
-            {successmsg ? <div className="text-success">{successmsg}</div> : null}
+           
+            {successmsg ? (
+              <div className="text-success">{successmsg}</div>
+            ) : null}
           </div>
         </div>
       </div>
@@ -240,9 +268,12 @@ const Login = () => {
                 {loading ? "Please wait..." : "Sign in with otp"}
               </button>
             </form>
-            {successmsg ? <div className="text-success">{successmsg}</div> : null}
+            {successmsg ? (
+              <div className="text-success">{successmsg}</div>
+            ) : null}
           </div>
         </div>
+        <div id="recaptcha-container"></div>
       </div>
     );
   }

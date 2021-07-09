@@ -10,7 +10,8 @@ const Microproduct3 = () => {
     history.push('/micro-page4')
   }
   return (
-    <div><MicroHeader/>
+    
+    <div className="micro_wrapper"><MicroHeader/>
     <div className="page-container">
       <div className="content-part">
         <div className="section2">
@@ -23,9 +24,9 @@ const Microproduct3 = () => {
              
               <button
                 type="submit"
-                className="login-submit"
+                className="confirmbtn"
                 onClick={onClickNext}
-                style={{ width: "100%", marginRight: 20 }}
+                // style={{ width: "100%", marginRight: 20 }}
               >
                 {"Next"}
               </button>

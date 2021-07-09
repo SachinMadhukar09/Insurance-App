@@ -101,63 +101,63 @@ const AllProducts = () => {
   return (
     <section>
       <h3 className="plan-heading">Investment Plans</h3>
-      <div className="list-container">
+      <div className="product-section">
         {investments.map((product) => (
           <div
-            className="product-card"
+            className="product_card"
             onClick={()=> history.push("/product1")}
           >
             <img
               src={product.product_icon}
               alt=""
-              style={{ width: "65%", paddingTop: "10px" }}
+              className="icon_product"
             />
 
-            <h5 className="product-title">{product.product_name}</h5>
+            <div className="product_title">{product.product_name}</div>
           </div>
         ))}
       </div>
 
       <h3 className="plan-heading">Term insurance</h3>
-      <div className="list-container">
+      <div className="product-section">
         {investments.map((product) => (
-          <div className="product-card" onClick={()=> history.push("/product2")}>
+          <div className="product_card" onClick={()=> history.push("/product2")}>
             <img
               src={product.product_icon}
               alt=""
-              style={{ width: "65%", paddingTop: "10px" }}
+              className="icon_product"
             />
 
-            <h5 className="product-title">{product.product_name}</h5>
+            <div className="product_title">{product.product_name}</div>
           </div>
         ))}
       </div>
       <h3 className="plan-heading">Small Protection insurance</h3>
-      <div className="list-container">
+      <div className="product-section">
         {products.map((product) => (
-         <div className="product-card" onClick={()=> history.push("/product3")}>
+         <div className="product_card" onClick={()=> history.push("/product3")}>
             <img
               src={product.product_icon}
               alt=""
-              style={{ width: "65%", paddingTop: "10px" }}
+              className="icon_product"
             />
 
-            <h5 className="product-title">{product.product_name}</h5>
+            <div className="product_title">{product.product_name}</div>
           </div>
         ))}
       </div>
 
       <h3 className="plan-heading">Other General insurance</h3>
-      <div className="list-container">
+      <div className="product-section">
         {products.map((product) => (
-          <div className="product-card">
+          <div className="product_card">
             <img
               src={product.product_icon}
               alt=""
-              style={{ width: "65%", paddingTop: "10px" }}
+              className="icon_product"
             />
 
-            <h5 className="product-title">{product.product_name}</h5>
+            <div className="product_title">{product.product_name}</div>
           </div>
         ))}
       </div>

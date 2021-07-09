@@ -12,6 +12,7 @@ const Microproduct2 = () => {
     history.push('/micro-page3')
   }
   return (
+    <div className="micro_wrapper">
    <div><MicroHeader/>
     <div className="page-container">
       <div className="content-part">
@@ -28,9 +29,8 @@ const Microproduct2 = () => {
 
               <button
                 type="submit"
-                className="login-submit"
+                className="confirmbtn"
                 onClick={onClickNext}
-                style={{ width: "100%", marginRight: 20 }}
               >
                 {"Next"}
               </button>
@@ -87,6 +87,7 @@ const Microproduct2 = () => {
 
       </div>
       </div>
+    </div>
     </div>
   );
 };

@@ -2,12 +2,10 @@ import "./Microproducts.css";
 import Microproduct1 from "./MicroProduct1";
 import Microproduct2 from "./Microproduct2";
 import Microproduct3 from "./Microproduct3";
-import Microproduct4 from "./MicroProduct4";
+import Microproduct4 from "./Microproduct4";
 import Microproduct5 from "./MicroProduct5";
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
-
-// import Microproduct4 from "./Microproduct4";
 
 const Microproduct = (props) => {
   const [productData, setProductData] = useState();
@@ -34,12 +32,12 @@ const Microproduct = (props) => {
         .then((res) => console.log(res));
     }
   }, []);
+
   let logoIcon = "";
   const [option, setOption] = React.useState(1);
-  // const []
 
   return (
-    <div>
+    <div className="micro_wrapper">
       <div className="head">
         <div className="head-container">
           <div className="logo2">
@@ -101,21 +99,10 @@ const Microproduct = (props) => {
         >
           Option4
         </button>
-        <button
-          className="button1"
-          onClick={() => setOption(5)}
-          style={
-            option === 5 ? { background: "#62a5f3", color: "#ffffff" } : null
-          }
-        >
-          Option5
-        </button>
+
       </div>
-      {option === 1 ? <Microproduct1 /> : null}
-      {/* {option == 2 ? <Microproduct2 /> : null}
-      {option == 3 ? <Microproduct3 /> : null}
-      {option == 4 ? <Microproduct4 /> : null}
-      {option == 5 ? <Microproduct5/> : null} */}
+      {option == 1 ? <Microproduct1 /> : null} 
+
     </div>
   );
 };

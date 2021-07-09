@@ -38,7 +38,7 @@ const VehicleDetails = () => {
   return (
     <div>
       <h1 className="vehicle_title">
-        Vehicle Details <br /> this will only take 1 minute!
+        Vehicle Details this will only take 1 minute!
       </h1>
       <div className="carInsuranceForm">
         <div className="car_year box">
@@ -66,27 +66,6 @@ const VehicleDetails = () => {
             </label>
             <span class="switchFilter1"></span>
           </div>
-          {/* <div class="button-wrap">
-            <input
-              class="hidden radio-label"
-              type="radio"
-              name="accept-offers"
-              id="brand-new-yes-button"
-              checked={true}
-            />
-            <label class="button-label" for="brand-new-yes-button">
-              <h1>Yes</h1>
-            </label>
-            <input
-              class="hidden radio-label"
-              type="radio"
-              name="accept-offers"
-              id="brand-new-no-button"
-            />
-            <label class="button-label" for="brand-new-no-button">
-              <h1>No</h1>
-            </label>
-          </div> */}
         </div>
         <div className="first_car box">
           <h3 className="first_car_ques title_question">

@@ -36,7 +36,7 @@ const DriverDetails = () => {
   const [yearOptions, setOptions] = useState();
 
   return (
-    <div>
+    <div className="vehicle_details">
       <div className="carInsuranceForm">
         <h1 className="vehicle_title">Driver Details</h1>
         <div>

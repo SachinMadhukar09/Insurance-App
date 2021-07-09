@@ -6,10 +6,6 @@ import ReactHTMLDatalist from "react-html-datalist";
 
 const Vehicle = () => {
   const history = useHistory();
-  //   const dispatch = useDispatch();
-
-  //   const userName = useSelector((state) => state.user.username);
-  //   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
 
   const products = [
@@ -21,22 +17,6 @@ const Vehicle = () => {
       insurance: "Active",
       NCB: "30%",
     },
-    // {
-    //   productName: "Car Details",
-    //   productLogo: "",
-    //   BrandName: "Brand Name",
-    //   value: "₹ 1,00,000",
-    //   insurance: "Active",
-    //   NCB: "30%",
-    // },
-    // {
-    //   productName: "ins product name",
-    //   productLogo: "",
-    //   IceName: "Ice Name",
-    //   cover: "₹ 1,00,000",
-    //   premium: "₹ 1000y(yearly)",
-    //   status: "Active",
-    // },
   ];
 
   const handleBuyPolicies = () => {
@@ -76,8 +56,6 @@ const Vehicle = () => {
                   </div>
                 </div>
 
-                {/* <div className="product-table"> */}
-                {/* <div className="product-tab"> */}
                 <div className="product-table">
                   <div className="tab-head">Car Value</div>
                   <div className="tab-value">{product.value}</div>
@@ -95,44 +73,24 @@ const Vehicle = () => {
 
                 <button
                   type="submit"
-                  className="login-submit"
+                  className="confirmbtn"
                   onClick={handleBuyPolicies}
                   style={{ width: 150, marginRight: 20, marginTop: 20 }}
                 >
                   {loading ? "Please wait..." : "Buy Now"}
                 </button>
-
-                {/* </div> */}
-                {/* <div className="product-icon">
-                        <img
-                          src={downloadIcon}
-                          alt="Icon"
-                          className="download-icon"
-                        />
-
-                        <img
-                          src={searchIcon}
-                          alt="Icon"
-                          className="latter-search"
-                        />
-                      </div> */}
               </div>
             </div>
           ))}
         </div>
 
-        {/* <div className="listing-container"> */}
         <div className="addcar-container" style={{ textAlign: "center" }}>
-          {/* <div style={{ padding: 20 }}>
-                You have not purchased any Policy till now
-              </div> */}
           <button className="add-carheadbtn">
             {loading ? "Please wait..." : "Add Another Vehicle"}
           </button>
-
           <form>
             <div className="newcar-form">
-              <div className="field" style={{marginLeft:20, width:"100%"}}>
+              <div className="field" style={{ marginLeft: 20, width: "100%" }}>
                 <label>Vehicle Type</label>
                 <input
                   list="vehicle-types"
@@ -145,7 +103,7 @@ const Vehicle = () => {
                   <option value="bike" key="bike" />
                 </datalist>
               </div>
-              <div className="field" style={{marginLeft:20, width:"100%"}}>
+              <div className="field" style={{ marginLeft: 20, width: "100%" }}>
                 <label>Vehicle Number</label>
                 <input type="text" name="vehicle-number" required></input>
               </div>
@@ -159,7 +117,6 @@ const Vehicle = () => {
             </div>
           </form>
         </div>
-        {/* </div> */}
       </div>
     </ThemeProvider>
   );

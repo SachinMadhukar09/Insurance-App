@@ -5,9 +5,10 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "./logic/actions/actions";
 import bellIcon from "./Assets/svg/bell.png";
+import logoImg from "./Assets/svg/logo1.svg";
 import { useLocation } from "react-router-dom";
 
-// let loggedIn = false;
+
 const Header = () => {
   const { pathname } = useLocation();
 
@@ -18,8 +19,7 @@ const Header = () => {
   const history = useHistory();
 
   const Logoutuser = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("login");
+    localStorage.clear();
     dispatch(logout());
     history.push("/");
   };
@@ -34,7 +34,7 @@ const Header = () => {
               <img
                 alt="XPcover.com"
                 data-cms-attr="src:logo_src"
-                src="https://xpcover.com/assets/images/logo1.png"
+                src={logoImg}
               />
             </a>
           </div>
@@ -60,13 +60,12 @@ const Header = () => {
               <img
                 alt="XPcover.com"
                 data-cms-attr="src:logo_src"
-                src="https://xpcover.com/assets/images/logo1.png"
+                src={logoImg}
               />
             </a>
           </div>
 
           <ul
-            // className="nav-items-left hidden-xs header-ver2"
             className={
               className
                 ? "nav-items-left hidden-xs header-ver2 mobile-nav"
@@ -383,7 +382,6 @@ const Header = () => {
                   >
                     SVGs aren't supported.
                   </object>
-                  {/* <img src={loginIcon} alt="icon" className="a-icon" /> */}
                   Login
                 </a>
               )}

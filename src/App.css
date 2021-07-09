@@ -32,9 +32,6 @@ img {
 html {
   box-sizing: border-box;
   font-family: sans-serif;
-
-  /* -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; */
 }
 
 *,
@@ -1240,3 +1237,4 @@ h6 {
   justify-content: space-between;
   width: 326px;
 }
+
