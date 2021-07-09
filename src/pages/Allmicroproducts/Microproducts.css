@@ -174,9 +174,21 @@
 .content-part {
   width: 80%;
 }
+
 .buy-part {
   width: 20%;
-  margin: 30px;
+  margin-top: 60px;
+  padding-top:30px;
+  text-align: center;
+}
+
+.buy-part h1 {
+  font-size: 35px !important;
+}
+
+.buy-part .confirmbtn {
+  margin-left: 0px;
+  margin-top: 50px;
 }
 
 .section2 p {
@@ -201,7 +213,7 @@
 
 .content-input {
   width: 100%;
-  padding: 20px;
+  padding: 30px;
   border-radius: 5px;
   background-color: #efeff4;
   border: none;
@@ -212,7 +224,7 @@
 .content-body span {
   margin: auto;
   width: 45%;
-  padding-top: 10%;
+  padding-top: 22%;
 }
 
 .content-body span p {
@@ -271,6 +283,16 @@
   border: none;
 }
 
-.micro_wrapper h1{
+.micro_wrapper h1 {
   font-size: 25px;
+}
+
+.form-right .confirmbtn{
+  width: 100% !important;
+  margin-left: 0px !important;
+}
+
+.content-body .confirmbtn{
+  width: 100% !important;
+  margin-left: 0px;
 }

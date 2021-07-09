@@ -75,7 +75,6 @@ const Microproduct4 = () => {
             type="submit"
             className="confirmbtn"
             onClick={onClickNext}
-            style={{ width: "100%", marginRight: 20 }}
           >
             {"Next"}
           </button>
