@@ -42,7 +42,7 @@ import Products from "./pages/AllProducts/products";
 import Microproduct from "./pages/Allmicroproducts/MicroProduct";
 import Microproduct2 from "./pages/Allmicroproducts/Microproduct2";
 import Microproduct3 from "./pages/Allmicroproducts/Microproduct3";
-import Microproduct4 from "./pages/Allmicroproducts/MicroProduct4";
+import Microproduct4 from "./pages/Allmicroproducts/Microproduct4";
 import Microproduct5 from "./pages/Allmicroproducts/MicroProduct5";
 
 import Gmcproducts from "./pages/GMC-products/GmcProducts";

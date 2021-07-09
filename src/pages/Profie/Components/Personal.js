@@ -1,9 +1,6 @@
-import { jsx, ThemeProvider, Themed } from "theme-ui";
-import theme from "../../../theme";
 
 const Personal = () => {
   return (
-    <ThemeProvider theme={theme}>
       <div className="personal-container">
         <p>
           Keeping these updates will help you buying insurance in a fast way
@@ -71,7 +68,7 @@ const Personal = () => {
           <div>
             <button
               type="submit"
-              className="login-submit"
+              className="confirmbtn"
               onClick={()=> true}
               style={{ width: 200 }}
             >
@@ -80,7 +77,6 @@ const Personal = () => {
           </div>
         </form>
       </div>
-    </ThemeProvider>
   );
 };
 export default Personal;

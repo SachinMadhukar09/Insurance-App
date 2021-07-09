@@ -60,9 +60,8 @@ const Microproduct1 = () => {
 
         <button
           type="submit"
-          className="login-submit"
+          className="confirmbtn"
           onClick={onSubmitOption}
-          style={{ width: 150, marginRight: 20 }}
         >
           {"Buy Now"}
         </button>

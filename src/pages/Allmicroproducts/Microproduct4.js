@@ -12,7 +12,7 @@ const Microproduct4 = () => {
     history.push('/micro-page5')
   }
   return (
-    <div><MicroHeader/>
+    <div className="micro_wrapper"><MicroHeader/>
     <div className="page-container">
       <div className="content-part">
         <div className="form-body">
@@ -29,13 +29,13 @@ const Microproduct4 = () => {
             <input type="text" />
           </div>
           <div className="form-right">
-            <label className="content-label">Full Name</label>
+            <label className="content-label">Date of Birth</label>
             <input type="text" />
-            <label className="content-label">Phone Number</label>
+            <label className="content-label">Gender</label>
             <input type="text" />
-            <label className="content-label">Email Id</label>
+            <label className="content-label">Pin Code</label>
             <input type="text" />
-            <label className="content-label">Flat No. Society</label>
+            <label className="content-label">Street, Locality</label>
             <input type="text" />
             <label className="content-label">State</label>
             <input type="text" />
@@ -73,7 +73,7 @@ const Microproduct4 = () => {
         <div className="form-right" style={{ float: "right", marginTop: 30 }}>
           <button
             type="submit"
-            className="login-submit"
+            className="confirmbtn"
             onClick={onClickNext}
             style={{ width: "100%", marginRight: 20 }}
           >

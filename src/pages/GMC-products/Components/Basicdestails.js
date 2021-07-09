@@ -3,13 +3,19 @@ import { useHistory } from "react-router-dom";
 import "../gmcproducts.css";
 
 const BasicDetails = () => {
-  const [employeeNumber, setEmployees] = useState("10");
+  const [employeeNumber, setEmployees] = useState("3");
   const [selectmsg, setSelectMsg] = useState(false);
+  const [className, setclassName] = useState(false);
 
   const history = useHistory();
 
   const Onfreshpolicies = () => {
     history.push("/gmcproducts");
+    setclassName(true);
+  };
+
+  const OnExistspolicies = () => {
+    history.push("/gmcexisting");
   };
 
   const increaseNumber = () => {
@@ -22,7 +28,7 @@ const BasicDetails = () => {
   };
 
   const decreaseNumber = () => {
-    if (employeeNumber > 10) {
+    if (employeeNumber > 3) {
       setSelectMsg(false);
       setEmployees(`${Number(employeeNumber) - 1}`);
     } else {
@@ -32,7 +38,7 @@ const BasicDetails = () => {
 
   const inputempNumber = (event) => {
     let value = Number(event.target.value);
-    if (value < 10 || value > 1000) {
+    if (value < 3 || value > 1000) {
       setSelectMsg(true);
     } else {
       setSelectMsg(false);
@@ -46,11 +52,14 @@ const BasicDetails = () => {
         <div className="detail-part">
           <h3>How do you plan to Protekts?</h3>
 
-          <div onClick={Onfreshpolicies} className="gmcpolicy">
+          <div
+            onClick={Onfreshpolicies}
+            className={"gmcpolicy" + (className ? " active-btn" : "")}
+          >
             <b>Fresh Policy</b>
             <p>Insuring the employees first time!</p>
           </div>
-          <div onClick={Onfreshpolicies} className="gmcpolicy">
+          <div onClick={OnExistspolicies} className="gmcpolicy">
             <b>Renew Existing Policy</b>
             <p>Extending insurance for the employees!</p>
           </div>
@@ -65,12 +74,11 @@ const BasicDetails = () => {
                 onChange={inputempNumber}
                 value={employeeNumber.toString()}
               />
-              {/* <input type="number" className="numberstring" name="empnumber" value={employeeNumber}/> */}
-              {/* <span className="numberstring">{employeeNumber}</span> */}
+             
               <button onClick={increaseNumber} className="plus-btn"></button>
             </div>
             {selectmsg ? (
-              <p className="selectmsg">** Select between 10-1000 members</p>
+              <p className="selectmsg">** Select between 3-1000 members</p>
             ) : null}
           </div>
         </div>

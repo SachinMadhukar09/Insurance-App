@@ -13,14 +13,6 @@ function HomePage() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  React.useEffect(() => {
-    const authToken = localStorage.getItem("token");
-    if(authToken){
-      dispatch(login({ username: null }));
-      history.push("/dashboard")
-    }
-  }, []);
-
   return (
     <div className="App">
       {/* <Header /> */}
