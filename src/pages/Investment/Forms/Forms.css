@@ -115,6 +115,10 @@ form input.submit:hover {
     align-items: center;
 }
 
+.radio_flex .inputBox{
+    margin-right: 0px;
+}
+
 .health_question {
     font-family: "Open Sans";
     font-size: 15px;

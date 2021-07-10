@@ -7,6 +7,21 @@ import PremiumDetails from "./Forms/PremiumDetails";
 import QuickQuote from "./Forms/QuickQuote";
 
 const MultiStepForm = () => {
+  const [classname, setNewClass] = React.useState("newnextbtn1");
+  const [btntext, setButtonText] = React.useState("next");
+
+  const addDynamic = (step) => {
+    if (step == 1) {
+      setButtonText("Calculate Premium");
+    } else if (step == 2) {
+      setNewClass("newnextbtn1");
+      setButtonText("next");
+    } else if (step == 3) {
+      setNewClass("newnextbtn1");
+      setButtonText("next");
+    }
+  };
+
   const steps = [
     { name: "Quick Quote", component: <QuickQuote /> },
     { name: "Additional Details", component: <AdditonalDetails /> },
@@ -16,7 +31,14 @@ const MultiStepForm = () => {
   ];
   return (
     <div>
-      <StepZilla showSteps={true} showNavigation={true} steps={steps} />
+      <StepZilla
+        showSteps={true}
+        showNavigation={true}
+        steps={steps}
+        nextButtonCls={classname}
+        onStepChange={(step) => addDynamic(step)}
+        nextButtonText={btntext}
+      />
     </div>
   );
 };

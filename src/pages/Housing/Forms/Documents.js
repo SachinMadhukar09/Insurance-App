@@ -25,7 +25,7 @@ const Documents = () => {
           * PAN card should be of the Housing Society1
         </p>
       </form>
-      <div className="continue_btn view_quotes__btn">Submit</div>
+      <div className="newnextbtn1 view_quotes__btn">Submit</div>
     </div>
   );
 };

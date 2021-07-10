@@ -15,13 +15,13 @@ const AdditonalDetails = (props) => {
               <div className="inputBox" style={{ marginRight: "24px" }}>
                 <label className="housing_radio">
                   <input type="radio" name="radio" checked />
-                  <span>Multi Story</span>
+                  <span className="radiospan1">Multi Story</span>
                 </label>
               </div>
               <div className="inputBox" style={{ marginRight: "24px" }}>
                 <label className="housing_radio">
                   <input type="radio" name="radio" checked />
-                  <span>Single Property</span>
+                  <span className="radiospan2">Single Property</span>
                 </label>
               </div>
             </div>
@@ -90,14 +90,14 @@ const AdditonalDetails = (props) => {
           </div>
         </form>
       </div>
-      <div style={{ marginTop: "82px" }}>
+      {/* <div style={{ marginTop: "82px" }}>
         <div
           onClick={() => props.jumpToStep(2)}
           className="continue_btn view_quotes__btn"
         >
           Calculate Premium
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
