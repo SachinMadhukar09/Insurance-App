@@ -25,7 +25,6 @@ const ClientForm = () => {
 
   const set = (fullname) => {
     return ({ target: { value } }) => {
-      handleValidation();
       setValues((oldValues) => ({ ...oldValues, [fullname]: value }));
     };
   };
@@ -121,16 +120,9 @@ const ClientForm = () => {
       });
       setSubmitMsg({color:"green", msg:`Successfully Added Client Lead`});
     } catch (e) {
-      console.log('err---', e)
       setSubmitMsg({color:"red", msg:`${e.message}`});
     }
   };
-
-  // const OnChangeVal = (e) => {
-  //   return ({ target: { value } }) => {
-  //     setValues((oldValues) => ({ ...oldValues, [fullname]: value }));
-  //   };
-  // };
 
   return (
     <div className="clientForm">
