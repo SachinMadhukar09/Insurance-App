@@ -4,58 +4,58 @@ import theme from "./theme";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./pages/Dashboard/Sidebar";
-import searchIcon from "./Assets/svg/policy-active.svg";
-import downloadIcon from "./Assets/svg/download.png";
+import axios from "axios";
+import Configs from "./configs/config";
+
+const url = Configs.serverless;
 
 function Userquotes() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [authToken] =  localStorage.getItem("token");
+  const [authToken] = localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
-
-  const products = [
-    {
-      productName: "ins product name",
-      productLogo: "",
-      IceName: "Ice Name",
-      cover: "₹ 1,00,000",
-      premium: "₹ 1000y(yearly)",
-      status: "Quote",
-      expired: false,
-    },
-    {
-      productName: "ins product name",
-      productLogo: "",
-      IceName: "Ice Name",
-      cover: "₹ 1,00,000",
-      premium: "₹ 1000y(yearly)",
-      status: "Active",
-      expired: true,
-    },
-    // {
-    //   productName: "ins product name",
-    //   productLogo: "",
-    //   IceName: "Ice Name",
-    //   cover: "₹ 1,00,000",
-    //   premium: "₹ 1000y(yearly)",
-    //   status: "Active",
-    // },
-  ];
+  const [products, setProducts] = React.useState([]);
+  const [pagenumber, setPageNumber] = React.useState(1);
 
   React.useEffect(() => {
     console.log("logIn---", loggedIn);
-    /* check token and refresh user after login */
     if (!authToken) {
       history.push("/user-login/");
     }
+    const customerid = localStorage.getItem("customer");
+    getProducts(customerid);
   }, []);
 
+  const getProducts = async (id) => {
+    try {
+      fetch(`${url}/quotations/${id}/${pagenumber}`)
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+      // const response = await axios.get(
+      //   `${url}/quotations/${id}/${pagenumber}`,
+      //   {
+      //     headers: {
+      //       "Access-Control-Allow-Origin": "*",
+      //       "x-requested-with": "XMLHttpRequest",
+      //       "content-type": "application/json",
+      //     },
+      //   }
+      // );
+      // console.log("response---", response);
+      // if (response) {
+      //   setProducts(response.data.data);
+      // }
+    } catch (error) {
+      setProducts([]);
+    }
+  };
   const handleBuyPolicies = () => {
     history.push("/buy-policy");
   };
+
   return (
     <ThemeProvider theme={theme}>
       <div className="dashboard-wrapper">
@@ -63,14 +63,14 @@ function Userquotes() {
           <SideBar />
         </div>
         <div className="dashboard-content">
-          <div className="top-heading">My Quotes</div>
+          <h2 className="top-heading">My Quotes</h2>
 
           <div className="listing">
             {products.length ? (
               <div className="listing-container">
                 {products.map((product) => (
                   <div className="product-container">
-                    <div className="product-heading">{product.productName}</div>
+                    <h3 className="product-heading">{product.quotationName}</h3>
                     <div className="product-detail">
                       <div className="product-logo">
                         <div className="logo-container">
@@ -102,14 +102,24 @@ function Userquotes() {
 
                       <div className="product-table">
                         <div className="tab-head">Status</div>
-                        <div className="tab-value">{product.status}</div>
+                        <div
+                          className="tab-value"
+                          style={{ color: product.isActive ? "green" : "red" }}
+                        >
+                          {product.isActive ? "Active" : "Not Active"}
+                        </div>
                       </div>
-                      {product.expired ? (
+                      {product.isDeleted ? (
                         <button
                           type="submit"
                           className="login-submit"
-                        //   onClick={}
-                          style={{ width:150, marginRight:20, background: "#c4c4c4", color:"#8a9198"}}
+                          //   onClick={}
+                          style={{
+                            width: 150,
+                            marginRight: 20,
+                            background: "#c4c4c4",
+                            color: "#8a9198",
+                          }}
                         >
                           {"Expired"}
                         </button>
@@ -118,7 +128,7 @@ function Userquotes() {
                           type="submit"
                           className="login-submit"
                           onClick={handleBuyPolicies}
-                          style={{  width:150, marginRight:20 }}
+                          style={{ width: 150, marginRight: 20 }}
                         >
                           {loading ? "Please wait..." : "Buy Now"}
                         </button>
@@ -142,9 +152,9 @@ function Userquotes() {
                 ))}
               </div>
             ) : (
-              <div className="listing-container">
+              <div className="buypolicy-container">
                 <div
-                  className="product-container"
+                  className="policy-container"
                   style={{ textAlign: "center" }}
                 >
                   <div style={{ padding: 20 }}>
@@ -161,7 +171,7 @@ function Userquotes() {
                 </div>
               </div>
             )}
-            <div className="side-img">{false ? <img src="#" /> : null}</div>
+            {/* <div className="side-img">{false ? <img src="#" /> : null}</div> */}
           </div>
         </div>
       </div>

@@ -61,14 +61,14 @@ function Policies() {
           <SideBar />
         </div>
         <div className="dashboard-content">
-          <div className="top-heading">My Policies</div>
+          <h2 className="top-heading">My Policies</h2>
 
           <div className="listing">
             {products.length ? (
               <div className="listing-container">
                 {products.map((product) => (
                   <div className="product-container">
-                    <div className="product-heading">{product.productName}</div>
+                    <h3 className="product-heading">{product.productName}</h3>
                     <div className="product-detail">
                       <div className="product-logo">
                         <div className="logo-container">
@@ -121,9 +121,9 @@ function Policies() {
                 ))}
               </div>
             ) : (
-              <div className="listing-container">
+              <div className="buypolicy-container">
                 <div
-                  className="product-container"
+                  className="policy-container"
                   style={{ textAlign: "center" }}
                 >
                   <div style={{ padding: 20 }}>
@@ -140,7 +140,7 @@ function Policies() {
                 </div>
               </div>
             )}
-            <div className="side-img">{false ? <img src="#" /> : null}</div>
+            {/* <div className="side-img">{false ? <img src="#" /> : null}</div> */}
           </div>
         </div>
       </div>

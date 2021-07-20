@@ -31,12 +31,12 @@ const Vehicle = () => {
         <div className="vehicle-container">
           {products.map((product) => (
             <div className="product-container">
-              <div
+              <h3
                 className="product-heading"
                 style={{ marginLeft: 40, fontSize: 16 }}
               >
                 {product.productName}
-              </div>
+              </h3>
               <div className="product-detail">
                 <div className="product-logo">
                   <div className="logo-container">

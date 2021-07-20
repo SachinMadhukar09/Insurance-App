@@ -9,7 +9,7 @@ import downloadIcon from "./Assets/svg/download.png";
 
 function Helps() {
   const history = useHistory();
-  const [authToken] =  localStorage.getItem("token");
+  const [authToken] = localStorage.getItem("token");
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
   React.useEffect(() => {
@@ -27,7 +27,18 @@ function Helps() {
           <SideBar />
         </div>
         <div className="dashboard-content">
-        <h1 style={{color:"#f37273", textAlign:"center", padding:"300px"}}> Coming Soon......</h1> 
+          <div className="buypolicy-container">
+            <div className="policy-container" style={{ textAlign: "center" }}>
+              <h1
+                style={{
+                  color: "#f37273",
+                }}
+              >
+                {" "}
+                Coming Soon......
+              </h1>
+            </div>
+          </div>
         </div>
       </div>
     </ThemeProvider>
