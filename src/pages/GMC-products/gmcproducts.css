@@ -383,10 +383,14 @@
   width: 100%;
 }
 
+.form-part .switch1{
+  margin:0px 0px 1em 0px !important;
+}
+
 .gmc-yes_no-btn label {
   border: 1px solid #f48686;
-  width: 200px;
-  margin-right: 40px;
+  width: 85px;
+  margin-right: 20px;
 }
 
 .gmcpolicy:hover {
@@ -402,7 +406,7 @@
 .gmc-yes_no-btn input[type="radio"]#yes1:checked ~ .gmcfilter {
   left: 0;
   opacity: 1;
-  width: 200px;
+  width: 85px;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no1:checked ~ label[for="no1"] {
@@ -416,15 +420,15 @@
 }
 
 .gmc-yes_no-btn input[type="radio"]#no1:checked ~ .gmcfilter {
-  left: 240px;
-  width: 200px;
+  left: 105px;
+  width: 85px;
   opacity: 1;
 }
 
 .gmc-yes_no-btn input[type="radio"]#yes2:checked ~ .gmcfilter {
   left: 0;
   opacity: 1;
-  width: 200px;
+  width: 85px;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no2:checked ~ label[for="no2"] {
@@ -438,15 +442,15 @@
 }
 
 .gmc-yes_no-btn input[type="radio"]#no2:checked ~ .gmcfilter {
-  left: 240px;
-  width: 200px;
+  left: 105px;
+  width: 85px;
   opacity: 1;
 }
 
 .gmc-yes_no-btn input[type="radio"]#yes3:checked ~ .gmcfilter {
   left: 0;
   opacity: 1;
-  width: 200px;
+  width: 85px;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no3:checked ~ label[for="no3"] {
@@ -460,15 +464,15 @@
 }
 
 .gmc-yes_no-btn input[type="radio"]#no3:checked ~ .gmcfilter {
-  left: 240px;
-  width: 200px;
+  left: 105px;
+  width: 85px;
   opacity: 1;
 }
 
 .gmc-yes_no-btn input[type="radio"]#yes4:checked ~ .gmcfilter {
   left: 0;
   opacity: 1;
-  width: 200px;
+  width: 85px;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no4:checked ~ label[for="no4"] {
@@ -482,15 +486,15 @@
 }
 
 .gmc-yes_no-btn input[type="radio"]#no4:checked ~ .gmcfilter {
-  left: 240px;
-  width: 200px;
+  left: 105px;
+  width: 85px;
   opacity: 1;
 }
 
 .gmc-yes_no-btn input[type="radio"]#yes5:checked ~ .gmcfilter {
   left: 0;
   opacity: 1;
-  width: 200px;
+  width: 85px;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no5:checked ~ label[for="no5"] {
@@ -504,8 +508,8 @@
 }
 
 .gmc-yes_no-btn input[type="radio"]#no5:checked ~ .gmcfilter {
-  left: 240px;
-  width: 200px;
+  left: 105px;
+  width: 85px;
   opacity: 1;
 }
 

@@ -11,7 +11,7 @@ function MyClaims() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [authToken] =  localStorage.getItem("token");
+  const [authToken] = localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
@@ -63,14 +63,14 @@ function MyClaims() {
           <SideBar />
         </div>
         <div className="dashboard-content">
-          <div className="top-heading">My Claims</div>
+          <h2 className="top-heading">My Claims</h2>
 
           <div className="listing">
             {products.length ? (
               <div className="listing-container">
                 {products.map((product) => (
                   <div className="product-container">
-                    <div className="product-heading">{product.productName}</div>
+                    <h3 className="product-heading">{product.productName}</h3>
                     <div className="product-detail">
                       <div className="product-logo">
                         <div className="logo-container">
@@ -108,8 +108,17 @@ function MyClaims() {
                         <button
                           type="submit"
                           className="login-submit"
-                        //   onClick={}
-                          style={{ width:150, marginRight:20, background: "#c4c4c4", color:"#8a9198"}}
+                          id="next-button"
+                          //   onClick={}
+                          style={{
+                            width: 150,
+                            marginRight: 20,
+                            background: "#c4c4c4",
+                            color: "#8a9198",
+                            border: "none",
+                            boxShadow: "none",
+                            margin: "30px 0px",
+                          }}
                         >
                           {"Expired"}
                         </button>
@@ -118,7 +127,12 @@ function MyClaims() {
                           type="submit"
                           className="login-submit"
                           onClick={handleBuyPolicies}
-                          style={{  width:150, marginRight:20 }}
+                          style={{
+                            width: 150,
+                            marginRight: 20,
+
+                            margin: "30px 0px",
+                          }}
                         >
                           {loading ? "Please wait..." : "Claim"}
                         </button>
@@ -142,9 +156,9 @@ function MyClaims() {
                 ))}
               </div>
             ) : (
-              <div className="listing-container">
+              <div className="buypolicy-container">
                 <div
-                  className="product-container"
+                  className="policy-container"
                   style={{ textAlign: "center" }}
                 >
                   <div style={{ padding: 20 }}>
@@ -161,7 +175,7 @@ function MyClaims() {
                 </div>
               </div>
             )}
-            <div className="side-img">{false ? <img src="#" /> : null}</div>
+            {/* <div className="side-img">{false ? <img src="#" /> : null}</div> */}
           </div>
         </div>
       </div>

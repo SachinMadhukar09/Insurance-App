@@ -10,56 +10,82 @@ import downloadIcon from "./Assets/svg/download.png";
 import axios from "axios";
 import Configs from "./configs/config";
 
-const url = Configs.endpoint;
+const url = Configs.serverless;
 
 function Dashboard() {
   const history = useHistory();
   const dispatch = useDispatch();
 
   const authToken = localStorage.getItem("token");
-  const userName = useSelector((state) => state.user.username);
-  const loggedIn = useSelector((state) => state.user.loggedIn);
+  // const userName = useSelector((state) => state.user.username);
+  // const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
   const [products, setProducts] = React.useState([]);
+  const [userName, setUserName] = React.useState("");
   // const [company, setCompanyName]
 
-  const getProducts = async (token) => {
+  const getCustomer = async (user) => {
     try {
-      console.log("token here", token);
-      // const response = await axios.get(`${url}/customer/products`, {
-      //   headers: {
-      //     Authorization: "Bearer " + token,
-      //   },
-      // });
-      // if (response) {
-      //   setProducts(response.data);
-      // }
-      setProducts([
-        {
-          status: false,
-          product_name: "Health Insurance",
-          insurance_type_id: "2",
-          insurance_category_id: "1",
-          product_icon:
-            "https://product-icon.s3.amazonaws.com/product_name/1622112148058_Health%20Insurance.svg",
-          xpc_insurance_product_id: "aSTo4HgwE",
-          createdate:
-            "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
-          updatedate:
-            "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
+      const response = await axios.get(`${url}/customer/${user}`, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "x-requested-with": "XMLHttpRequest",
+          'content-type': 'application/json' 
         },
-      ]);
+      });
+      console.log("response---", response);
+      if (response) {
+        const details = response.data.personalDetails
+        setUserName(details.firstName + " " + details.lastName);
+      }
     } catch (error) {
-      console.log("something went wrong:", error.response.data);
+      setUserName("");
     }
   };
 
   React.useEffect(() => {
-    if (!authToken) {
-      history.push("/user-login/");
-    }
-    getProducts(authToken);
+    const user = localStorage.getItem("customer");
+    console.log("user----", user);
+    getCustomer(user);
   }, []);
+
+  // const getProducts = async (token) => {
+  //   try {
+  //     console.log("token here", token);
+  //     // const response = await axios.get(`${url}/customer/products`, {
+  //     //   headers: {
+  //     //     Authorization: "Bearer " + token,
+  //     //   },
+  //     // });
+  //     // if (response) {
+  //     //   setProducts(response.data);
+  //     // }
+  //     setProducts([
+  //       {
+  //         status: false,
+  //         product_name: "Health Insurance",
+  //         insurance_type_id: "2",
+  //         insurance_category_id: "1",
+  //         product_icon:
+  //           "https://product-icon.s3.amazonaws.com/product_name/1622112148058_Health%20Insurance.svg",
+  //         xpc_insurance_product_id: "aSTo4HgwE",
+  //         createdate:
+  //           "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
+  //         updatedate:
+  //           "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
+  //       },
+  //     ]);
+  //   } catch (error) {
+  //     console.log("something went wrong:", error.response.data);
+  //   }
+  // };
+
+  // React.useEffect(() => {
+  //   if (!authToken) {
+  //     history.push("/user-login/");
+  //   }
+  //   getProducts(authToken);
+  // }, []);
 
   const handleBuyPolicies = () => {
     history.push("/buy-policy");
@@ -71,16 +97,14 @@ function Dashboard() {
           <SideBar />
         </div>
         <div className="dashboard-content">
-          <div className="top-heading">Welcome {userName}</div>
+          <h2 className="top-heading">Welcome {userName}</h2>
 
           <div className="listing">
             {products.length ? (
               <div className="listing-container">
                 {products.map((product) => (
                   <div className="product-container">
-                    <div className="product-heading">
-                      {product.product_name}
-                    </div>
+                    <h3 className="product-heading">{product.product_name}</h3>
                     <div className="product-detail">
                       <div className="product-logo">
                         <div className="logo-container">
@@ -135,9 +159,9 @@ function Dashboard() {
                 ))}
               </div>
             ) : (
-              <div className="listing-container">
+              <div className="buypolicy-container">
                 <div
-                  className="product-container"
+                  className="policy-container"
                   style={{ textAlign: "center" }}
                 >
                   <div style={{ padding: 20 }}>
@@ -154,7 +178,7 @@ function Dashboard() {
                 </div>
               </div>
             )}
-            <div className="side-img">{false ? <img src="#" /> : null}</div>
+            {/* <div className="side-img">{false ? <img src="#" /> : null}</div> */}
           </div>
         </div>
       </div>
