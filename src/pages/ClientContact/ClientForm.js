@@ -21,7 +21,7 @@ const ClientForm = () => {
     companyType: "",
     message: "",
   });
-  const [submitmsg, setSubmitMsg] = useState({color:"", msg:""});
+  const [submitmsg, setSubmitMsg] = useState({ color: "", msg: "" });
 
   const set = (fullname) => {
     return ({ target: { value } }) => {
@@ -31,19 +31,18 @@ const ClientForm = () => {
 
   const saveFormData = async () => {
     const response = await fetch(`${url}/client/clientLead`, {
-      method: 'POST',
-      body: JSON.stringify(values)
+      method: "POST",
+      body: JSON.stringify(values),
     });
     if (response.status !== 200) {
-      throw new Error(`Request failed: ${response.error}`); 
+      throw new Error(`Request failed: ${response.error}`);
     }
-  }
+  };
 
   const handleValidation = () => {
     let errors = {};
     let formIsValid = true;
 
-    //Name
     if (!values["fullname"]) {
       formIsValid = false;
       errors["fullname"] = "Cannot be empty";
@@ -66,7 +65,6 @@ const ClientForm = () => {
       errors["phone"] = "Cannot be empty";
     }
 
-    //Email
     if (!values["companyType"]) {
       formIsValid = false;
       errors["companyType"] = "Cannot be empty";
@@ -77,7 +75,6 @@ const ClientForm = () => {
       errors["message"] = "Cannot be empty";
     }
 
-    //Email
     if (!values["email"]) {
       formIsValid = false;
       errors["email"] = "Cannot be empty";
@@ -107,20 +104,22 @@ const ClientForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    handleValidation();
+
     try {
-      await saveFormData();
-      setValues({
-        fullname: "",
-        positionHeld: "",
-        email: "",
-        phone: "",
-        companyType: "",
-        message: "",
-      });
-      setSubmitMsg({color:"green", msg:`Successfully Added Client Lead`});
+      if (handleValidation()) {
+        await saveFormData();
+        setValues({
+          fullname: "",
+          positionHeld: "",
+          email: "",
+          phone: "",
+          companyType: "",
+          message: "",
+        });
+        setSubmitMsg({ color: "green", msg: `Successfully Added Client Lead` });
+      }
     } catch (e) {
-      setSubmitMsg({color:"red", msg:`${e.message}`});
+      setSubmitMsg({ color: "red", msg: `${e.message}` });
     }
   };
 
@@ -209,7 +208,6 @@ const ClientForm = () => {
             </button>
             <span style={{ color: submitmsg.color }}>{submitmsg.msg}</span>
           </form>
-          
         </div>
         <div class="illustration">
           <img
