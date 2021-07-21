@@ -105,33 +105,35 @@ function App() {
           component={() => <PolicyBazar setCompany={toggleCompany} />}
         />
 
-        {existcompany ? (
-          <Route
-            exact
-            path="/:company?vehicle-details"
-            component={VehicleDetails}
-          />
-        ) : (
-          <Route exact path="/vehicle-details" component={VehicleDetails} />
-        )}
-        <Route exact path="/another" component={HomePage} />
-        <Route exact path="/payment" component={Payment} />
-        <Route exact path="/user-login" component={Login} />
-        <Route exact path="/dashboard" component={Dashbaord} />
-        <Route exact path="/policies" component={Policies} />
-        <Route exact path="/quotes" component={Userquotes} />
-        <Route exact path="/claims" component={MyClaims} />
-        <Route exact path="/help" component={Helps} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/proposals" component={Myproposals} />
-        <Route exact path="/payment" component={Payment} />
-        <Route exact path="/products" component={Products} />
+        <Route
+          exact
+          path="/:company/vehicle-details"
+          component={VehicleDetails}
+        />
 
-        <Route exact path="/vehicle-details" component={VehicleDetails} />
-        <Route exact path="/driver-details" component={DriverDetails} />
-        <Route exact path="/car-quotes" component={CarInsurance} />
-        <Route exact path="/details" component={Details} />
-        <Route exact path="/health-quotes" component={Quotes} />
+        {/* <Route exact path="/vehicle-details" component={VehicleDetails} /> */}
+
+        <Route exact path="/:company/another" component={HomePage} />
+        <Route exact path="/:company/payment" component={Payment} />
+        <Route exact path="/:company/user-login" component={Login} />
+        <Route exact path="/:company/dashboard" component={Dashbaord} />
+        <Route exact path="/:company/policies" component={Policies} />
+        <Route exact path="/:company/quotes" component={Userquotes} />
+        <Route exact path="/:company/claims" component={MyClaims} />
+        <Route exact path="/:company/help" component={Helps} />
+        <Route exact path="/:company/profile" component={Profile} />
+        <Route exact path="/:company/proposals" component={Myproposals} />
+        <Route exact path="/:company/payment" component={Payment} />
+        <Route exact path="/:company/products" component={Products} />
+
+        <Route
+          exact
+          path="/:company/driver-details"
+          component={DriverDetails}
+        />
+        <Route exact path="/:company/car-quotes" component={CarInsurance} />
+        <Route exact path="/:company/details" component={Details} />
+        <Route exact path="/:company/health-quotes" component={Quotes} />
         <Route exact path="/declaration" component={Declaration} />
         <Route exact path="/travelInsurance" component={TravelInsurance} />
 
@@ -147,17 +149,21 @@ function App() {
           />
         </Switch>
         <Switch>
-          <Route exact path="/micro-products/:id?" component={Microproduct} />
-          <Route exact path="/micro-page2" component={Microproduct2} />
-          <Route exact path="/micro-page3" component={Microproduct3} />
-          <Route exact path="/micro-page4" component={Microproduct4} />
-          <Route exact path="/micro-page5" component={Microproduct5} />
+          <Route
+            exact
+            path="/:company/micro-products/:id?"
+            component={Microproduct}
+          />
+          <Route exact path="/:company/micro-page2" component={Microproduct2} />
+          <Route exact path="/:company/micro-page3" component={Microproduct3} />
+          <Route exact path="/:company/micro-page4" component={Microproduct4} />
+          <Route exact path="/:company/micro-page5" component={Microproduct5} />
         </Switch>
-        <Route exact path="/quoteDetails" component={QuoteModels} />
-        <Route exact path="/termPlans" component={Plans} />
-        <Route exact path="/stepForm" component={StepForm} />
+        <Route exact path="/:company/quoteDetails" component={QuoteModels} />
+        <Route exact path="/:company/termPlans" component={Plans} />
+        <Route exact path="/:company/stepForm" component={StepForm} />
 
-        <Route exact path="/gmcproducts" component={Gmcproducts} />
+        <Route exact path="/:company/gmcproducts" component={Gmcproducts} />
 
         <Route exact path="/two-wheeler-plans" component={TwoWheelerPlans} />
         <Route

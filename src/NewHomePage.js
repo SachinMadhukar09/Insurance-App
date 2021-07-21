@@ -58,35 +58,35 @@ const NewHomePage = (props) => {
     let path;
     switch (product) {
       case "Car Insurance":
-        path = "/vehicle-details";
+        path = `${company}/vehicle-details`;
         break;
 
       case "Health Insurance":
-        path = "/health-details";
+        path = `${company}/health-details`;
         break;
 
       case "2 Wheeler Insurance":
-        path = "/2wheeler-details";
+        path = `${company}/2wheeler-details`;
         break;
 
       case "Child Savings Plan":
-        path = "/child-savings";
+        path = `${company}/child-savings`;
         break;
 
       case "Family Health Insurance":
-        path = "/housing-society";
+        path = `${company}/housing-society`;
         break;
 
       case "Investment Plans":
-        path = "/investment-plans";
+        path = `${company}/investment-plans`;
         break;
 
       case "Heart Insurance":
-        path = "/heart-insurance";
+        path = `${company}/heart-insurance`;
         break;
 
       case "Group Protection":
-        path = "/gmcproducts";
+        path = `${company}/gmcproducts`;
         break;
 
       default:
@@ -94,7 +94,7 @@ const NewHomePage = (props) => {
         break;
     }
 
-   history.push(path);
+    history.push(path);
   };
 
   return (
