@@ -46,7 +46,7 @@ import Microproduct4 from "./pages/Allmicroproducts/Microproduct4";
 import Microproduct5 from "./pages/Allmicroproducts/MicroProduct5";
 
 import Gmcproducts from "./pages/GMC-products/GmcProducts";
-import qs from 'qs';
+import qs from "qs";
 
 import ClientForm from "./pages/ClientContact/ClientForm";
 
@@ -57,16 +57,31 @@ function App() {
   const history = useHistory();
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
+  let clientDirectory = window.location.pathname.replace(/\//g, "");
+
+  const getProducts = async () => {
+    try {
+      const response = await axios.get(
+        `${url}/client/getClientId/${clientDirectory}`
+      );
+      if (response) {
+        localStorage.setItem("clientId", response.data[0].xpcClientId);
+      }
+    } catch (error) {}
+  };
+
   // const apiKey = 'AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
   // const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
- 
+
   useEffect(() => {
+    getProducts();
+    let clientDirector = window.location.pathname.replace(/\//g, "");
+    console.log(clientDirector, "this is clientDirector");
     const checkToken = async () => {
       const authToken = localStorage.getItem("token");
       const user = localStorage.getItem("username");
       if (authToken) {
-
-          dispatch(login({ username: user }));
+        dispatch(login({ username: user }));
       }
     };
     checkToken();
@@ -77,7 +92,7 @@ function App() {
       <Router>
         <Header />
         {/* <Route exact path="/" component={HomePage} /> */}
-        <Route exact path="/" component={PolicyBazar} />
+        <Route exact path="/:id?" component={PolicyBazar} />
         <Route exact path="/another" component={HomePage} />
         <Route exact path="/payment" component={Payment} />
         <Route exact path="/user-login" component={Login} />

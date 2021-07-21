@@ -20,12 +20,26 @@ const NewHomePage = (props) => {
   console.log(props);
   const [products, setProducts] = React.useState([]);
   const history = useHistory();
+  const clientId = localStorage.getItem("clientId");
   const getProducts = async () => {
     try {
-      const response = await axios.get(`${url}/insurance/getInsuranceProduct`);
-      if (response) {
-        setProducts(response.data.products);
+      if (!clientId) {
+        const response = await axios.get(`${url}/insurance/getProductList`);
+        if (response) {
+          setProducts(response.data.products);
+        }
+      } else {
+        const response = await axios.get(
+          `${url}/insurance/getInsuranceProduct/${clientId}`
+        );
+        if (response) {
+          setProducts(response.data.products);
+        }
       }
+
+      // if (response) {
+      //   setProducts(response.data.products);
+      // }
     } catch (error) {
       setProducts([]);
     }
@@ -128,43 +142,41 @@ const NewHomePage = (props) => {
         <div className="product-section">
           {products.length ? (
             products.map((product, index) =>
-              product.active ? (
-                index <= 10 ? (
-                  <div
-                    onClick={() => {
-                      renderComponent(product.product_name);
-                    }}
-                    className="product_card"
-                  >
-                    <img
-                      src={product.product_icon}
-                      alt=""
-                      style={{ width: "34px" }}
-                    />
+              index <= 10 ? (
+                <div
+                  onClick={() => {
+                    renderComponent(product.product_name);
+                  }}
+                  className="product_card"
+                >
+                  <img
+                    src={product.product_icon}
+                    alt=""
+                    style={{ width: "34px" }}
+                  />
 
-                    <div className="product_title">{product.product_name}</div>
-                  </div>
-                ) : index == 11 ? (
+                  <div className="product_title">{product.product_name}</div>
+                </div>
+              ) : index == 11 ? (
+                <div
+                  onClick={() => {
+                    history.push("/products");
+                  }}
+                  className="product_card"
+                >
                   <div
-                    onClick={() => {
-                      history.push("/products");
+                    className="product_title"
+                    style={{
+                      color: "#1185e0",
+                      fontSize: "15px",
+                      "&:hover": {
+                        TextDecoder: "underline",
+                      },
                     }}
-                    className="product_card"
                   >
-                    <div
-                      className="product_title"
-                      style={{
-                        color: "#1185e0",
-                        fontSize: "15px",
-                        "&:hover": {
-                          TextDecoder: "underline",
-                        },
-                      }}
-                    >
-                      {"View More Products"}
-                    </div>
+                    {"View More Products"}
                   </div>
-                ) : null
+                </div>
               ) : null
             )
           ) : (
