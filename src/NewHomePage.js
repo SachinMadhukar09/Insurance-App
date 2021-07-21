@@ -99,7 +99,7 @@ const NewHomePage = (props) => {
           <div>
             <h1 className="top-text">
               Let's find you
-              <br /> the <span style={{ fontWeight: 500 }}>Best Insurance</span>
+              <br /> the <span style={{ fontWeight: 800 }}>Best Insurance</span>
             </h1>
             <div>
               <div className="lowest_price">
@@ -184,43 +184,6 @@ const NewHomePage = (props) => {
               <h1 style={{ fontSize: "25px" }}>No Product Found</h1>
             </div>
           )}
-        </div>
-      </section>
-
-      <div className="irdai-divider-container">
-        <div className="lined-title">
-          <hr></hr>
-          <div className="lined-title__text">LICENSED BY IRDAI</div>
-        </div>
-        <div className="idc-desc">
-          <img
-            alt="Licensed By IRDAI"
-            className="snil-content__irdai__img"
-            loading="lazy"
-            src="https://assets.coverfox.com/static/homepage/irdai_logo.71eabac56ba7.png"
-          />
-          <div className="idc-desc__info">
-            <div>
-              <span>IRDA Direct Broker Code: </span> IRDA/ DB 556/ 13{" "}
-            </div>
-            <div>
-              <span>CIN: </span> U66000MH2013PTC243810{" "}
-            </div>
-          </div>
-        </div>
-        <hr></hr>
-      </div>
-      <section className="cf-section cf-section--15 mt-100">
-        <div className="container">
-          <h3 className="text-center cf-section__heading cf-section__heading--lg text-center">
-            {/* The XPcover Advantage */} The 1Protekt Advantage
-          </h3>
-          <ul className="lcra__timeline-list ">
-            <li>SIMPLE</li>
-            <li>FAST</li>
-            <li>RELIABLE</li>
-            <li>SECURE</li>
-          </ul>
         </div>
       </section>
     </div>

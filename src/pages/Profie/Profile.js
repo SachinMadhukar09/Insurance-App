@@ -42,7 +42,7 @@ function Profile() {
           <SideBar />
         </div>
         <div className="dashboard-content">
-          <div className="top-heading">My Profile</div>
+          <h2 className="top-heading">My Profile</h2>
           <div className="profile-header">
             {/* <div className="listing-container"> */}
             <button

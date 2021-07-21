@@ -2,9 +2,12 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Comfortaa", display;
+  /* font-family: "Comfortaa", display; */
   /* font-family: "Lato", sans-serif; */
-  color: #1f4568;
+  /* color: #1f4568; */
+  color: #4a4e5a;
+  font-family: "Raleway";
+  font-size: 13px;
 }
 
 body {
@@ -955,14 +958,20 @@ wrapper__social a {
 }
 
 .header-wrapper {
-  height: 64px;
+  height: 80px;
   color: #314451;
-  position: relative;
+  position: fixed;
+  width: 100%;
   margin: 0;
   padding: 0;
-  background-color: transparent;
+  top: 0;
+  background-color: rgba(255, 255, 255);
   color: rgba(49, 68, 81, 0.9);
-  z-index: 299;
+  z-index: 15;
+  box-shadow: 0 0 10px 1px rgb(68 102 242 / 5%);
+  align-items: center;
+  -webkit-transition: .3s;
+  transition: .3s;
 }
 
 .header-wrapper .main-header,
@@ -973,7 +982,7 @@ wrapper__social a {
   top: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: 80px;
   z-index: 1;
 }
 
@@ -1006,6 +1015,11 @@ label.nav-icon .bar + .bar {
   line-height: 58px;
   min-width: 125px;
 }
+
+/* .header-wrapper.scrolled{
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
+} */
 
 .header-wrapper .hamburger-menu,
 .header-wrapper .logo,
@@ -1466,8 +1480,10 @@ ul.sub-nav-list > li > a {
 }
 
 .open-login-form {
-  background-color: #e07a72 !important;
-  border-color: #e07a72 !important;
+  /* background-color: #e07a72 !important;
+  border-color: #e07a72 !important; */
+  background-color: #c45655 !important;
+  border-color: #c45655 !important;
   color: #ffffff !important;
   width: 142px;
   display: flex !important;
@@ -1505,9 +1521,18 @@ ul.sub-nav-list > li > a {
   h1 {
     font-size: 1.9rem;
   }
-  h2 {
+  /* h2 {
     font-size: 1rem;
+  } */
+
+  h2 {
+    margin: 1.5em 0 0.5em 0;
+    /* font-size: 2rem; */
+    font-family: "Quicksand";
+    font-weight: 800;
+    font-size: 20px;
   }
+
   p {
     font-size: 0.8rem;
   }
@@ -1659,8 +1684,16 @@ ul.sub-nav-list > li > a {
   h1 {
     font-size: 1.9rem;
   }
-  h2 {
+  /* h2 {
     font-size: 1rem;
+  } */
+
+  h2 {
+    margin: 1.5em 0 0.5em 0;
+    /* font-size: 2rem; */
+    font-family: "Quicksand";
+    font-weight: 800;
+    font-size: 20px;
   }
   p {
     font-size: 0.8rem;
@@ -1795,17 +1828,25 @@ ul.sub-nav-list > li > a {
 }
 
 .login-submit {
-  height: 61px;
-  padding: 20px;
-  text-align: center;
-  margin: 40px 0px 15px;
-  border-radius: 6px;
-  color: #f7f7f7;
+  font-size: 16px;
+  outline: none;
+  width: 254px;
+  /* height: 68px; */
+  background: linear-gradient(180deg, #f64b4b 0%, #ff704c 100%);
+  box-shadow: 0 10px 28px -10px #ed5b4b;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  padding: 20px 15px;
+  border-radius: 3px;
+  /* display: flex; */
+  justify-content: center;
   text-transform: uppercase;
-  font-weight: 500px;
-  font-weight: 859px;
-  font-weight: bold;
-  background-color: #f37273;
+  letter-spacing: 1px;
+  cursor: pointer;
+  color: white;
+  text-align: center;
+  border: 1px solid rgb(239, 84, 67);
+  margin: auto;
+  margin-top: 40px;
 }
 
 .text-danger {
@@ -1814,29 +1855,30 @@ ul.sub-nav-list > li > a {
   margin-top: 5px;
 }
 
-
-
 .dashboard-wrapper {
   display: flex;
   width: 100%;
   flex-wrap: left;
   min-height: 90vh;
+  margin-top: 60px;
 }
 
 .dashboard-content {
-  padding: 30px;
-  border: 1px solid;
   width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px;
   border-right: none;
   border-bottom: none;
   margin-top: 28px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
 }
 
 .top-heading {
   font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
+  padding-left: 20px;
 }
 
 .listing {
@@ -1852,12 +1894,27 @@ ul.sub-nav-list > li > a {
   /* max-height: 278px; */
   margin-bottom: 0px;
   padding: 20px 0px 0px 20px;
+  box-shadow: 0 6px 16px rgb(52 105 203 / 16%);
 }
 
 .listing-container {
-  width: 80%;
+  width: 100%;
   margin-bottom: 0px;
   padding: 20px 0px 0px 20px;
+}
+
+.buypolicy-container {
+  width: 100%;
+  margin-bottom: 0px;
+  padding: 20px 0px 0px 20px;
+  height: 50vh;
+  display: grid;
+}
+
+.policy-container {
+  margin-top: 40px;
+  padding: 20px 0px 0px 20px;
+  margin: auto;
 }
 
 .product-detail {
@@ -1921,7 +1978,7 @@ ul.sub-nav-list > li > a {
   background: #c4c4c4;
 }
 
-.text-success{
+.text-success {
   color: darkgreen;
   font-weight: 700;
 }

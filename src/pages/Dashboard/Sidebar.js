@@ -34,7 +34,7 @@ const SideBar = () => {
             <img src={homeIcon} alt="HomeIcon" />
           )}
         </div>
-        <div
+        <h3
           className="link"
           style={
             pathname === "/dashboard"
@@ -43,7 +43,7 @@ const SideBar = () => {
           }
         >
           Dashboard
-        </div>
+        </h3>
       </div>
 
       <div
@@ -58,7 +58,7 @@ const SideBar = () => {
             <img src={homeIcon} alt="HomeIcon" />
           )}
         </div>
-        <div
+        <h3
           className="link"
           style={
             pathname === "/policies"
@@ -67,7 +67,7 @@ const SideBar = () => {
           }
         >
           Policies
-        </div>
+        </h3>
       </div>
 
       <div
@@ -82,14 +82,14 @@ const SideBar = () => {
             <img src={homeIcon} alt="HomeIcon" />
           )}
         </div>
-        <div
+        <h3
           className="link"
           style={
             pathname === "/quotes" ? { color: "#ea8283" } : { color: "#394042" }
           }
         >
           Quotes
-        </div>
+        </h3>
       </div>
 
       <div
@@ -104,7 +104,7 @@ const SideBar = () => {
             <img src={homeIcon} alt="HomeIcon" />
           )}
         </div>
-        <div
+        <h3
           className="link"
           style={
             pathname === "/proposals"
@@ -113,7 +113,7 @@ const SideBar = () => {
           }
         >
           Proposals
-        </div>
+        </h3>
       </div>
 
       <div
@@ -128,14 +128,14 @@ const SideBar = () => {
             <img src={homeIcon} alt="HomeIcon" />
           )}
         </div>
-        <div
+        <h3
           className="link"
           style={
             pathname === "/claims" ? { color: "#ea8283" } : { color: "#394042" }
           }
         >
           Claims
-        </div>
+        </h3>
       </div>
 
       <div
@@ -150,7 +150,7 @@ const SideBar = () => {
             <img src={homeIcon} alt="HomeIcon" />
           )}
         </div>
-        <div
+        <h3
           className="link"
           style={
             pathname === "/profile"
@@ -159,7 +159,7 @@ const SideBar = () => {
           }
         >
           Profile
-        </div>
+        </h3>
       </div>
 
       <div
@@ -174,14 +174,14 @@ const SideBar = () => {
             <img src={homeIcon} alt="HomeIcon" />
           )}
         </div>
-        <div
+        <h3
           className="link"
           style={
             pathname === "/help" ? { color: "#ea8283" } : { color: "#394042" }
           }
         >
           Help
-        </div>
+        </h3>
       </div>
 
       {/* <div

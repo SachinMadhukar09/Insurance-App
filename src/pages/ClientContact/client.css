@@ -12,8 +12,8 @@ body {
 .clientForm {
     display: flex;
     justify-content: center;
-    width: 100vw;
-    margin-top: 30px;
+    /* width: 100vw; */
+    margin-top: 80px;
 }
 
 .work-with-us {
@@ -21,7 +21,7 @@ body {
     grid-template-areas: "form illustration";
     grid-template-columns: 2fr 1.25fr;
     max-width: 1000px;
-    background: white;
+    /* background: white; */
     margin: 0 auto;
 }
 
@@ -78,11 +78,11 @@ body {
     padding: 5px;
 }
 
-.form input:focus,
+/* .form input:focus,
 .form textarea:focus {
     border-color: #F74005;
     color: #F74005;
-}
+} */
 
 .form button {
     /* height: 50px; */
