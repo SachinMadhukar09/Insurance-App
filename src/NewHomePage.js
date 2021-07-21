@@ -11,29 +11,34 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 import "./Animations.css";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Configs from "./configs/config";
 
 const url = Configs.endpoint;
 
 const NewHomePage = (props) => {
-  console.log(props);
+  let { company } = useParams();
   const [products, setProducts] = React.useState([]);
   const history = useHistory();
   const clientId = localStorage.getItem("clientId");
+
   const getProducts = async () => {
     try {
-      if (!clientId) {
+      if (!clientId && !company) {
         const response = await axios.get(`${url}/insurance/getProductList`);
         if (response) {
           setProducts(response.data.products);
         }
       } else {
-        const response = await axios.get(
-          `${url}/insurance/getInsuranceProduct/${clientId}`
-        );
-        if (response) {
-          setProducts(response.data.products);
+        try {
+          const response = await axios.get(
+            `${url}/insurance/getInsuranceProduct/${clientId}`
+          );
+          if (response) {
+            setProducts(response.data.products);
+          }
+        } catch (err) {
+          setProducts([]);
         }
       }
 
@@ -89,7 +94,7 @@ const NewHomePage = (props) => {
         break;
     }
 
-    props.props.history.push(path);
+   history.push(path);
   };
 
   return (

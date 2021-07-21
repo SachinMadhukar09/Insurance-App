@@ -36,7 +36,7 @@ const VehicleDetails = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{marginTop:"80px"}}>
       <h1 className="vehicle_title">
         Vehicle Details this will only take 1 minute!
       </h1>

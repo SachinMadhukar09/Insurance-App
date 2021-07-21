@@ -33,7 +33,7 @@ import React, { Component, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./logic/actions/actions";
 import Configs from "./configs/config";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 import HousingInsuranceDetails from "./pages/Housing/Housing";
 import PolicyBazar from "./PolicyBazar";
@@ -53,30 +53,37 @@ import ClientForm from "./pages/ClientContact/ClientForm";
 const url = Configs.endpoint;
 
 function App() {
+  const [company, setCompany] = React.useState("");
   const dispatch = useDispatch();
   const history = useHistory();
   const loggedIn = useSelector((state) => state.user.loggedIn);
+  const existcompany = localStorage.getItem("company");
 
-  let clientDirectory = window.location.pathname.replace(/\//g, "");
-
-  const getProducts = async () => {
-    try {
-      const response = await axios.get(
-        `${url}/client/getClientId/${clientDirectory}`
-      );
-      if (response) {
-        localStorage.setItem("clientId", response.data[0].xpcClientId);
+  const toggleCompany = (company) => {
+    setCompany(company);
+  };
+  console.log("company----", existcompany);
+  const getClients = async () => {
+    if (company) {
+      try {
+        const response = await axios.get(
+          `${url}/client/getClientId/${company}`
+        );
+        if (response) {
+          localStorage.setItem("company", company);
+          localStorage.setItem("clientId", response.data[0].xpcClientId);
+        }
+      } catch (error) {
+        localStorage.removeItem("clientId");
       }
-    } catch (error) {}
+    }
   };
 
   // const apiKey = 'AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
   // const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
 
   useEffect(() => {
-    getProducts();
-    let clientDirector = window.location.pathname.replace(/\//g, "");
-    console.log(clientDirector, "this is clientDirector");
+    getClients();
     const checkToken = async () => {
       const authToken = localStorage.getItem("token");
       const user = localStorage.getItem("username");
@@ -91,8 +98,22 @@ function App() {
     <div className="App">
       <Router>
         <Header />
-        {/* <Route exact path="/" component={HomePage} /> */}
-        <Route exact path="/:id?" component={PolicyBazar} />
+
+        <Route
+          exact
+          path="/:company?"
+          component={() => <PolicyBazar setCompany={toggleCompany} />}
+        />
+
+        {existcompany ? (
+          <Route
+            exact
+            path="/:company?vehicle-details"
+            component={VehicleDetails}
+          />
+        ) : (
+          <Route exact path="/vehicle-details" component={VehicleDetails} />
+        )}
         <Route exact path="/another" component={HomePage} />
         <Route exact path="/payment" component={Payment} />
         <Route exact path="/user-login" component={Login} />
@@ -113,9 +134,10 @@ function App() {
         <Route exact path="/health-quotes" component={Quotes} />
         <Route exact path="/declaration" component={Declaration} />
         <Route exact path="/travelInsurance" component={TravelInsurance} />
-        <Switch>
-          <Route exact path="/traveller-details" component={TravellerDetails} />
-        </Switch>
+
+        {/* <Switch> */}
+        <Route exact path="/traveller-details" component={TravellerDetails} />
+        {/* </Switch> */}
         <Route exact path="/traveller-quotes" component={TravelerQuotes} />
         <Switch>
           <Route
