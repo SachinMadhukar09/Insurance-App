@@ -41,10 +41,6 @@ const NewHomePage = (props) => {
           setProducts([]);
         }
       }
-
-      // if (response) {
-      //   setProducts(response.data.products);
-      // }
     } catch (error) {
       setProducts([]);
     }

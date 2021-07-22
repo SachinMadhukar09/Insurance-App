@@ -57,25 +57,20 @@ function App() {
   const dispatch = useDispatch();
   const history = useHistory();
   const loggedIn = useSelector((state) => state.user.loggedIn);
-  const existcompany = localStorage.getItem("company");
 
   const toggleCompany = (company) => {
     setCompany(company);
   };
-  console.log("company----", existcompany);
   const getClients = async () => {
-    if (company) {
-      try {
-        const response = await axios.get(
-          `${url}/client/getClientId/${company}`
-        );
-        if (response) {
-          localStorage.setItem("company", company);
-          localStorage.setItem("clientId", response.data[0].xpcClientId);
-        }
-      } catch (error) {
-        localStorage.removeItem("clientId");
+    try {
+      const response = await axios.get(`${url}/client/getClientId/${company}`);
+      if (response) {
+        localStorage.setItem("company", company);
+        localStorage.setItem("clientId", response.data[0].xpcClientId);
       }
+    } catch (error) {
+      localStorage.removeItem("clientId");
+      localStorage.removeItem("company");
     }
   };
 
