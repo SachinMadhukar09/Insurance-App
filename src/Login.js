@@ -22,7 +22,6 @@ const Login = () => {
   const [phone, setPhone] = React.useState("");
   const [countryCode, setCountryCode] = React.useState("");
   const [companyName, setCompanyName] = React.useState("");
-  const [name, setName] = React.useState("");
   const [errormsg, seterrormsg] = React.useState("");
   const [successmsg, setSuccessMsg] = React.useState("");
   const [otp, setOtp] = React.useState("");

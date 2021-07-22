@@ -17,8 +17,6 @@ function Dashboard() {
   const dispatch = useDispatch();
 
   const authToken = localStorage.getItem("token");
-  // const userName = useSelector((state) => state.user.username);
-  // const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
   const [products, setProducts] = React.useState([]);
   const [userName, setUserName] = React.useState("");
@@ -30,12 +28,11 @@ function Dashboard() {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "x-requested-with": "XMLHttpRequest",
-          'content-type': 'application/json' 
+          "content-type": "application/json",
         },
       });
-      console.log("response---", response);
       if (response) {
-        const details = response.data.personalDetails
+        const details = response.data.personalDetails;
         setUserName(details.firstName + " " + details.lastName);
       }
     } catch (error) {

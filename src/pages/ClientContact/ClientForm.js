@@ -49,7 +49,7 @@ const ClientForm = () => {
     }
 
     if (typeof values["fullname"] !== "undefined") {
-      if (!values["fullname"].match(/^[a-zA-Z]+$/)) {
+      if (!values["fullname"].match(/^[a-zA-Z ]*$/)) {
         formIsValid = false;
         errors["fullname"] = "Only letters";
       }

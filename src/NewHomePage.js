@@ -11,35 +11,36 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 import "./Animations.css";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Configs from "./configs/config";
 
 const url = Configs.endpoint;
 
 const NewHomePage = (props) => {
-  console.log(props);
+  let { company } = useParams();
   const [products, setProducts] = React.useState([]);
   const history = useHistory();
   const clientId = localStorage.getItem("clientId");
+
   const getProducts = async () => {
     try {
-      if (!clientId) {
+      if (!clientId && !company) {
         const response = await axios.get(`${url}/insurance/getProductList`);
         if (response) {
           setProducts(response.data.products);
         }
       } else {
-        const response = await axios.get(
-          `${url}/insurance/getInsuranceProduct/${clientId}`
-        );
-        if (response) {
-          setProducts(response.data.products);
+        try {
+          const response = await axios.get(
+            `${url}/insurance/getInsuranceProduct/${clientId}`
+          );
+          if (response) {
+            setProducts(response.data.products);
+          }
+        } catch (err) {
+          setProducts([]);
         }
       }
-
-      // if (response) {
-      //   setProducts(response.data.products);
-      // }
     } catch (error) {
       setProducts([]);
     }
@@ -53,35 +54,35 @@ const NewHomePage = (props) => {
     let path;
     switch (product) {
       case "Car Insurance":
-        path = "/vehicle-details";
+        path = `${company}/vehicle-details`;
         break;
 
       case "Health Insurance":
-        path = "/health-details";
+        path = `${company}/health-details`;
         break;
 
       case "2 Wheeler Insurance":
-        path = "/2wheeler-details";
+        path = `${company}/2wheeler-details`;
         break;
 
       case "Child Savings Plan":
-        path = "/child-savings";
+        path = `${company}/child-savings`;
         break;
 
       case "Family Health Insurance":
-        path = "/housing-society";
+        path = `${company}/housing-society`;
         break;
 
       case "Investment Plans":
-        path = "/investment-plans";
+        path = `${company}/investment-plans`;
         break;
 
       case "Heart Insurance":
-        path = "/heart-insurance";
+        path = `${company}/heart-insurance`;
         break;
 
       case "Group Protection":
-        path = "/gmcproducts";
+        path = `${company}/gmcproducts`;
         break;
 
       default:
@@ -89,7 +90,7 @@ const NewHomePage = (props) => {
         break;
     }
 
-    props.props.history.push(path);
+    history.push(path);
   };
 
   return (
