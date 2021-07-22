@@ -61,24 +61,11 @@ function App() {
   const toggleCompany = (company) => {
     setCompany(company);
   };
-  const getClients = async () => {
-    try {
-      const response = await axios.get(`${url}/client/getClientId/${company}`);
-      if (response) {
-        localStorage.setItem("company", company);
-        localStorage.setItem("clientId", response.data[0].xpcClientId);
-      }
-    } catch (error) {
-      localStorage.removeItem("clientId");
-      localStorage.removeItem("company");
-    }
-  };
-
+  
   // const apiKey = 'AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
   // const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
 
   useEffect(() => {
-    getClients();
     const checkToken = async () => {
       const authToken = localStorage.getItem("token");
       const user = localStorage.getItem("username");
