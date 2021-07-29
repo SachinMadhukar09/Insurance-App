@@ -49,6 +49,7 @@ import Gmcproducts from "./pages/GMC-products/GmcProducts";
 import qs from "qs";
 
 import ClientForm from "./pages/ClientContact/ClientForm";
+import NewProducts from "./pages/Dashboard/Products/products";
 
 const url = Configs.endpoint;
 
@@ -106,7 +107,8 @@ function App() {
         <Route exact path="/:company/profile" component={Profile} />
         <Route exact path="/:company/proposals" component={Myproposals} />
         <Route exact path="/:company/payment" component={Payment} />
-        <Route exact path="/:company/products" component={Products} />
+        <Route exact path="/:company/allproducts" component={Products} />
+        <Route exact path="/:company/products" component={NewProducts} />
 
         <Route
           exact

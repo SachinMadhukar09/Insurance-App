@@ -1,13 +1,17 @@
 import { jsx, ThemeProvider, Themed } from "theme-ui";
 import React, { Component, useState, useEffect } from "react";
 import theme from "./theme";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./pages/Dashboard/Sidebar";
 import searchIcon from "./Assets/svg/policy-active.svg";
 import downloadIcon from "./Assets/svg/download.png";
 
 function MyClaims() {
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -15,6 +19,7 @@ function MyClaims() {
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
+
 
   const products = [
     {
@@ -49,12 +54,12 @@ function MyClaims() {
     console.log("logIn---", loggedIn);
     /* check token and refresh user after login */
     if (!authToken) {
-      history.push("/user-login/");
+      history.push(`${company}/user-login/`);
     }
   }, []);
 
   const handleBuyPolicies = () => {
-    history.push("/buy-policy");
+    history.push(`${company}/buy-policy`);
   };
   return (
     <ThemeProvider theme={theme}>

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Progress from "react-progressbar";
 
-const Customizes = () => {
+const Customizes = (props) => {
   const [employeeNumber, setEmployees] = useState("3");
   const [employeeNumber1, setEmployees1] = useState("3");
   const [employeeNumber2, setEmployees2] = useState("3");
@@ -13,15 +13,48 @@ const Customizes = () => {
   const [selectmsg2, setSelectMsg2] = useState(false);
   const [selectmsg3, setSelectMsg3] = useState(false);
   const [selectmsg4, setSelectMsg4] = useState(false);
+  const [memberdetails, setMembers] = useState([]);
+  const [preExDiseaseCover, setPreExDiseaseCover] = useState(true);
+  const [hospitalisationExpenses, setHospitalisationExpenses] = useState(true);
+  const [matentrityCover, setMatentrityCover] = useState(true);
+  const [organDonorExpense, setorganDonorExpense] = useState(true);
+  const [altTreatment, setAltertreatment] = useState(true);
+  const [roomrate, setRoomRent] = useState("");
+  const [memberType, setMemeberType] = useState("");
   const [btnActive, setBtnActive] = React.useState({});
 
   const history = useHistory();
 
+  const agegroups = ["18-25", "26-40", "41-60", "61-80", "81-above"];
+
+  const setEmployeeDetails = () => {
+    props.setdetails({
+      totalEmployees: props.totalEmployees,
+      customerId: localStorage.getItem("customer"),
+      companyId: "cc1d",
+      type: "proposal",
+      brokerId: "8f599a",
+      createdAt: new Date().getTime(),
+      quotationName: "gmc",
+      quotationAmount: {
+        amountActual: 100.0,
+        amountFormatted: 100, 
+      },
+      memberDetails: memberdetails,
+      preExistingDiseaseCover: preExDiseaseCover,
+      prePostHospitalisationExpenses: hospitalisationExpenses,
+      maternityBenifitNewBornBabyCover: matentrityCover,
+      organDonorExpense: organDonorExpense,
+      alternateTreatmentCover: altTreatment,
+      accomdationRoomRentLimits: roomrate,
+      memberType: memberType,
+    });
+    props.jumpToStep(2);
+  };
+
   const increaseNumber = (val) => {
-    console.log("avpp", val);
     switch (Number(val)) {
       case 1:
-        console.log("heressss", val);
         if (employeeNumber < 1000) {
           setSelectMsg(false);
           setEmployees(`${Number(employeeNumber) + 1}`);
@@ -66,11 +99,9 @@ const Customizes = () => {
   };
 
   const decreaseNumber = (val) => {
-    console.log("fdsffsd", val);
     switch (val) {
       case 1:
-        console.log("heressss", val);
-        if (employeeNumber > 10) {
+        if (employeeNumber > 3) {
           setSelectMsg(false);
           setEmployees(`${Number(employeeNumber) - 1}`);
         } else {
@@ -78,7 +109,7 @@ const Customizes = () => {
         }
         break;
       case 2:
-        if (employeeNumber1 > 10) {
+        if (employeeNumber1 > 3) {
           setSelectMsg1(false);
           setEmployees1(`${Number(employeeNumber1) - 1}`);
         } else {
@@ -86,7 +117,7 @@ const Customizes = () => {
         }
         break;
       case 3:
-        if (employeeNumber2 > 10) {
+        if (employeeNumber2 > 3) {
           setSelectMsg2(false);
           setEmployees2(`${Number(employeeNumber2) - 1}`);
         } else {
@@ -95,7 +126,7 @@ const Customizes = () => {
         break;
 
       case 4:
-        if (employeeNumber3 > 10) {
+        if (employeeNumber3 > 3) {
           setSelectMsg3(false);
           setEmployees3(`${Number(employeeNumber3) - 1}`);
         } else {
@@ -103,7 +134,7 @@ const Customizes = () => {
         }
         break;
       case 5:
-        if (employeeNumber4 > 10) {
+        if (employeeNumber4 > 3) {
           setSelectMsg4(false);
           setEmployees4(`${Number(employeeNumber4) - 1}`);
         } else {
@@ -117,7 +148,7 @@ const Customizes = () => {
     event.preventDefault();
     switch (event.target.name) {
       case "employees1":
-        if (employeeNumber > 10) {
+        if (employeeNumber > 3) {
           setSelectMsg(false);
         } else {
           setSelectMsg(true);
@@ -125,7 +156,7 @@ const Customizes = () => {
         setEmployees(`${event.target.value}`);
         break;
       case "employees2":
-        if (employeeNumber1 > 10) {
+        if (employeeNumber1 > 3) {
           setSelectMsg1(false);
         } else {
           setSelectMsg1(true);
@@ -133,7 +164,7 @@ const Customizes = () => {
         setEmployees1(`${event.target.value}`);
         break;
       case "employees3":
-        if (employeeNumber2 > 10) {
+        if (employeeNumber2 > 3) {
           setSelectMsg2(false);
         } else {
           setSelectMsg2(true);
@@ -141,7 +172,7 @@ const Customizes = () => {
         setEmployees2(`${event.target.value}`);
         break;
       case "employees4":
-        if (employeeNumber3 > 10) {
+        if (employeeNumber3 > 3) {
           setSelectMsg3(false);
         } else {
           setSelectMsg3(true);
@@ -149,7 +180,7 @@ const Customizes = () => {
         setEmployees3(`${event.target.value}`);
         break;
       case "employees5":
-        if (employeeNumber4 > 10 || employeeNumber4 < 1000) {
+        if (employeeNumber4 > 3 || employeeNumber4 < 1000) {
           setSelectMsg4(false);
         } else {
           setSelectMsg4(true);
@@ -159,8 +190,42 @@ const Customizes = () => {
     }
   };
 
-  const setValue = (val) => {
-    const obj = btnActive;
+  
+  const onValChange = (event) => {
+    let valname = event.target.name;
+    let noOfmembers;
+    let valtype = 0;
+    switch (valname) {
+      case "insuredsum1":
+        valtype = 0;
+        noOfmembers = employeeNumber;
+        break;
+      case "insuredsum2":
+        valtype = 1;
+        noOfmembers = employeeNumber1;
+        break;
+      case "insuredsum3":
+        valtype = 2;
+        noOfmembers = employeeNumber2;
+        break;
+      case "insuredsum4":
+        valtype = 3;
+        noOfmembers = employeeNumber3;
+        break;
+      case "insuredsum5":
+        valtype = 4;
+        noOfmembers = employeeNumber4;
+        break;
+      default:
+        valtype = 0;
+        noOfmembers = "";
+    }
+    memberdetails[Number(valtype)] = {
+      ageGroup: agegroups[Number(valtype)],
+      sumInsured: event.target.value,
+      noOfMembers: noOfmembers,
+    };
+    setMembers(memberdetails);
   };
 
   return (
@@ -171,70 +236,145 @@ const Customizes = () => {
           <div className="form-list">
             <div className="agelist">
               <p>Age Group</p>
-              <input list="agegrps1" name="age1" id="age1" />
-              <datalist id="agegrps1">
-                <option value="18-30" />
-                <option value="31-50" />
-                <option value="50-100" />
-              </datalist>
-              <input list="agegrps2" name="age2" id="age2" />
-              <datalist id="agegrps2">
-                <option value="18-30" />
-                <option value="31-50" />
-                <option value="50-100" />
-              </datalist>
-              <input list="agegrps1" name="age1" id="age1" />
-              <datalist id="agegrps1">
-                <option value="18-30" />
-                <option value="31-50" />
-                <option value="50-100" />
-              </datalist>
-              <input list="agegrps2" name="age2" id="age2" />
-              <datalist id="agegrps2">
-                <option value="18-30" />
-                <option value="31-50" />
-                <option value="50-100" />
-              </datalist>
-              <input list="agegrps2" name="age2" id="age2" />
-              <datalist id="agegrps2">
-                <option value="18-30" />
-                <option value="31-50" />
-                <option value="50-100" />
-              </datalist>
+              {agegroups.map((agegrp) => (
+                <input
+                  type="text"
+                  name="age1"
+                  id="age1"
+                  value={agegrp}
+                  readOnly={true}
+                />
+              ))}
+              {/* <input
+                type="text"
+                name="age1"
+                id="age1"
+                value="18-25"
+                readOnly={true}
+              /> */}
+              {/* <datalist id="agegrps1">
+                <option value="18-25" selected />
+                <option value="26-40" />
+                <option value="41-60" />
+                <option value="61-80" />
+                <option value="81 above" />
+              </datalist> */}
+              {/* <input
+                type="text"
+                name="age2"
+                id="age2"
+                value="26-40"
+                readOnly={true}
+              /> */}
+              {/* <input list="agegrps2" name="age2" id="age2" /> */}
+              {/* <datalist id="agegrps2">
+                <option value="18-25" />
+                <option value="26-40" selected />
+                <option value="41-60" />
+                <option value="61-80" />
+                <option value="81 above" />
+              </datalist> */}
+              {/* <input
+                type="text"
+                name="age3"
+                id="age3"
+                value="41-60"
+                readOnly={true}
+              /> */}
+              {/* <datalist id="agegrps1">
+                <option value="18-25" />
+                <option value="26-40" />
+                <option value="41-60" selected />
+                <option value="61-80" />
+                <option value="81 above" />
+              </datalist> */}
+              {/* <input
+                type="text"
+                name="age4"
+                id="age4"
+                value="61-80"
+                readOnly={true}
+              /> */}
+              {/* <datalist id="agegrps2">
+                <option value="18-25" />
+                <option value="26-40" />
+                <option value="41-60" />
+                <option value="61-80" selected />
+                <option value="81 above" />
+              </datalist> */}
+              {/* <input
+                type="text"
+                name="age5"
+                id="age5"
+                value="81-above"
+                readOnly={true}
+              /> */}
+              {/* <datalist id="agegrps2">
+                <option value="18-25" />
+                <option value="26-40" />
+                <option value="41-60" />
+                <option value="61-80" />
+                <option value="81 above" selected />
+              </datalist> */}
             </div>
             <div className="sum-insured">
               <p>Sum Insured</p>
-              <input list="suminsured1" name="insuredsum1" id="insuredsum1" />
+              <input
+                list="suminsured1"
+                name="insuredsum1"
+                id="insuredsum1"
+                onChange={onValChange}
+              />
               <datalist id="suminsured1">
-                <option value="10-50" />
-                <option value="50-100" />
-                <option value="100- 1000" />
+                <option value="50000" />
+                <option value="100000" />
+                <option value="500000" />
               </datalist>
-              <input list="suminsured2" name="insuredsum2" id="insuredsum2" />
+              <input
+                list="suminsured2"
+                name="insuredsum2"
+                id="insuredsum2"
+                onChange={onValChange}
+              />
               <datalist id="suminsured2">
-                <option value="10-50" />
-                <option value="50-100" />
-                <option value="100- 1000" />
+                <option value="50000" />
+                <option value="100000" />
+                <option value="500000" />
               </datalist>
 
-              <input list="suminsured3" name="insuredsum3" id="insuredsum3" />
+              <input
+                list="suminsured3"
+                name="insuredsum3"
+                id="insuredsum3"
+                onChange={onValChange}
+              />
               <datalist id="suminsured3">
-                <option value="10-50" />
-                <option value="50-100" />
-                <option value="100- 1000" />
+                <option value="50000" />
+                <option value="100000" />
+                <option value="500000" />
               </datalist>
 
-              <input list="suminsured4" name="insuredsum4" id="insuredsum4" />
+              <input
+                list="suminsured4"
+                name="insuredsum4"
+                id="insuredsum4"
+                onChange={onValChange}
+              />
               <datalist id="suminsured4">
-                <option value="10-50" />
-                <option value="50-100" />
-                <option value="100- 1000" />
+                <option value="50000" />
+                <option value="100000" />
+                <option value="500000" />
               </datalist>
-              <input list="suminsured5" name="insuredsum5" id="insuredsum5" />
+              <input
+                list="suminsured5"
+                name="insuredsum5"
+                id="insuredsum5"
+                onChange={onValChange}
+              />
               <datalist id="suminsured5">
-                <option value="10-50" />
-                <option value="50-100" />
-                <option value="100- 1000" />
+                <option value="50000" />
+                <option value="100000" />
+                <option value="500000" />
               </datalist>
             </div>
             <div className="members">
@@ -357,13 +497,25 @@ const Customizes = () => {
           </div>
           <div>
             <h3>Pre-Existing Disease Cover</h3>
-            
+
             <div class="switch1 gmc-yes_no-btn">
-              <input type="radio" name="choice1" id="yes1" checked />
+              <input
+                type="radio"
+                name="choice1"
+                id="yes1"
+                checked={preExDiseaseCover}
+                onClick={() => setPreExDiseaseCover(true)}
+              />
               <label className="yesnoLabel1" for="yes1">
                 Yes
               </label>
-              <input type="radio" name="choice1" id="no1" />
+              <input
+                type="radio"
+                name="choice1"
+                id="no1"
+                checked={!preExDiseaseCover}
+                onClick={() => setPreExDiseaseCover(false)}
+              />
               <label className="yesnoLabel1" for="no1">
                 No
               </label>
@@ -373,11 +525,23 @@ const Customizes = () => {
           <div>
             <h3>Pre/Post Hospitalisation Expenses</h3>
             <div class="switch1 gmc-yes_no-btn">
-              <input type="radio" name="choice2" id="yes2" checked />
+              <input
+                type="radio"
+                name="choice2"
+                id="yes2"
+                checked={hospitalisationExpenses}
+                onClick={() => setHospitalisationExpenses(true)}
+              />
               <label className="yesnoLabel2" for="yes2">
                 Yes
               </label>
-              <input type="radio" name="choice2" id="no2" />
+              <input
+                type="radio"
+                name="choice2"
+                id="no2"
+                checked={!hospitalisationExpenses}
+                onClick={() => setHospitalisationExpenses(false)}
+              />
               <label className="yesnoLabel2" for="no2">
                 No
               </label>
@@ -387,11 +551,23 @@ const Customizes = () => {
           <div>
             <h3>Maternity Benefit and New-Born Baby Cover</h3>
             <div class="switch1 gmc-yes_no-btn">
-              <input type="radio" name="choice3" id="yes3" checked />
+              <input
+                type="radio"
+                name="choice3"
+                id="yes3"
+                checked={matentrityCover}
+                onClick={() => setMatentrityCover(true)}
+              />
               <label className="yesnoLabel3" for="yes3">
                 Yes
               </label>
-              <input type="radio" name="choice3" id="no3" />
+              <input
+                type="radio"
+                name="choice3"
+                id="no3"
+                checked={!matentrityCover}
+                onClick={() => setMatentrityCover(false)}
+              />
               <label className="yesnoLabel3" for="no3">
                 No
               </label>
@@ -401,11 +577,23 @@ const Customizes = () => {
           <div>
             <h3>Organ Donor Expenses</h3>
             <div class="switch1 gmc-yes_no-btn">
-              <input type="radio" name="choice4" id="yes4" checked />
+              <input
+                type="radio"
+                name="choice4"
+                id="yes4"
+                checked={organDonorExpense}
+                onClick={() => setorganDonorExpense(true)}
+              />
               <label className="yesnoLabel4" for="yes4">
                 Yes
               </label>
-              <input type="radio" name="choice4" id="no4" />
+              <input
+                type="radio"
+                name="choice4"
+                id="no4"
+                checked={!organDonorExpense}
+                onClick={() => setorganDonorExpense(false)}
+              />
               <label className="yesnoLabel4" for="no4">
                 No
               </label>
@@ -415,11 +603,23 @@ const Customizes = () => {
           <div>
             <h3>Alternate Treatment Cover(AYUSH Treatment)</h3>
             <div class="switch1 gmc-yes_no-btn">
-              <input type="radio" name="choice5" id="yes5" checked />
+              <input
+                type="radio"
+                name="choice5"
+                id="yes5"
+                checked={altTreatment}
+                onClick={() => setAltertreatment(true)}
+              />
               <label className="yesnoLabel5" for="yes5">
                 Yes
               </label>
-              <input type="radio" name="choice5" id="no5" />
+              <input
+                type="radio"
+                name="choice5"
+                id="no5"
+                checked={!altTreatment}
+                onClick={() => setAltertreatment(false)}
+              />
               <label className="yesnoLabel5" for="no5">
                 No
               </label>
@@ -431,23 +631,47 @@ const Customizes = () => {
             <div className="btn-gmc-container">
               <select>
                 <option selected> Normal Room 1%/ ICU Room 2%</option>
+                {/* <option>option1</option>
                 <option>option1</option>
                 <option>option1</option>
-                <option>option1</option>
-                <option>option1</option>
+                <option>option1</option> */}
               </select>
             </div>
           </div>
           <div>
             <h3>Select Member Type</h3>
             <div className="btn-gmc-container">
-              <button className="expenses">Self</button>
-              <button className="expenses">Spouse/Partner</button>
-              <button className="expenses">Child</button>
+              <button
+                className={
+                  "expenses" + (memberType == "self" ? " active-btn" : "")
+                }
+                onClick={() => setMemeberType("self")}
+              >
+                Self
+              </button>
+              <button
+                className={
+                  "expenses" + (memberType == "spouse" ? " active-btn" : "")
+                }
+                onClick={() => setMemeberType("spouse")}
+              >
+                Spouse/Partner
+              </button>
+              <button
+                className={
+                  "expenses" + (memberType == "child" ? " active-btn" : "")
+                }
+                onClick={() => setMemeberType("child")}
+              >
+                Child
+              </button>
             </div>
           </div>
           <div className="btn-gmc-container">
             <button className="draftbtn">Save as Draft</button>
+            <button className="confirmbtn" onClick={setEmployeeDetails}>
+              Next
+            </button>
           </div>
         </div>
         <div className="submit-part">

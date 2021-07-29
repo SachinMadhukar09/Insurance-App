@@ -1,15 +1,18 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./Microproducts.css";
 
 
 const Microproduct1 = () => {
   const history = useHistory()
-
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const onSubmitOption = () => {
       // buy api for buy option
 
-      history.push('/micro-page2')
+      history.push(`${company}/micro-page2`)
   };
 
   return (

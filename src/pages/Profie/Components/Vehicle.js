@@ -1,13 +1,16 @@
 import { jsx, ThemeProvider, Themed } from "theme-ui";
 import theme from "../../../theme";
 import React, { Component, useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import ReactHTMLDatalist from "react-html-datalist";
 
 const Vehicle = () => {
   const history = useHistory();
   const [loading, setloading] = React.useState(false);
-
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const products = [
     {
       productName: "Car Details",
@@ -20,7 +23,7 @@ const Vehicle = () => {
   ];
 
   const handleBuyPolicies = () => {
-    history.push("/buy-policy");
+    history.push(`${company}/buy-policy`);
   };
   return (
     <ThemeProvider theme={theme}>

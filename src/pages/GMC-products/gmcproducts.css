@@ -13,7 +13,7 @@
 }
 
 .gmcpolicy {
-  border: 2px solid #f7b2b2;
+  border: 2px solid #db6576;
   margin-top: 30px;
   padding: 5px 10px 0px 10px;
 }
@@ -49,31 +49,31 @@
   display: inline-block;
   width: 50px;
   height: 50px;
-  background: linear-gradient(#a1a1a1, #a1a1a1),
-    linear-gradient(#a1a1a1, #a1a1a1), #d8d8d8;
+  background: linear-gradient(#ffff, #ffff),
+    linear-gradient(#ffff, #ffff), #db6576;
   background-position: center;
   background-size: 50% 4px, 4px 50%; /*thickness = 2px, length = 50% (25px)*/
   background-repeat: no-repeat;
-  border: 2px solid #f7b2b2;
+  border: 2px solid #db6576;
 }
 
 .empnumbers .minus-btn {
   display: inline-block;
   width: 50px;
   height: 50px;
-  background: linear-gradient(#a1a1a1, #a1a1a1), #d8d8d8;
+  background: linear-gradient(#ffff, #ffff), #db6576;
   background-position: center; /*thickness = 2px, length = 50% (25px)*/
   background-repeat: no-repeat;
   background-size: 70% 4px;
-  border: 2px solid #f7b2b2;
+  border: 2px solid #db6576;
 }
 
 .numberstring {
   height: 50px;
   background-color: white;
   width: 100%;
-  border-top: 2px solid #f7b2b2;
-  border-bottom: 2px solid #f7b2b2;
+  border-top: 2px solid #db6576;
+  border-bottom: 2px solid #db6576;
   font-size: 20px;
   font-weight: 600;
   text-align: center;
@@ -144,22 +144,22 @@
 }
 
 .agelist input {
-  border: 2px solid #f7b2b2;
+  border: 2px solid #db6576;
   padding: 5px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .sum-insured input {
-  border: 2px solid #f7b2b2;
+  border: 2px solid #db6576;
   padding: 5px;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
 .form-list .empnumbers .minus-btn {
-  height: 42px;
-  background: linear-gradient(#ffff, #ffff), #f48686;
+  height: 34px;
+  background: linear-gradient(#ffff, #ffff), #db6576;
   background-position: center; /*thickness = 2px, length = 50% (25px)*/
   background-repeat: no-repeat;
   background-size: 70% 4px;
@@ -167,9 +167,9 @@
 }
 
 .form-list .empnumbers .plus-btn {
-  height: 42px;
+  height: 34px;
   background: linear-gradient(#ffff, #ffff), linear-gradient(#ffff, #ffff),
-    #f48686;
+    #db6576;
   background-position: center;
   background-size: 50% 4px, 4px 50%; /*thickness = 2px, length = 50% (25px)*/
   background-repeat: no-repeat;
@@ -177,7 +177,7 @@
 }
 
 .form-list .empnumbers .numberstring {
-  height: 42px;
+  height: 34px;
 }
 
 .form-part h3 {
@@ -196,30 +196,30 @@
   background: transparent;
   width: 45%;
   height: 50px;
-  border: 2px solid #f48686;
+  border: 2px solid #db6576;
 }
 
 .btn-gmc-container button:hover {
-  background-color: #f48789;
+  background-color: #db6576;
   color: white;
 }
 
 .compdetails button:hover {
-  background-color: #f48789;
+  background-color: #db6576;
   color: white;
 }
 
 .btn-gmc-container select {
   background: transparent;
   width: 100%;
-  border: 2px solid #f48686;
+  border: 2px solid #db6576;
   font-size: 14px;
 }
 
 .btn-gmc-container .expenses {
   background: transparent;
   width: 32%;
-  border: 2px solid #f48686;
+  border: 2px solid #db6576;
   font-size: 14px;
 }
 
@@ -274,14 +274,14 @@
 }
 
 .compdetails input {
-  border: 2px solid #f7b2b2;
+  border: 2px solid #db6576;
   padding: 6px;
   margin-top: 10px;
   width: 100%;
 }
 
 .compdetails textarea {
-  border: 2px solid #f7b2b2;
+  border: 2px solid #db6576;
   padding: 10px;
   min-height: 100px;
   margin-top: 10px;
@@ -289,17 +289,17 @@
 }
 
 .compdetails textarea:focus-visible {
-  outline: 1px solid #f7b2b2;
+  outline: 1px solid #db6576;
 }
 
 .compdetails textarea:focus {
-  outline: 1px solid #f7b2b2;
+  outline: 1px solid #db6576;
 }
 
 .compdetails select {
   background: transparent;
   width: 100%;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
   /* font-size: 14px; */
   color: #878787;
   margin-top: 20px;
@@ -316,7 +316,7 @@
 }
 
 .compdetails button {
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
   padding: 15px;
   width: 100%;
   border-radius: 5px;
@@ -388,7 +388,7 @@
 }
 
 .gmc-yes_no-btn label {
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
   width: 85px;
   margin-right: 20px;
 }
@@ -399,7 +399,7 @@
 }
 
 .active-btn {
-  background-color: #db6576;
+  background-color: #db6576 !important;
   color: white;
 }
 
@@ -411,12 +411,12 @@
 
 .gmc-yes_no-btn input[type="radio"]#no1:checked ~ label[for="no1"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .switch1 input[type="radio"]#yes1:checked ~ label[for="yes1"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no1:checked ~ .gmcfilter {
@@ -433,12 +433,12 @@
 
 .gmc-yes_no-btn input[type="radio"]#no2:checked ~ label[for="no2"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .switch1 input[type="radio"]#yes2:checked ~ label[for="yes2"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no2:checked ~ .gmcfilter {
@@ -455,12 +455,12 @@
 
 .gmc-yes_no-btn input[type="radio"]#no3:checked ~ label[for="no3"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .switch1 input[type="radio"]#yes3:checked ~ label[for="yes3"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no3:checked ~ .gmcfilter {
@@ -477,12 +477,12 @@
 
 .gmc-yes_no-btn input[type="radio"]#no4:checked ~ label[for="no4"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .switch1 input[type="radio"]#yes4:checked ~ label[for="yes4"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no4:checked ~ .gmcfilter {
@@ -499,12 +499,12 @@
 
 .gmc-yes_no-btn input[type="radio"]#no5:checked ~ label[for="no5"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .switch1 input[type="radio"]#yes5:checked ~ label[for="yes5"] {
   color: white;
-  border: 1px solid #f48686;
+  border: 1px solid #db6576;
 }
 
 .gmc-yes_no-btn input[type="radio"]#no5:checked ~ .gmcfilter {
@@ -516,7 +516,7 @@
 .gmcfilter {
   width: 0;
   display: inline-block;
-  background-color: #f48686;
+  background-color: #db6576;
   position: absolute;
   left: 0;
   opacity: 0;

@@ -1,7 +1,7 @@
 import { jsx, ThemeProvider, Themed } from "theme-ui";
 import React, { Component, useState, useEffect } from "react";
 import theme from "./theme";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./pages/Dashboard/Sidebar";
 import axios from "axios";
@@ -12,7 +12,11 @@ const url = Configs.serverless;
 function Userquotes() {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const [authToken] = localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
@@ -22,8 +26,9 @@ function Userquotes() {
 
   React.useEffect(() => {
     console.log("logIn---", loggedIn);
+   
     if (!authToken) {
-      history.push("/user-login/");
+      history.push(`${company}/user-login/`);
     }
     const customerid = localStorage.getItem("customer");
     getProducts(customerid);
@@ -53,7 +58,7 @@ function Userquotes() {
     }
   };
   const handleBuyPolicies = () => {
-    history.push("/buy-policy");
+    history.push(`${company}/buy-policy`);
   };
 
   return (

@@ -1,7 +1,7 @@
 import { jsx, ThemeProvider, Themed } from "theme-ui";
 import React, { Component, useState, useEffect } from "react";
 import theme from "./theme";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./pages/Dashboard/Sidebar";
 import { login } from "./logic/actions/actions";
@@ -15,7 +15,10 @@ const url = Configs.serverless;
 function Dashboard() {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const authToken = localStorage.getItem("token");
   const [loading, setloading] = React.useState(false);
   const [products, setProducts] = React.useState([]);
@@ -42,7 +45,6 @@ function Dashboard() {
 
   React.useEffect(() => {
     const user = localStorage.getItem("customer");
-    console.log("user----", user);
     getCustomer(user);
   }, []);
 
@@ -85,7 +87,7 @@ function Dashboard() {
   // }, []);
 
   const handleBuyPolicies = () => {
-    history.push("/buy-policy");
+    history.push(`${company}/buy-policy`);
   };
   return (
     <ThemeProvider theme={theme}>

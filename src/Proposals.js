@@ -1,7 +1,7 @@
 import { jsx, ThemeProvider, Themed } from "theme-ui";
 import React, { Component, useState, useEffect } from "react";
 import theme from "./theme";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./pages/Dashboard/Sidebar";
 import searchIcon from "./Assets/svg/policy-active.svg";
@@ -10,7 +10,10 @@ import downloadIcon from "./Assets/svg/download.png";
 function Myproposals() {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const [authToken] = localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
@@ -49,12 +52,12 @@ function Myproposals() {
     console.log("logIn---", loggedIn);
     /* check token and refresh user after login */
     if (!authToken) {
-      history.push("/user-login/");
+      history.push(`${company}/user-login/`);
     }
   }, []);
 
   const handleBuyPolicies = () => {
-    history.push("/buy-policy");
+    history.push(`${company}/buy-policy`);
   };
   return (
     <ThemeProvider theme={theme}>
@@ -116,7 +119,7 @@ function Myproposals() {
                             color: "#8a9198",
                             border: "none",
                             boxShadow: "none",
-                            margin: '30px 0px',
+                            margin: "30px 0px",
                           }}
                         >
                           {"Expired"}
@@ -126,7 +129,11 @@ function Myproposals() {
                           type="submit"
                           className="login-submit"
                           onClick={handleBuyPolicies}
-                          style={{ width: 150, marginRight: 20 , margin: '30px 0px',}}
+                          style={{
+                            width: 150,
+                            marginRight: 20,
+                            margin: "30px 0px",
+                          }}
                         >
                           {loading ? "Please wait..." : "Buy Now"}
                         </button>
@@ -151,10 +158,10 @@ function Myproposals() {
               </div>
             ) : (
               <div className="buypolicy-container">
-              <div
-                className="policy-container"
-                style={{ textAlign: "center" }}
-              >
+                <div
+                  className="policy-container"
+                  style={{ textAlign: "center" }}
+                >
                   <div style={{ padding: 20 }}>
                     You have not purchased any Policy till now
                   </div>
@@ -162,7 +169,11 @@ function Myproposals() {
                     type="submit"
                     className="login-submit"
                     onClick={handleBuyPolicies}
-                    style={{ marginTop: 0, marginBottom: 30 ,margin: '30px 0px'}}
+                    style={{
+                      marginTop: 0,
+                      marginBottom: 30,
+                      margin: "30px 0px",
+                    }}
                   >
                     {loading ? "Please wait..." : "Buy First Policy"}
                   </button>

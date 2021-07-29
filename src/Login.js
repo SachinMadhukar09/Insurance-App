@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import "./main.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./logic/actions/actions";
 
@@ -16,7 +16,10 @@ const url = Configs.endpoint;
 const Login = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const [loading, setloading] = React.useState(false);
   const [reqotp, setReqotp] = React.useState(false);
   const [phone, setPhone] = React.useState("");
@@ -32,7 +35,7 @@ const Login = () => {
 
   const checkuser = () => {
     if (loggedIn) {
-      history.push("/dashboard", { username: userName });
+      history.push(`${company}/dashboard`, { username: userName });
     } else {
       getGeoInfo();
     }
@@ -127,21 +130,13 @@ const Login = () => {
 
   const resendOTP = async () => {
     try {
-      console.log(
-        "response---",
-        JSON.stringify({
-          phone: phone,
-          countryCode: countryCode,
-          companyName: companyName,
-        })
-      );
       await getGeoInfo();
       const response = await axios.post(`${url}/customer/login`, {
         phone: phone,
         countryCode: countryCode,
         companyName: companyName,
       });
-      console.log("response---", response);
+    
       if (response) {
        
         setloading(false);
@@ -168,13 +163,13 @@ const Login = () => {
         confirmationResult
           .confirm(code)
           .then((result) => {
-            console.log("result----", result);
+          
             const user = result.user.displayName;
             let token = result.user.refreshToken;
             localStorage.setItem("token", token);
             localStorage.setItem("username", user);
             dispatch(login({ username: user }));
-            history.push("/dashboard", { username: user });
+            history.push(`${company}/dashboard`, { username: user });
             setloading(false);
           })
           .catch((error) => {

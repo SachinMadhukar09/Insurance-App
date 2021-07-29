@@ -1,21 +1,26 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import "../gmcproducts.css";
 
-const BasicDetails = () => {
+const BasicDetails = (props) => {
   const [employeeNumber, setEmployees] = useState("3");
   const [selectmsg, setSelectMsg] = useState(false);
   const [className, setclassName] = useState(false);
+  // console.log('props---', props)
 
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const history = useHistory();
 
   const Onfreshpolicies = () => {
-    history.push("/gmcproducts");
+    history.push(`/${company}/gmcproducts`);
     setclassName(true);
   };
 
   const OnExistspolicies = () => {
-    history.push("/gmcexisting");
+    history.push(`/${company}/gmcexisting`);
   };
 
   const increaseNumber = () => {
@@ -46,6 +51,10 @@ const BasicDetails = () => {
     setEmployees(`${event.target.value}`);
   };
 
+  const OnNextClick = () => {
+    props.setEmployees(employeeNumber);
+    props.jumpToStep(1);
+  };
   return (
     <div>
       <div className="basic-details">
@@ -74,7 +83,7 @@ const BasicDetails = () => {
                 onChange={inputempNumber}
                 value={employeeNumber.toString()}
               />
-             
+
               <button onClick={increaseNumber} className="plus-btn"></button>
             </div>
             {selectmsg ? (
@@ -85,6 +94,12 @@ const BasicDetails = () => {
         <div className="gmc-picture">
           <img />
         </div>
+      </div>
+      <div className="btn-gmc-container">
+        {/* <button className="draftbtn">Save as Draft</button> */}
+        <button className="confirmbtn next-btn" onClick={OnNextClick}>
+          Next
+        </button>
       </div>
     </div>
   );
