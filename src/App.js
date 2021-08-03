@@ -118,17 +118,17 @@ function App() {
         <Route exact path="/:company/car-quotes" component={CarInsurance} />
         <Route exact path="/:company/details" component={Details} />
         <Route exact path="/:company/health-quotes" component={Quotes} />
-        <Route exact path="/declaration" component={Declaration} />
-        <Route exact path="/travelInsurance" component={TravelInsurance} />
+        <Route exact path="/:company/declaration" component={Declaration} />
+        <Route exact path="/:company/travelInsurance" component={TravelInsurance} />
 
         {/* <Switch> */}
-        <Route exact path="/traveller-details" component={TravellerDetails} />
+        <Route exact path="/:company/traveller-details" component={TravellerDetails} />
         {/* </Switch> */}
-        <Route exact path="/traveller-quotes" component={TravelerQuotes} />
+        <Route exact path="/:company/traveller-quotes" component={TravelerQuotes} />
         <Switch>
           <Route
             exact
-            path="/termInsurance-details"
+            path="/:company/termInsurance-details"
             component={TermInsuranceDetails}
           />
         </Switch>
@@ -149,13 +149,13 @@ function App() {
 
         <Route exact path="/:company/gmcproducts" component={Gmcproducts} />
 
-        <Route exact path="/two-wheeler-plans" component={TwoWheelerPlans} />
+        <Route exact path="/:company/two-wheeler-plans" component={TwoWheelerPlans} />
         <Route
           exact
-          path="/housing-society"
+          path="/:company/housing-society"
           component={HousingInsuranceDetails}
         />
-        <Route exact path="/contact-form" component={ClientForm} />
+        <Route exact path="/:company/contact-form" component={ClientForm} />
 
         {/* <Footer /> */}
       </Router>

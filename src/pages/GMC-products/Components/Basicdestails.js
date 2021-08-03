@@ -6,7 +6,7 @@ const BasicDetails = (props) => {
   const [employeeNumber, setEmployees] = useState("3");
   const [selectmsg, setSelectMsg] = useState(false);
   const [className, setclassName] = useState(false);
-  // console.log('props---', props)
+  const [errormsg, setErrorMsg] = useState("");
 
   let { company } = useParams();
   if (!company) {
@@ -15,11 +15,13 @@ const BasicDetails = (props) => {
   const history = useHistory();
 
   const Onfreshpolicies = () => {
+    setErrorMsg("");
     history.push(`/${company}/gmcproducts`);
     setclassName(true);
   };
 
   const OnExistspolicies = () => {
+    setErrorMsg("");
     history.push(`/${company}/gmcexisting`);
   };
 
@@ -52,8 +54,13 @@ const BasicDetails = (props) => {
   };
 
   const OnNextClick = () => {
-    props.setEmployees(employeeNumber);
-    props.jumpToStep(1);
+    setSelectMsg(false)
+    if (className) {
+      props.setEmployees(employeeNumber);
+      props.jumpToStep(1);
+    }else{
+      setErrorMsg("Select Policy Type !");
+    }
   };
   return (
     <div>
@@ -88,19 +95,22 @@ const BasicDetails = (props) => {
             </div>
             {selectmsg ? (
               <p className="selectmsg">** Select between 3-1000 members</p>
-            ) : null}
+            ) : <p className="text-danger" style={{marginTop:20, marginBottom:-20}}>{errormsg}</p>}
+            
           </div>
         </div>
         <div className="gmc-picture">
           <img />
         </div>
       </div>
+
       <div className="btn-gmc-container">
         {/* <button className="draftbtn">Save as Draft</button> */}
         <button className="confirmbtn next-btn" onClick={OnNextClick}>
           Next
         </button>
       </div>
+      
     </div>
   );
 };

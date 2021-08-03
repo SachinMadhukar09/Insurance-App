@@ -12,6 +12,7 @@ const url = Configs.endpoint;
 
 function PolicyBazar(props) {
   let { company } = useParams();
+  const clientId = localStorage.getItem("clientId");
 
   const getClients = async () => {
     try {
@@ -21,8 +22,10 @@ function PolicyBazar(props) {
         localStorage.setItem("clientId", response.data[0].xpcClientId);
       }
     } catch (error) {
-      localStorage.removeItem("clientId");
-      localStorage.removeItem("company");
+      if (!clientId) {
+        localStorage.removeItem("clientId");
+        localStorage.removeItem("company");
+      }
     }
   };
 

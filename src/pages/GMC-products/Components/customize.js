@@ -3,11 +3,11 @@ import { useHistory } from "react-router-dom";
 import Progress from "react-progressbar";
 
 const Customizes = (props) => {
-  const [employeeNumber, setEmployees] = useState("3");
-  const [employeeNumber1, setEmployees1] = useState("3");
-  const [employeeNumber2, setEmployees2] = useState("3");
-  const [employeeNumber3, setEmployees3] = useState("3");
-  const [employeeNumber4, setEmployees4] = useState("3");
+  const [employeeNumber, setEmployees] = useState("");
+  const [employeeNumber1, setEmployees1] = useState("");
+  const [employeeNumber2, setEmployees2] = useState("");
+  const [employeeNumber3, setEmployees3] = useState("");
+  const [employeeNumber4, setEmployees4] = useState("");
   const [selectmsg, setSelectMsg] = useState(false);
   const [selectmsg1, setSelectMsg1] = useState(false);
   const [selectmsg2, setSelectMsg2] = useState(false);
@@ -19,37 +19,52 @@ const Customizes = (props) => {
   const [matentrityCover, setMatentrityCover] = useState(true);
   const [organDonorExpense, setorganDonorExpense] = useState(true);
   const [altTreatment, setAltertreatment] = useState(true);
-  const [roomrate, setRoomRent] = useState("");
   const [memberType, setMemeberType] = useState("");
-  const [btnActive, setBtnActive] = React.useState({});
+  const [accomdationRent, setAccomdationVal] = React.useState("");
+  const [accomdationMsg, setAccomdationMsg] = React.useState("");
+  const [memeberMsg, setMemeberMsg] = React.useState("");
+  // const [errors, setError] = React.useState({
+  //   accomdation: "",
+  //   memberType: "",
+  // });
 
   const history = useHistory();
 
   const agegroups = ["18-25", "26-40", "41-60", "61-80", "81-above"];
 
   const setEmployeeDetails = () => {
-    props.setdetails({
-      totalEmployees: props.totalEmployees,
-      customerId: localStorage.getItem("customer"),
-      companyId: "cc1d",
-      type: "proposal",
-      brokerId: "8f599a",
-      createdAt: new Date().getTime(),
-      quotationName: "gmc",
-      quotationAmount: {
-        amountActual: 100.0,
-        amountFormatted: 100, 
-      },
-      memberDetails: memberdetails,
-      preExistingDiseaseCover: preExDiseaseCover,
-      prePostHospitalisationExpenses: hospitalisationExpenses,
-      maternityBenifitNewBornBabyCover: matentrityCover,
-      organDonorExpense: organDonorExpense,
-      alternateTreatmentCover: altTreatment,
-      accomdationRoomRentLimits: roomrate,
-      memberType: memberType,
-    });
-    props.jumpToStep(2);
+    if (!accomdationRent) {
+      // errors["accomdation"] = "Select Room Rent Limit";
+      setAccomdationMsg("Select Room Rent Limit");
+    }
+    if (!memberType) {
+      // errors["memberType"] = "Select Memeber Type";
+      setMemeberMsg("Select Memeber Type");
+    }
+    if (accomdationRent && memberType) {
+      props.setdetails({
+        totalEmployees: props.totalEmployees,
+        customerId: localStorage.getItem("customer"),
+        companyId: "cc1d",
+        type: "proposal",
+        brokerId: "8f599a",
+        createdAt: new Date().getTime(),
+        quotationName: "gmc",
+        quotationAmount: {
+          amountActual: 100.0,
+          amountFormatted: 100,
+        },
+        memberDetails: memberdetails,
+        preExistingDiseaseCover: preExDiseaseCover,
+        prePostHospitalisationExpenses: hospitalisationExpenses,
+        maternityBenifitNewBornBabyCover: matentrityCover,
+        organDonorExpense: organDonorExpense,
+        alternateTreatmentCover: altTreatment,
+        accomdationRoomRentLimits: accomdationRent,
+        memberType: memberType,
+      });
+      props.jumpToStep(2);
+    }
   };
 
   const increaseNumber = (val) => {
@@ -190,7 +205,6 @@ const Customizes = (props) => {
     }
   };
 
-  
   const onValChange = (event) => {
     let valname = event.target.name;
     let noOfmembers;
@@ -228,6 +242,14 @@ const Customizes = (props) => {
     setMembers(memberdetails);
   };
 
+  const setAccomdation = (event) => {
+    if (event.target.value) {
+      // errors["accomdation"] = "";
+      setAccomdationMsg("");
+      setAccomdationVal(event.target.value);
+    }
+  };
+
   return (
     <div className="gmc-container">
       <h3>Age Group and Member Details</h3>
@@ -245,77 +267,6 @@ const Customizes = (props) => {
                   readOnly={true}
                 />
               ))}
-              {/* <input
-                type="text"
-                name="age1"
-                id="age1"
-                value="18-25"
-                readOnly={true}
-              /> */}
-              {/* <datalist id="agegrps1">
-                <option value="18-25" selected />
-                <option value="26-40" />
-                <option value="41-60" />
-                <option value="61-80" />
-                <option value="81 above" />
-              </datalist> */}
-              {/* <input
-                type="text"
-                name="age2"
-                id="age2"
-                value="26-40"
-                readOnly={true}
-              /> */}
-              {/* <input list="agegrps2" name="age2" id="age2" /> */}
-              {/* <datalist id="agegrps2">
-                <option value="18-25" />
-                <option value="26-40" selected />
-                <option value="41-60" />
-                <option value="61-80" />
-                <option value="81 above" />
-              </datalist> */}
-              {/* <input
-                type="text"
-                name="age3"
-                id="age3"
-                value="41-60"
-                readOnly={true}
-              /> */}
-              {/* <datalist id="agegrps1">
-                <option value="18-25" />
-                <option value="26-40" />
-                <option value="41-60" selected />
-                <option value="61-80" />
-                <option value="81 above" />
-              </datalist> */}
-              {/* <input
-                type="text"
-                name="age4"
-                id="age4"
-                value="61-80"
-                readOnly={true}
-              /> */}
-              {/* <datalist id="agegrps2">
-                <option value="18-25" />
-                <option value="26-40" />
-                <option value="41-60" />
-                <option value="61-80" selected />
-                <option value="81 above" />
-              </datalist> */}
-              {/* <input
-                type="text"
-                name="age5"
-                id="age5"
-                value="81-above"
-                readOnly={true}
-              /> */}
-              {/* <datalist id="agegrps2">
-                <option value="18-25" />
-                <option value="26-40" />
-                <option value="41-60" />
-                <option value="61-80" />
-                <option value="81 above" selected />
-              </datalist> */}
             </div>
             <div className="sum-insured">
               <p>Sum Insured</p>
@@ -629,14 +580,12 @@ const Customizes = (props) => {
           <div>
             <h3>Accomdation/Room Rent Limits</h3>
             <div className="btn-gmc-container">
-              <select>
-                <option selected> Normal Room 1%/ ICU Room 2%</option>
-                {/* <option>option1</option>
-                <option>option1</option>
-                <option>option1</option>
-                <option>option1</option> */}
+              <select value={accomdationRent} onChange={setAccomdation}>
+                <option value="" hidden={accomdationRent ? true : false}>Select Accomdation Rent Limit</option>
+                <option> Normal Room 1%/ ICU Room 2%</option>
               </select>
             </div>
+            <p className="text-danger">{accomdationMsg}</p>
           </div>
           <div>
             <h3>Select Member Type</h3>
@@ -645,7 +594,10 @@ const Customizes = (props) => {
                 className={
                   "expenses" + (memberType == "self" ? " active-btn" : "")
                 }
-                onClick={() => setMemeberType("self")}
+                onClick={() => {
+                  setMemeberType("self");
+                  setMemeberMsg("");
+                }}
               >
                 Self
               </button>
@@ -653,7 +605,10 @@ const Customizes = (props) => {
                 className={
                   "expenses" + (memberType == "spouse" ? " active-btn" : "")
                 }
-                onClick={() => setMemeberType("spouse")}
+                onClick={() => {
+                  setMemeberType("spouse");
+                  setMemeberMsg("");
+                }}
               >
                 Spouse/Partner
               </button>
@@ -661,11 +616,15 @@ const Customizes = (props) => {
                 className={
                   "expenses" + (memberType == "child" ? " active-btn" : "")
                 }
-                onClick={() => setMemeberType("child")}
+                onClick={() => {
+                  setMemeberType("child");
+                  setMemeberMsg("");
+                }}
               >
                 Child
               </button>
             </div>
+            <p className="text-danger">{memeberMsg}</p>
           </div>
           <div className="btn-gmc-container">
             <button className="draftbtn">Save as Draft</button>
