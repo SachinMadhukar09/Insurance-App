@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import MicroHeader from "./Header";
 import "./Microproducts.css";
@@ -7,9 +7,12 @@ import "./Microproducts.css";
 
 const Microproduct2 = () => {
   const history = useHistory()
-
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const onClickNext = ()=>{
-    history.push('/micro-page3')
+    history.push(`${company}/micro-page3`)
   }
   return (
     <div className="micro_wrapper">

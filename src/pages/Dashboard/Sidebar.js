@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSideBar } from "../../logic/actions/actions";
 import { useLocation } from "react-router-dom";
@@ -6,9 +6,12 @@ import homeIcon from "../../Assets/svg/home.svg";
 import homeActiveIcon from "../../Assets/svg/home-active.svg";
 import "./sidebar.css";
 
-
 const SideBar = () => {
   const { pathname } = useLocation();
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
 
   const history = useHistory();
   const showSideBar = useSelector((state) => state.user.showSideBar);
@@ -16,19 +19,19 @@ const SideBar = () => {
 
   const goTo = (path) => {
     history.push(path);
-    if (showSideBar) {
-      dispatch(toggleSideBar());
-    }
+    // if (showSideBar) {
+    //   dispatch(toggleSideBar());
+    // }
   };
   return (
     <div className="sidebar-container" showSideBar={showSideBar}>
       <div
         className="link-container"
-        onClick={() => goTo("/dashboard")}
-        active={pathname === "/dashboard"}
+        onClick={() => goTo(`/${company}/dashboard`)}
+        active={pathname === `/${company}/dashboard`}
       >
         <div className="icon-container">
-          {pathname === "/dashboard" ? (
+          {pathname === `/${company}/dashboard` ? (
             <img src={homeActiveIcon} alt="HomeIcon" />
           ) : (
             <img src={homeIcon} alt="HomeIcon" />
@@ -37,7 +40,7 @@ const SideBar = () => {
         <h3
           className="link"
           style={
-            pathname === "/dashboard"
+            pathname === `/${company}/dashboard`
               ? { color: "#ea8283" }
               : { color: "#394042" }
           }
@@ -48,11 +51,11 @@ const SideBar = () => {
 
       <div
         className="link-container"
-        onClick={() => goTo("/policies")}
-        active={pathname === "/policies"}
+        onClick={() => goTo(`/${company}/products`)}
+        active={pathname === `/${company}/products`}
       >
         <div className="icon-container">
-          {pathname === "/policies" ? (
+          {pathname === `/${company}/products` ? (
             <img src={homeActiveIcon} alt="HomeIcon" />
           ) : (
             <img src={homeIcon} alt="HomeIcon" />
@@ -61,7 +64,31 @@ const SideBar = () => {
         <h3
           className="link"
           style={
-            pathname === "/policies"
+            pathname === `/${company}/products`
+              ? { color: "#ea8283" }
+              : { color: "#394042" }
+          }
+        >
+          Products
+        </h3>
+      </div>
+
+      <div
+        className="link-container"
+        onClick={() => goTo(`/${company}/policies`)}
+        active={pathname === `/${company}/policies`}
+      >
+        <div className="icon-container">
+          {pathname === `/${company}/policies` ? (
+            <img src={homeActiveIcon} alt="HomeIcon" />
+          ) : (
+            <img src={homeIcon} alt="HomeIcon" />
+          )}
+        </div>
+        <h3
+          className="link"
+          style={
+            pathname === `/${company}/policies`
               ? { color: "#ea8283" }
               : { color: "#394042" }
           }
@@ -72,11 +99,11 @@ const SideBar = () => {
 
       <div
         className="link-container"
-        onClick={() => goTo("/quotes")}
-        active={pathname === "/quotes"}
+        onClick={() => goTo(`/${company}/quotes`)}
+        active={pathname === `/${company}/quotes`}
       >
         <div className="icon-container">
-          {pathname === "/quotes" ? (
+          {pathname === `/${company}/quotes` ? (
             <img src={homeActiveIcon} alt="HomeIcon" />
           ) : (
             <img src={homeIcon} alt="HomeIcon" />
@@ -85,7 +112,9 @@ const SideBar = () => {
         <h3
           className="link"
           style={
-            pathname === "/quotes" ? { color: "#ea8283" } : { color: "#394042" }
+            pathname === `/${company}/quotes`
+              ? { color: "#ea8283" }
+              : { color: "#394042" }
           }
         >
           Quotes
@@ -94,11 +123,11 @@ const SideBar = () => {
 
       <div
         className="link-container"
-        onClick={() => goTo("/proposals")}
-        active={pathname === "/proposals"}
+        onClick={() => goTo(`/${company}/proposals`)}
+        active={pathname === `/${company}/proposals`}
       >
         <div className="icon-container">
-          {pathname === "/proposals" ? (
+          {pathname === `/${company}/proposals` ? (
             <img src={homeActiveIcon} alt="HomeIcon" />
           ) : (
             <img src={homeIcon} alt="HomeIcon" />
@@ -107,7 +136,7 @@ const SideBar = () => {
         <h3
           className="link"
           style={
-            pathname === "/proposals"
+            pathname === `/${company}/proposals`
               ? { color: "#ea8283" }
               : { color: "#394042" }
           }
@@ -118,11 +147,11 @@ const SideBar = () => {
 
       <div
         className="link-container"
-        onClick={() => goTo("/claims")}
-        active={pathname === "/claims"}
+        onClick={() => goTo(`/${company}/claims`)}
+        active={pathname === `/${company}/claims`}
       >
         <div className="icon-container">
-          {pathname === "/claims" ? (
+          {pathname === `/${company}/claims` ? (
             <img src={homeActiveIcon} alt="HomeIcon" />
           ) : (
             <img src={homeIcon} alt="HomeIcon" />
@@ -131,7 +160,9 @@ const SideBar = () => {
         <h3
           className="link"
           style={
-            pathname === "/claims" ? { color: "#ea8283" } : { color: "#394042" }
+            pathname === `/${company}/claims`
+              ? { color: "#ea8283" }
+              : { color: "#394042" }
           }
         >
           Claims
@@ -140,11 +171,11 @@ const SideBar = () => {
 
       <div
         className="link-container"
-        onClick={() => goTo("/profile")}
-        active={pathname === "/profile"}
+        onClick={() => goTo(`/${company}/profile`)}
+        active={pathname === `/${company}/profile`}
       >
         <div className="icon-container">
-          {pathname === "/profile" ? (
+          {pathname === `/${company}/profile` ? (
             <img src={homeActiveIcon} alt="HomeIcon" />
           ) : (
             <img src={homeIcon} alt="HomeIcon" />
@@ -153,7 +184,7 @@ const SideBar = () => {
         <h3
           className="link"
           style={
-            pathname === "/profile"
+            pathname === `/${company}/profile`
               ? { color: "#ea8283" }
               : { color: "#394042" }
           }
@@ -164,11 +195,11 @@ const SideBar = () => {
 
       <div
         className="link-container"
-        onClick={() => goTo("/help")}
-        active={pathname === "/help"}
+        onClick={() => goTo(`/${company}/help`)}
+        active={pathname === `/${company}/help`}
       >
         <div className="icon-container">
-          {pathname === "/help" ? (
+          {pathname === `/${company}/help` ? (
             <img src={homeActiveIcon} alt="HomeIcon" />
           ) : (
             <img src={homeIcon} alt="HomeIcon" />
@@ -177,7 +208,9 @@ const SideBar = () => {
         <h3
           className="link"
           style={
-            pathname === "/help" ? { color: "#ea8283" } : { color: "#394042" }
+            pathname === `/${company}/help`
+              ? { color: "#ea8283" }
+              : { color: "#394042" }
           }
         >
           Help

@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 
-const CompanyDetails = () => {
+const CompanyDetails = (props) => {
   const [errormsg, seterrormsg] = React.useState("");
   const [companygst, setCompanyGst] = React.useState("");
   const [companyName, setCompanyName] = React.useState("");
@@ -51,6 +51,9 @@ const CompanyDetails = () => {
           <input type="text" placeholder="Full Name" name="companygst" />
           <div className="btn-gmc-container">
             <button className="draftbtn">Save as Draft</button>
+            <button className="confirmbtn" onClick={()=> props.jumpToStep(3)}>
+              Next
+            </button>
           </div>
         </div>
         <div>

@@ -1,21 +1,28 @@
-import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import "../gmcproducts.css";
 
-const BasicDetails = () => {
+const BasicDetails = (props) => {
   const [employeeNumber, setEmployees] = useState("3");
   const [selectmsg, setSelectMsg] = useState(false);
   const [className, setclassName] = useState(false);
+  const [errormsg, setErrorMsg] = useState("");
 
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const history = useHistory();
 
   const Onfreshpolicies = () => {
-    history.push("/gmcproducts");
+    setErrorMsg("");
+    history.push(`/${company}/gmcproducts`);
     setclassName(true);
   };
 
   const OnExistspolicies = () => {
-    history.push("/gmcexisting");
+    setErrorMsg("");
+    history.push(`/${company}/gmcexisting`);
   };
 
   const increaseNumber = () => {
@@ -46,6 +53,15 @@ const BasicDetails = () => {
     setEmployees(`${event.target.value}`);
   };
 
+  const OnNextClick = () => {
+    setSelectMsg(false)
+    if (className) {
+      props.setEmployees(employeeNumber);
+      props.jumpToStep(1);
+    }else{
+      setErrorMsg("Select Policy Type !");
+    }
+  };
   return (
     <div>
       <div className="basic-details">
@@ -74,18 +90,27 @@ const BasicDetails = () => {
                 onChange={inputempNumber}
                 value={employeeNumber.toString()}
               />
-             
+
               <button onClick={increaseNumber} className="plus-btn"></button>
             </div>
             {selectmsg ? (
               <p className="selectmsg">** Select between 3-1000 members</p>
-            ) : null}
+            ) : <p className="text-danger" style={{marginTop:20, marginBottom:-20}}>{errormsg}</p>}
+            
           </div>
         </div>
         <div className="gmc-picture">
           <img />
         </div>
       </div>
+
+      <div className="btn-gmc-container">
+        {/* <button className="draftbtn">Save as Draft</button> */}
+        <button className="confirmbtn next-btn" onClick={OnNextClick}>
+          Next
+        </button>
+      </div>
+      
     </div>
   );
 };

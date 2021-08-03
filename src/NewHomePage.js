@@ -161,7 +161,7 @@ const NewHomePage = (props) => {
               ) : index == 11 ? (
                 <div
                   onClick={() => {
-                    history.push("/products");
+                    history.push(`${company}/allproducts`);
                   }}
                   className="product_card"
                 >

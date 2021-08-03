@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import "./main.css";
 import loginIcon from "./Assets/svg/mbri-login.svg";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "./logic/actions/actions";
 import bellIcon from "./Assets/svg/bell.png";
@@ -11,7 +11,10 @@ import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const { pathname } = useLocation();
-
+  let { company } = useParams();
+  if (!company) {
+    company = localStorage.getItem("company");
+  }
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [className, setclassName] = React.useState(false);
 
@@ -23,9 +26,8 @@ const Header = () => {
     dispatch(logout());
     history.push("/");
   };
-
-  console.log("location--", window.location.pathname);
-  if (pathname === "/user-login/") {
+  
+  if (pathname === `/${company}/user-login/`) {
     return (
       <div className="header-wrapper">
         <div className="main-header">
@@ -374,7 +376,7 @@ const Header = () => {
                   Logout
                 </button>
               ) : (
-                <a className="open-login-form" href="/user-login/">
+                <a className="open-login-form" href={company + "/user-login/"}>
                   <object
                     type="image/svg+xml"
                     className="svgicon"
