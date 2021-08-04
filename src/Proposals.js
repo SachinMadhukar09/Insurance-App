@@ -88,7 +88,7 @@ function Myproposals() {
                           )}
                         </div>
 
-                        <div className="logo-caption">{product.IceName}</div>
+                        {/* <div className="logo-caption">{product.IceName}</div> */}
                       </div>
 
                       {/* <div className="product-table"> */}
@@ -110,7 +110,7 @@ function Myproposals() {
                       {product.expired ? (
                         <button
                           type="submit"
-                          className="login-submit"
+                          className="login-submit buynowbtn"
                           //   onClick={}
                           style={{
                             width: 150,
@@ -127,7 +127,7 @@ function Myproposals() {
                       ) : (
                         <button
                           type="submit"
-                          className="login-submit"
+                          className="login-submit buynowbtn"
                           onClick={handleBuyPolicies}
                           style={{
                             width: 150,

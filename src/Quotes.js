@@ -4,7 +4,6 @@ import theme from "./theme";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SideBar from "./pages/Dashboard/Sidebar";
-import axios from "axios";
 import Configs from "./configs/config";
 
 const url = Configs.serverless;
@@ -12,7 +11,7 @@ const url = Configs.serverless;
 function Userquotes() {
   const history = useHistory();
   const dispatch = useDispatch();
-  
+
   let { company } = useParams();
   if (!company) {
     company = localStorage.getItem("company");
@@ -26,7 +25,7 @@ function Userquotes() {
 
   React.useEffect(() => {
     console.log("logIn---", loggedIn);
-   
+
     if (!authToken) {
       history.push(`${company}/user-login/`);
     }
@@ -35,27 +34,20 @@ function Userquotes() {
   }, []);
 
   const getProducts = async (id) => {
-    try {
-      fetch(`${url}/quotations/${id}/${pagenumber}`)
-        .then((response) => response.json())
-        .then((data) => console.log(data));
-      // const response = await axios.get(
-      //   `${url}/quotations/${id}/${pagenumber}`,
-      //   {
-      //     headers: {
-      //       "Access-Control-Allow-Origin": "*",
-      //       "x-requested-with": "XMLHttpRequest",
-      //       "content-type": "application/json",
-      //     },
-      //   }
-      // );
-      // console.log("response---", response);
-      // if (response) {
-      //   setProducts(response.data.data);
-      // }
-    } catch (error) {
-      setProducts([]);
-    }
+    fetch(`${url}/quotations/${id}/${pagenumber}`)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data && data.data.length) {
+          setProducts(data.data);
+        } else {
+          setProducts([]);
+        }
+      })
+      .catch((error) => {
+        setProducts([]);
+        console.error("Error:", error);
+      });
   };
   const handleBuyPolicies = () => {
     history.push(`${company}/buy-policy`);
@@ -93,16 +85,19 @@ function Userquotes() {
                         <div className="logo-caption">{product.IceName}</div>
                       </div>
 
-                      {/* <div className="product-table"> */}
-                      {/* <div className="product-tab"> */}
                       <div className="product-table">
                         <div className="tab-head">Cover</div>
-                        <div className="tab-value">{product.cover}</div>
+                        <div className="tab-value">
+                          {product.cover ? product.cover : "__"}
+                        </div>
                       </div>
 
                       <div className="product-table">
                         <div className="tab-head">Premium</div>
-                        <div className="tab-value">{product.premium}</div>
+                        <div className="tab-value">
+                          {" "}
+                          {product.cover ? product.cover : "__"}
+                        </div>
                       </div>
 
                       <div className="product-table">
@@ -117,7 +112,7 @@ function Userquotes() {
                       {product.isDeleted ? (
                         <button
                           type="submit"
-                          className="login-submit"
+                          className="login-submit buynowbtn"
                           //   onClick={}
                           style={{
                             width: 150,
@@ -131,27 +126,13 @@ function Userquotes() {
                       ) : (
                         <button
                           type="submit"
-                          className="login-submit"
+                          className="login-submit buynowbtn"
                           onClick={handleBuyPolicies}
                           style={{ width: 150, marginRight: 20 }}
                         >
                           {loading ? "Please wait..." : "Buy Now"}
                         </button>
                       )}
-                      {/* </div> */}
-                      {/* <div className="product-icon">
-                        <img
-                          src={downloadIcon}
-                          alt="Icon"
-                          className="download-icon"
-                        />
-
-                        <img
-                          src={searchIcon}
-                          alt="Icon"
-                          className="latter-search"
-                        />
-                      </div> */}
                     </div>
                   </div>
                 ))}
@@ -176,7 +157,6 @@ function Userquotes() {
                 </div>
               </div>
             )}
-            {/* <div className="side-img">{false ? <img src="#" /> : null}</div> */}
           </div>
         </div>
       </div>

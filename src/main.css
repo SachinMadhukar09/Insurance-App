@@ -970,8 +970,8 @@ wrapper__social a {
   z-index: 15;
   box-shadow: 0 0 10px 1px rgb(68 102 242 / 5%);
   align-items: center;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .header-wrapper .main-header,
@@ -1896,6 +1896,20 @@ ul.sub-nav-list > li > a {
   margin-bottom: 0px;
   padding: 20px 0px 0px 20px;
   box-shadow: 0 6px 16px rgb(52 105 203 / 16%);
+}
+
+.buynowbtn {
+  width: 150px;
+  margin: inherit;
+  height: 53px;
+  margin-top: 15px;
+  padding: 0;
+}
+
+.product-heading {
+  margin-left: 35px;
+  margin-bottom: 10px;
+  margin-top: 5px;
 }
 
 .listing-container {
