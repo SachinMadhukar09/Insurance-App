@@ -50,6 +50,7 @@ import qs from "qs";
 
 import ClientForm from "./pages/ClientContact/ClientForm";
 import NewProducts from "./pages/Dashboard/Products/products";
+import HealthClaims from "./pages/Claims.js/HealthClaims";
 
 const url = Configs.endpoint;
 
@@ -62,7 +63,7 @@ function App() {
   const toggleCompany = (company) => {
     setCompany(company);
   };
-  
+
   // const apiKey = 'AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
   // const url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDCyrPiAOAeqLWEuuDrnVWg5RcBUQv3BLA'
 
@@ -119,12 +120,24 @@ function App() {
         <Route exact path="/:company/details" component={Details} />
         <Route exact path="/:company/health-quotes" component={Quotes} />
         <Route exact path="/:company/declaration" component={Declaration} />
-        <Route exact path="/:company/travelInsurance" component={TravelInsurance} />
+        <Route
+          exact
+          path="/:company/travelInsurance"
+          component={TravelInsurance}
+        />
 
         {/* <Switch> */}
-        <Route exact path="/:company/traveller-details" component={TravellerDetails} />
+        <Route
+          exact
+          path="/:company/traveller-details"
+          component={TravellerDetails}
+        />
         {/* </Switch> */}
-        <Route exact path="/:company/traveller-quotes" component={TravelerQuotes} />
+        <Route
+          exact
+          path="/:company/traveller-quotes"
+          component={TravelerQuotes}
+        />
         <Switch>
           <Route
             exact
@@ -149,13 +162,19 @@ function App() {
 
         <Route exact path="/:company/gmcproducts" component={Gmcproducts} />
 
-        <Route exact path="/:company/two-wheeler-plans" component={TwoWheelerPlans} />
+        <Route
+          exact
+          path="/:company/two-wheeler-plans"
+          component={TwoWheelerPlans}
+        />
         <Route
           exact
           path="/:company/housing-society"
           component={HousingInsuranceDetails}
         />
         <Route exact path="/:company/contact-form" component={ClientForm} />
+
+        <Route exact path="/:claim/health-claim" component={HealthClaims} />
 
         {/* <Footer /> */}
       </Router>

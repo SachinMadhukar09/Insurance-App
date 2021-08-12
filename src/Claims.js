@@ -20,7 +20,6 @@ function MyClaims() {
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
 
-
   const products = [
     {
       productName: "ins product name",
