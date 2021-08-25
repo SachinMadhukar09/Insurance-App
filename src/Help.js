@@ -13,15 +13,15 @@ function Helps() {
   if (!company) {
     company = localStorage.getItem("company");
   }
-  const [authToken] = localStorage.getItem("token");
+  // const [authToken] = localStorage.getItem("token");
   const loggedIn = useSelector((state) => state.user.loggedIn);
 
   React.useEffect(() => {
     console.log("logIn---", loggedIn);
     /* check token and refresh user after login */
-    if (!authToken) {
-      history.push(`${company}/user-login/`);
-    }
+    // if (!authToken) {
+    //   history.push(`${company}/user-login/`);
+    // }
   }, []);
 
   return (

@@ -51,6 +51,7 @@ import qs from "qs";
 import ClientForm from "./pages/ClientContact/ClientForm";
 import NewProducts from "./pages/Dashboard/Products/products";
 import HealthClaims from "./pages/Claims.js/HealthClaims";
+import "font-awesome/css/font-awesome.min.css";
 
 const url = Configs.endpoint;
 

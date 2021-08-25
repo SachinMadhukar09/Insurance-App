@@ -73,11 +73,6 @@ const Header = () => {
                 : "nav-items-left hidden-xs header-ver2"
             }
           >
-            <li className="nav-item-drodown" style={{ margin: "7px 44px" }}>
-              <a className="open-claim-form" href="/submit-claim-request/">
-                Renew your policy
-              </a>
-            </li>
             <li className="nav-item-dropdown">
               <span>Insurance</span>
               <span className="menu-dropdown-font"></span>
@@ -363,6 +358,11 @@ const Header = () => {
                   <a href="/articles/">GMC</a>
                 </li>
               </ul>
+            </li>
+            <li className="nav-item-drodown" style={{ margin: "7px 44px" }}>
+              <a className="open-claim-form" href="/submit-claim-request/">
+                Renew your policy
+              </a>
             </li>
           </ul>
           <ul className="nav-items-right">

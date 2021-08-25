@@ -122,7 +122,7 @@ function AtHospital() {
   };
   return (
     <div class="form">
-      <form>
+      <form style={{ marginTop: "-10px" }}>
         <label for="cityname">City</label>
         <input
           id="cityname"

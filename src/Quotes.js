@@ -16,7 +16,7 @@ function Userquotes() {
   if (!company) {
     company = localStorage.getItem("company");
   }
-  const [authToken] = localStorage.getItem("token");
+  // const [authToken] = localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
@@ -26,9 +26,9 @@ function Userquotes() {
   React.useEffect(() => {
     console.log("logIn---", loggedIn);
 
-    if (!authToken) {
-      history.push(`${company}/user-login/`);
-    }
+    // if (!authToken) {
+    //   history.push(`${company}/user-login/`);
+    // }
     const customerid = localStorage.getItem("customer");
     getProducts(customerid);
   }, []);

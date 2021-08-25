@@ -26,6 +26,7 @@ function HealthClaims() {
                 width: "400px",
                 padding: "40px",
                 backgroundColor: "#fa5e4b",
+                fontSize: "x-large",
               }}
             >
               <i className="ion-locked"></i> Pre-Auth
@@ -40,6 +41,7 @@ function HealthClaims() {
               width: "400px",
               padding: "40px",
               backgroundColor: "#fa5e4b",
+              fontSize: "x-large",
             }}
           >
             <i className="ion-locked"></i> Already At Hospital
@@ -47,12 +49,12 @@ function HealthClaims() {
         </div>
       </div>
       <div className="container">
-        <div className="row">
+        <div className="row" style={{ justifyContent: "space-evenly" }}>
           {" "}
           <div className="col-md-6">
             {atHospital ? <PreAuth /> : <AtHospital />}
           </div>
-          <div className="col-md-6">
+          <div className="col-md-4">
             <SelectCity />
           </div>
         </div>

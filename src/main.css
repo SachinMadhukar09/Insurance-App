@@ -1864,11 +1864,11 @@ ul.sub-nav-list > li > a {
 }
 
 .dashboard-content {
-  width: 75%;
+  width: 85%;
   /* max-width: 1200px; */
   margin: auto;
   margin-right: 80px;
-  padding: 30px;
+  padding: 10px;
   border-right: none;
   border-bottom: none;
   margin-top: 28px;

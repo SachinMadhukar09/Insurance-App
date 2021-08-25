@@ -48,36 +48,36 @@ function Dashboard() {
     getCustomer(user);
   }, []);
 
-  // const getProducts = async (token) => {
-  //   try {
-  //     console.log("token here", token);
-  //     // const response = await axios.get(`${url}/customer/products`, {
-  //     //   headers: {
-  //     //     Authorization: "Bearer " + token,
-  //     //   },
-  //     // });
-  //     // if (response) {
-  //     //   setProducts(response.data);
-  //     // }
-  //     setProducts([
-  //       {
-  //         status: false,
-  //         product_name: "Health Insurance",
-  //         insurance_type_id: "2",
-  //         insurance_category_id: "1",
-  //         product_icon:
-  //           "https://product-icon.s3.amazonaws.com/product_name/1622112148058_Health%20Insurance.svg",
-  //         xpc_insurance_product_id: "aSTo4HgwE",
-  //         createdate:
-  //           "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
-  //         updatedate:
-  //           "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
-  //       },
-  //     ]);
-  //   } catch (error) {
-  //     console.log("something went wrong:", error.response.data);
-  //   }
-  // };
+  const getProducts = async (token) => {
+    try {
+      console.log("token here", token);
+      const response = await axios.get(`${url}/customer/products`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      if (response) {
+        setProducts(response.data);
+      }
+      setProducts([
+        {
+          status: false,
+          product_name: "Health Insurance",
+          insurance_type_id: "2",
+          insurance_category_id: "1",
+          product_icon:
+            "https://product-icon.s3.amazonaws.com/product_name/1622112148058_Health%20Insurance.svg",
+          xpc_insurance_product_id: "aSTo4HgwE",
+          createdate:
+            "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
+          updatedate:
+            "Thu May 27 2021 10:42:28 GMT+0000 (Coordinated Universal Time)",
+        },
+      ]);
+    } catch (error) {
+      console.log("something went wrong:", error.response.data);
+    }
+  };
 
   // React.useEffect(() => {
   //   if (!authToken) {

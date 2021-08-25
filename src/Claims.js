@@ -15,9 +15,9 @@ function MyClaims() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [authToken] = localStorage.getItem("token");
-  const userName = useSelector((state) => state.user.username);
-  const loggedIn = useSelector((state) => state.user.loggedIn);
+  // const [authToken] = localStorage.getItem();
+  // const userName = useSelector((state) => state.user.username);
+  // const loggedIn = useSelector((state) => state.user.loggedIn);
   const [loading, setloading] = React.useState(false);
 
   const products = [
@@ -49,13 +49,13 @@ function MyClaims() {
     // },
   ];
 
-  React.useEffect(() => {
-    console.log("logIn---", loggedIn);
-    /* check token and refresh user after login */
-    if (!authToken) {
-      history.push(`${company}/user-login/`);
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   console.log("logIn---", authToken);
+  //   /* check token and refresh user after login */
+  //   if (!authToken) {
+  //     history.push(`${company}/user-login/`);
+  //   }
+  // }, []);
 
   const handleBuyPolicies = () => {
     history.push(`${company}/buy-policy`);

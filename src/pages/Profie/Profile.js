@@ -17,23 +17,23 @@ function Profile() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [authToken] = localStorage.getItem("token");
+  // const [authToken] = localStorage.getItem("token");
   const userName = useSelector((state) => state.user.username);
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const [personal, setPersonal] = React.useState(false);
   const [vehicle, setVehicle] = React.useState(false);
   const [health, setHealth] = React.useState(false);
 
-  React.useEffect(() => {
-    console.log("logIn---", loggedIn);
-    /* check token and refresh user after login */
-    if (!authToken) {
-      history.push(`${company}/user-login/`);
-    }
-    if (pathname == `/${company}/profile`) {
-      setPersonal(true);
-    }
-  }, []);
+  // React.useEffect(() => {
+  //   console.log("logIn---", loggedIn);
+  //   /* check token and refresh user after login */
+  //   if (!authToken) {
+  //     history.push(`${company}/user-login/`);
+  //   }
+  //   if (pathname == `/${company}/profile`) {
+  //     setPersonal(true);
+  //   }
+  // }, []);
 
   return (
     <ThemeProvider theme={theme}>

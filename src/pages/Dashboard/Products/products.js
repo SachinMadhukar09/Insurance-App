@@ -3,6 +3,20 @@ import { useHistory, useParams } from "react-router-dom";
 import SideBar from "../Sidebar";
 import axios from "axios";
 import Configs from "../../../configs/config";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+  },
+});
 
 const url = Configs.endpoint;
 function NewProducts() {
@@ -25,7 +39,6 @@ function NewProducts() {
             `${url}/insurance/getInsuranceProduct/${clientId}`
           );
           if (response) {
-            setProducts(response.data.products);
           }
         } catch (err) {
           setProducts([]);
@@ -37,7 +50,10 @@ function NewProducts() {
   };
 
   React.useEffect(() => {
-    getProducts();
+    axios
+      .get("https://backend.1protekt.com/insurance/getProductList")
+      .then((res) => setProducts(res.data.products))
+      .catch((err) => console.log(err));
   }, []);
 
   const renderComponent = (product) => {
@@ -86,6 +102,7 @@ function NewProducts() {
   const handleBuyPolicies = () => {
     history.push(`${company}/buy-policy`);
   };
+  const classes = useStyles();
 
   return (
     <div className="dashboard-wrapper">
@@ -95,43 +112,65 @@ function NewProducts() {
       <div className="dashboard-content">
         <h2 className="top-heading">My Products</h2>
         {/* <div className="product-section"> */}
-          {products.length ? (
-            <div className="product-section">
+        {products.length ? (
+          <div className="product-section">
             {/* <div className="listing"> */}
-              {products.map((product, index) => (
-                <div
-                  className="product_card"
-                  onClick={() => history.push("/product1")}
-                >
-                  <img
-                    src={product.product_icon}
-                    alt=""
-                    className="icon_product"
+            {products.map((product, index) => (
+              <Card className={classes.root} style={{ margin: "10px" }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    alt="Contemplative Reptile"
+                    height="140"
+                    image={product.product_icon}
+                    title="Contemplative Reptile"
+                    style={{ height: "60%" }}
                   />
-
-                  <div className="product_title">{product.product_name}</div>
-                </div>
-              ))}
-             </div>
-          ) : (
-            <div className="buypolicy-container">
-              <div className="policy-container" style={{ textAlign: "center" }}>
-                <div style={{ padding: 20 }}>
-                  You have not purchased any Policy till now
-                </div>
-                <button
-                  type="submit"
-                  className="login-submit"
-                  onClick={handleBuyPolicies}
-                  style={{ marginTop: 0, marginBottom: 30 }}
-                >
-                  {loading ? "Please wait..." : "Buy First Policy"}
-                </button>
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      Lizard
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      Lizards are a widespread group of squamate reptiles, with
+                      over 6,000 species, ranging across all continents except
+                      Antarctica
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                  <Button size="small" color="primary">
+                    Share
+                  </Button>
+                  <Button size="small" color="primary">
+                    Learn More
+                  </Button>
+                </CardActions>
+              </Card>
+            ))}
+          </div>
+        ) : (
+          <div className="buypolicy-container">
+            <div className="policy-container" style={{ textAlign: "center" }}>
+              <div style={{ padding: 20 }}>
+                You have not purchased any Policy till now
               </div>
+              <button
+                type="submit"
+                className="login-submit"
+                onClick={handleBuyPolicies}
+                style={{ marginTop: 0, marginBottom: 30 }}
+              >
+                {loading ? "Please wait..." : "Buy First Policy"}
+              </button>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
+    </div>
     // </div>
   );
 }
