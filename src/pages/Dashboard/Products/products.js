@@ -26,29 +26,6 @@ function NewProducts() {
   const history = useHistory();
   const clientId = localStorage.getItem("clientId");
 
-  const getProducts = async () => {
-    try {
-      if (!clientId && !company) {
-        const response = await axios.get(`${url}/insurance/getProductList`);
-        if (response) {
-          setProducts(response.data.products);
-        }
-      } else {
-        try {
-          const response = await axios.get(
-            `${url}/insurance/getInsuranceProduct/${clientId}`
-          );
-          if (response) {
-          }
-        } catch (err) {
-          setProducts([]);
-        }
-      }
-    } catch (error) {
-      setProducts([]);
-    }
-  };
-
   React.useEffect(() => {
     axios
       .get("https://backend.1protekt.com/insurance/getProductList")

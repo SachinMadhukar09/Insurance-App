@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Configs from "../../configs/config";
+import { TextField, Button } from "@material-ui/core";
+import "./pre-auth.css";
 
 function PreAuth() {
   const url = Configs.endpoint;
@@ -121,83 +123,145 @@ function PreAuth() {
     }
   };
   return (
-    <div class="form">
-      <form style={{ marginTop: "-10px" }}>
-        <label for="cityname">City</label>
-        <input
-          id="cityname"
-          type="text"
-          cityname="firstcityname"
-          value={values.cityname}
-          onChange={set("cityname")}
-        />
-        <span style={{ color: "red" }}>{errors["cityname"]}</span>
-        <label for="company-cityname">Patient Name</label>
-        <input
-          id="company-cityname"
-          type="text"
-          cityname="patientName"
-          value={values.patientName}
-          onChange={set("patientName")}
-        />
-        <span style={{ color: "red" }}>{errors["patientName"]}</span>
-        <label for="cars">Relationship with Proposer</label>
-
-        <select
-          style={{ padding: "0 10px", height: "50px", width: "100%" }}
-          cityname="type"
-          id="type"
-          cityname="companyType"
-          value={values.companyType}
-          onChange={set("companyType")}
-        >
-          <option value="Cooperative Bank">Cooperative Bank</option>
-          <option value="Retailer">Retailer</option>
-          <option value="Cooperative Society">Cooperative Society </option>
-          <option value="Association">Association</option>
-        </select>
-        <span style={{ color: "red" }}>{errors["companyType"]}</span>
-
-        <label for="work-phone"> Adhar Card</label>
-        <input
-          id="work-phone"
-          type="file"
-          cityname="phone"
-          //   value={values.phone}
-          //   onChange={set("phone")}
-        />
-        <span style={{ color: "red" }}>{errors["phone"]}</span>
-        <label for="work-phone"> Upload Doctor Prescription</label>
-        <input
-          id="work-phone"
-          type="file"
-          cityname="phone"
-          //   value={values.phone}
-          //   onChange={set("phone")}
-        />
-        <span style={{ color: "red" }}>{errors["phone"]}</span>
-        <label for="work-phone"> Upload Additional Reports</label>
-        <input
-          id="work-phone"
-          type="file"
-          cityname="phone"
-          className="form-control"
-          //   value={values.phone}
-          //   onChange={set("phone")}
-        />
-        <span style={{ color: "red" }}>{errors["phone"]}</span>
-
-        <button
-          className="continue_btn view_quotes__btn"
-          type="submit"
-          onClick={onSubmit}
-        >
-          SUBMIT
-        </button>
-        <span style={{ color: submitmsg.color }}>{submitmsg.msg}</span>
+    <div>
+      <form>
+        <div className="contain">
+          <span className="box1">City</span>
+          <TextField 
+            id="outlined-basic" 
+            label="City" 
+            variant="outlined" 
+          />
+        </div>
+        <div className="contain">
+          <span className="box1">Name Of Patient</span>
+          <TextField
+            id="outlined-basic"
+            label="Patient Name"
+            variant="outlined"
+          />
+        </div>
+        <div className="contain">
+          <span className="box1">Relationship with Proposer</span>
+          <TextField
+            className="textfield"
+            id="outlined-basic"
+            label="Relationship with Proposer"
+            variant="outlined"
+          />
+        </div>
+        <div className="contain">
+          <span variant="contained" component="label"
+           >
+            Aadhar Card
+          </span>
+          <input type="file"
+           style={{marginLeft:"9%",borderRadius:"5px"}}
+          />
+        </div>
+        <div className="contain">
+          <span variant="contained" component="label">
+            Doctor Prescription
+          </span>
+          <input type="file" 
+           style={{marginLeft:"9%",borderRadius:"5px"}}
+           />
+        </div>
+        <div className="contain">
+          <span variant="contained" component="label">
+            Additional Reports
+          </span>
+          <input type="file" 
+           style={{marginLeft:"9%",borderRadius:"5px"}}
+           />
+        </div>
+        {/* <div className="contain"> */}
+        <div className="div">
+        <button className="submit" >Submit</button>
+        </div>
+        {/* </div> */}
       </form>
     </div>
   );
 }
 
 export default PreAuth;
+
+{
+  /* <div class="form">
+<form style={{ marginTop: "-10px" }}>
+  <label for="cityname">City</label>
+  <input
+    id="cityname"
+    type="text"
+    cityname="firstcityname"
+    value={values.cityname}
+    onChange={set("cityname")}
+  />
+  <span style={{ color: "red" }}>{errors["cityname"]}</span>
+  <label for="company-cityname">Patient Name</label>
+  <input
+    id="company-cityname"
+    type="text"
+    cityname="patientName"
+    value={values.patientName}
+    onChange={set("patientName")}
+  />
+  <span style={{ color: "red" }}>{errors["patientName"]}</span>
+  <label for="cars">Relationship with Proposer</label>
+
+  <select
+    style={{ padding: "0 10px", height: "50px", width: "100%" }}
+    cityname="type"
+    id="type"
+    cityname="companyType"
+    value={values.companyType}
+    onChange={set("companyType")}
+  >
+    <option value="Cooperative Bank">Cooperative Bank</option>
+    <option value="Retailer">Retailer</option>
+    <option value="Cooperative Society">Cooperative Society </option>
+    <option value="Association">Association</option>
+  </select>
+  <span style={{ color: "red" }}>{errors["companyType"]}</span>
+
+  <label for="work-phone"> Adhar Card</label>
+  <input
+    id="work-phone"
+    type="file"
+    cityname="phone"
+    //   value={values.phone}
+    //   onChange={set("phone")}
+  />
+  <span style={{ color: "red" }}>{errors["phone"]}</span>
+  <label for="work-phone"> Upload Doctor Prescription</label>
+  <input
+    id="work-phone"
+    type="file"
+    cityname="phone"
+    //   value={values.phone}
+    //   onChange={set("phone")}
+  />
+  <span style={{ color: "red" }}>{errors["phone"]}</span>
+  <label for="work-phone"> Upload Additional Reports</label>
+  <input
+    id="work-phone"
+    type="file"
+    cityname="phone"
+    className="form-control"
+    //   value={values.phone}
+    //   onChange={set("phone")}
+  />
+  <span style={{ color: "red" }}>{errors["phone"]}</span>
+
+  <button
+    className="continue_btn view_quotes__btn"
+    type="submit"
+    onClick={onSubmit}
+  >
+    SUBMIT
+  </button>
+  <span style={{ color: submitmsg.color }}>{submitmsg.msg}</span>
+</form>
+</div> */
+}

@@ -39,14 +39,14 @@ function MyClaims() {
       status: "Active",
       expired: true,
     },
-    // {
-    //   productName: "ins product name",
-    //   productLogo: "",
-    //   IceName: "Ice Name",
-    //   cover: "₹ 1,00,000",
-    //   premium: "₹ 1000y(yearly)",
-    //   status: "Active",
-    // },
+    {
+      productName: "ins product name",
+      productLogo: "",
+      IceName: "Ice Name",
+      cover: "₹ 1,00,000",
+      premium: "₹ 1000y(yearly)",
+      status: "Active",
+    },
   ];
 
   // React.useEffect(() => {

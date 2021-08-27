@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Configs from "../../configs/config";
+import { TextField, Button } from "@material-ui/core";
+import './pre-auth.css'
 
 function AtHospital() {
   const url = Configs.endpoint;
@@ -121,113 +123,194 @@ function AtHospital() {
     }
   };
   return (
-    <div class="form">
-      <form style={{ marginTop: "-10px" }}>
-        <label for="cityname">City</label>
-        <input
-          id="cityname"
-          type="text"
-          cityname="firstcityname"
-          value={values.cityname}
-          onChange={set("cityname")}
-        />
-        <span style={{ color: "red" }}>{errors["cityname"]}</span>
-        <label for="company-cityname">Patient Name</label>
-        <input
-          id="company-cityname"
-          type="text"
-          cityname="patientName"
-          value={values.patientName}
-          onChange={set("patientName")}
-        />
-        <span style={{ color: "red" }}>{errors["patientName"]}</span>
-        <label for="cars">Relationship with Proposer</label>
 
-        <select
-          style={{ padding: "0 10px", height: "50px", width: "100%" }}
-          cityname="type"
-          id="type"
-          cityname="companyType"
-          value={values.companyType}
-          onChange={set("companyType")}
-        >
-          <option value="Cooperative Bank">Cooperative Bank</option>
-          <option value="Retailer">Retailer</option>
-          <option value="Cooperative Society">Cooperative Society </option>
-          <option value="Association">Association</option>
-        </select>
-        <span style={{ color: "red" }}>{errors["companyType"]}</span>
-        <label for="work-attendingDoctor" style={{ marginTop: "30px" }}>
-          {" "}
-          Name Of Attending Doctor
-        </label>
-        <input
-          id="work-attendingDoctor"
-          type="text"
-          //   cityname="email"
-          value={values.email}
-          onChange={set("email")}
-        />
-        <span style={{ color: "red" }}>{errors["email"]}</span>
-        <label for="work-phone"> Nature of Illness/Injury</label>
-        <input
-          id="work-phone"
-          type="text"
-          cityname="phone"
-          value={values.phone}
-          onChange={set("phone")}
-        />
-        <span style={{ color: "red" }}>{errors["phone"]}</span>
-        <label for="work-phone"> Date of Admission</label>
-        <input
-          id="work-phone"
-          type="date"
-          cityname="phone"
-          value={values.phone}
-          onChange={set("phone")}
-        />
-        <span style={{ color: "red" }}>{errors["phone"]}</span>
-        <label for="work-phone"> Expected Length of Stay</label>
-        <input
-          id="work-phone"
-          type="text"
-          cityname="phone"
-          value={values.phone}
-          onChange={set("phone")}
-        />
-        <span style={{ color: "red" }}>{errors["phone"]}</span>
-        <label for="work-phone"> Expected Hospital Bill </label>
-        <input
-          id="work-phone"
-          type="text"
-          cityname="phone"
-          value={values.phone}
-          onChange={set("phone")}
-        />
-        <span style={{ color: "red" }}>{errors["phone"]}</span>
 
-        <label style={{ marginTop: "28px" }} for="project-idea">
-          Additonal Details
-        </label>
-        <textarea
-          id="project-idea"
-          rows="4"
-          cityname="message"
-          value={values.message}
-          onChange={set("message")}
-        ></textarea>
-        <span style={{ color: "red" }}>{errors["message"]}</span>
-        <button
-          className="continue_btn view_quotes__btn"
-          type="submit"
-          onClick={onSubmit}
-        >
-          SUBMIT
-        </button>
-        <span style={{ color: submitmsg.color }}>{submitmsg.msg}</span>
-      </form>
-    </div>
+    <div>
+    <form>
+      <div className="contain">
+        <span className="box1">City</span>
+        <TextField id="outlined-basic" label="City" variant="outlined" />
+      </div>
+      <div className="contain">
+        <span className="box1">Name Of Patient</span>
+        <TextField
+          id="outlined-basic"
+          label="Patient Name"
+          variant="outlined"
+        />
+      </div>
+      <div className="contain">
+        <span className="box1">Relationship with Proposer</span>
+        <TextField
+          id="outlined-basic"
+          label="Relationship with Proposer"
+          variant="outlined"
+        />
+      </div>
+      <div className="contain">
+        <span className="box1">Name of Attending Doctor</span>
+        <TextField
+          id="outlined-basic"
+          label="Doctor Name"
+          variant="outlined"
+        />
+      </div>
+      <div className="contain">
+        <span className="box1">Name of illness/injury</span>
+        <TextField
+          id="outlined-basic"
+          label="Name of illness/injury"
+          variant="outlined"
+        />
+      </div>
+      <div className="contain">
+        <span className="box1">Date of Admission</span>
+        <TextField
+          id="outlined-basic"
+          label="Date of Admission"
+          variant="outlined"
+        />
+      </div>
+      <div className="contain">
+        <span className="box1">Expected length to stay</span>
+        <TextField
+          id="outlined-basic"
+          label="Expected Legth to stay"
+          variant="outlined"
+        />
+      </div>
+      <div className="contain">
+        <span className="box1">Expected Hospital Bill</span>
+        <TextField
+          id="outlined-basic"
+          label="Expected Hospital Bill"
+          variant="outlined"
+        />
+      </div>
+      <div className="contain">
+        <span className="box1">Account Details</span>
+        <TextField
+          id="outlined-basic"
+          label="Account Details"
+          variant="outlined"
+        />
+      </div>
+      <div className="div">
+        <button className="submit" >Submit</button>
+        </div>
+
+    </form>
+  </div>
+
   );
 }
 
 export default AtHospital;
+
+
+{/* <div class="form">
+<form style={{ marginTop: "-10px" }}>
+  <label for="cityname">City</label>
+  <input
+    id="cityname"
+    type="text"
+    cityname="firstcityname"
+    value={values.cityname}
+    onChange={set("cityname")}
+  />
+  <span style={{ color: "red" }}>{errors["cityname"]}</span>
+  <label for="company-cityname">Patient Name</label>
+  <input
+    id="company-cityname"
+    type="text"
+    cityname="patientName"
+    value={values.patientName}
+    onChange={set("patientName")}
+  />
+  <span style={{ color: "red" }}>{errors["patientName"]}</span>
+  <label for="cars">Relationship with Proposer</label>
+
+  <select
+    style={{ padding: "0 10px", height: "50px", width: "100%" }}
+    cityname="type"
+    id="type"
+    cityname="companyType"
+    value={values.companyType}
+    onChange={set("companyType")}
+  >
+    <option value="Cooperative Bank">Cooperative Bank</option>
+    <option value="Retailer">Retailer</option>
+    <option value="Cooperative Society">Cooperative Society </option>
+    <option value="Association">Association</option>
+  </select>
+  <span style={{ color: "red" }}>{errors["companyType"]}</span>
+  <label for="work-attendingDoctor" style={{ marginTop: "30px" }}>
+    {" "}
+    Name Of Attending Doctor
+  </label>
+  <input
+    id="work-attendingDoctor"
+    type="text"
+    //   cityname="email"
+    value={values.email}
+    onChange={set("email")}
+  />
+  <span style={{ color: "red" }}>{errors["email"]}</span>
+  <label for="work-phone"> Nature of Illness/Injury</label>
+  <input
+    id="work-phone"
+    type="text"
+    cityname="phone"
+    value={values.phone}
+    onChange={set("phone")}
+  />
+  <span style={{ color: "red" }}>{errors["phone"]}</span>
+  <label for="work-phone"> Date of Admission</label>
+  <input
+    id="work-phone"
+    type="date"
+    cityname="phone"
+    value={values.phone}
+    onChange={set("phone")}
+  />
+  <span style={{ color: "red" }}>{errors["phone"]}</span>
+  <label for="work-phone"> Expected Length of Stay</label>
+  <input
+    id="work-phone"
+    type="text"
+    cityname="phone"
+    value={values.phone}
+    onChange={set("phone")}
+  />
+  <span style={{ color: "red" }}>{errors["phone"]}</span>
+  <label for="work-phone"> Expected Hospital Bill </label>
+  <input
+    id="work-phone"
+    type="text"
+    cityname="phone"
+    value={values.phone}
+    onChange={set("phone")}
+  />
+  <span style={{ color: "red" }}>{errors["phone"]}</span>
+
+  <label style={{ marginTop: "28px" }} for="project-idea">
+    Additonal Details
+  </label>
+  <textarea
+    id="project-idea"
+    rows="4"
+    cityname="message"
+    value={values.message}
+    onChange={set("message")}
+  ></textarea>
+  <span style={{ color: "red" }}>{errors["message"]}</span>
+  <button
+    className="continue_btn view_quotes__btn"
+    type="submit"
+    onClick={onSubmit}
+  >
+    SUBMIT
+  </button>
+  <span style={{ color: submitmsg.color }}>{submitmsg.msg}</span>
+</form>
+</div> */}

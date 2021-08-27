@@ -78,7 +78,31 @@ const SideBar = () => {
           <div className="icon-container">
             <i class="fa fa-plus" aria-hidden="true"></i>
           </div>
-          <span>Claims</span>
+          <li className="nav-item-dropdown" style={{ paddingRight: "25px" }}>
+            <a
+              // className="open-claim-form"
+              href="/submit-claim-request/"
+            >
+              Claims
+            </a>
+            <span className="menu-dropdown-font"></span>
+            <ul className="nav-list">
+              <li className="sub-menu-selected">
+                <a href="/claim/health-claim">Health</a>
+              </li>
+
+              <li className="sub-menu-selected">
+                <a href="/articles/">Motor</a>
+              </li>
+              <li className="sub-menu-selected">
+                <a href="/articles/">Travel</a>
+              </li>
+              <li className="sub-menu-selected">
+                <a href="/articles/">GMC</a>
+              </li>
+            </ul>
+          </li>
+          {/* <span>Claims</span> */}
         </div>
         <div
           className="link-container"
